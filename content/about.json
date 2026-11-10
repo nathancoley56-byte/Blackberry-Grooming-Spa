@@ -1,14 +1,18 @@
 {
-  "image_1": "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=600",
-  "image_1_alt": "Groomer bathing dog",
-  "image_2": "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&q=80&w=600",
-  "image_2_alt": "Organic dog shampoos",
   "heading": "Where Comfort Meets Exceptional Style.",
+  "section_bg_color": "#FFFFFF",
+  "heading_color": "",
   "bio": "Founded in 2026 by certified master groomers, Blackberry Luxury Grooming was built on a simple premise: dogs deserve a peaceful, enjoyable grooming experience without harsh cages or hurried treatments.",
+  "eyebrow": "Our Caring Philosophy",
+  "bio_color": "#57534E",
+  "image_1": "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=600",
+  "eyebrow_color": "",
+  "image_2": "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&q=80&w=600",
+  "image_1_alt": "Groomer bathing dog",
   "principles": [
     {
-      "title": "100% Hypoallergenic & Organic",
-      "desc": "We exclusively use eco-friendly, sulfate-free shampoos formulated for sensitive canine skin.",
+      "title": "100% Sensitive Personalized Care",
+      "desc": "We exclusively use shampoos formulated for sensitive canine skin.",
       "icon": "fa-solid fa-leaf"
     },
     {
@@ -18,15 +22,11 @@
     },
     {
       "title": "Private Quiet Suites",
-      "desc": "Individual relaxing lounge areas instead of loud, stressful cage banks.",
+      "desc": "Individual relaxing areas instead of loud, stressful cage banks.",
       "icon": "fa-solid fa-house-chimney-window"
     }
   ],
-  "eyebrow": "Our Caring Philosophy",
-  "eyebrow_color": "",
-  "heading_color": "",
-  "bio_color": "#57534E",
-  "principle_title_color": "#292524",
+  "image_2_alt": "Organic dog shampoos",
   "principle_desc_color": "#78716C",
-  "section_bg_color": "#FFFFFF"
+  "principle_title_color": "#292524"
 }
