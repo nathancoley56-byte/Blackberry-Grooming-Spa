@@ -30,12 +30,5 @@
       }
     ]
   },
-  "phone": "(801) 960-6426",
-  "hours": {
-    "weekdays": "9:00 AM - 6:00 PM",
-    "saturday": "9:00 AM - 5:00 PM",
-    "sunday": "Closed for Rest"
-  },
-  "address": "1244 Barkwood Lane, Suite B, Austin TX",
-  "email": "hello@pawsandsuds.com"
+  "phone": "(801) 960-6426"
 }
