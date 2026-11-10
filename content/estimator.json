@@ -2,7 +2,7 @@
   "display": {
     "card_muted_color": "#F2EBD9",
     "description_color": "#57534E",
-    "included_color": "#FCD34D",
+    "included_color": "#758132",
     "card_text_color": "#FFFFFF",
     "section_bg_color": "#FFFFFF",
     "panel_bg_color": "#FDFBF7",
@@ -18,7 +18,7 @@
     "included_label": "Included:",
     "coat_label": "2. Coat Type / Breed Specialty",
     "addon_label": "3. Optional Add-On Services",
-    "button_color": "#F4A261",
+    "button_color": "#50d22d",
     "size_label": "1. Select Dog Size",
     "card_color_bottom": "#4B5320",
     "title": "Interactive Grooming Cost Estimator",
@@ -27,7 +27,7 @@
     "disclaimer": "Final pricing confirmed upon physical coat inspection.",
     "title_color": "#4B5320",
     "description": "Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!",
-    "total_label_color": "#E9C46A",
+    "total_label_color": "#758132",
     "button_text_color": "#1C1917"
   },
   "components": {
