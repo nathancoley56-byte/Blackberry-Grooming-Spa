@@ -455,90 +455,11 @@
             <div class="text-center space-y-3 mb-12">
                 <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Transformation Gallery</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">Happy Pups Before & After</h2>
-                <p class="text-stone-600 text-sm max-w-xl mx-auto">Toggle or slide to see how our gentle styling turns fluffy scruffs into gorgeous, confident pets.</p>
+                <p class="text-stone-600 text-sm max-w-xl mx-auto">Tap the arrow on any photo to see how our gentle styling turns fluffy scruffs into gorgeous, confident pets.</p>
             </div>
 
-            <!-- Gallery Cards Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <!-- Transformation Item 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
-                    <div class="relative h-72">
-                        <!-- Before Image -->
-                        <img id="img-before-1" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Scruffy+Before';" 
-                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
-                        <!-- After Image -->
-                        <img id="img-after-1" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=Groomed+After';" 
-                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
-                        
-                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-1">
-                            BEFORE
-                        </div>
-                    </div>
-                    <div class="p-5 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-bold text-stone-800">Milo</h4>
-                            <p class="text-xs text-stone-500">Golden Doodle • Full Grooming</p>
-                        </div>
-                        <button onclick="toggleGalleryView(1)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
-                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Transformation Item 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
-                    <div class="relative h-72">
-                        <img id="img-before-2" src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Before+Groom';" 
-                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
-                        <img id="img-after-2" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=After+Groom';" 
-                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
-                        
-                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-2">
-                            BEFORE
-                        </div>
-                    </div>
-                    <div class="p-5 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-bold text-stone-800">Teddy</h4>
-                            <p class="text-xs text-stone-500">Shih Tzu • Teddy Bear Cut</p>
-                        </div>
-                        <button onclick="toggleGalleryView(2)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
-                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Transformation Item 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
-                    <div class="relative h-72">
-                        <img id="img-before-3" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Shaggy+Before';" 
-                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
-                        <img id="img-after-3" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=600" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=Fresh+After';" 
-                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
-                        
-                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-3">
-                            BEFORE
-                        </div>
-                    </div>
-                    <div class="p-5 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-bold text-stone-800">Bella</h4>
-                            <p class="text-xs text-stone-500">French Bulldog • De-shed Spa</p>
-                        </div>
-                        <button onclick="toggleGalleryView(3)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
-                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+            <!-- Gallery grid (rendered from content/gallery.json) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-1"></div>
         </div>
     </section>
 
@@ -1052,6 +973,8 @@
             const showingAfter = !after.classList.contains('opacity-0');
             after.classList.toggle('opacity-0', showingAfter);
             badge.innerText = showingAfter ? 'BEFORE' : 'AFTER';
+            const arrow = document.querySelector(#gallery-arrow-${n} i);
+            if (arrow) arrow.className = showingAfter ? 'fa-solid fa-chevron-left' : 'fa-solid fa-chevron-right';
         }
 
         // Booking Modal
@@ -1578,23 +1501,14 @@
                 const before = safeUrl(item.image_before);
                 const after = safeUrl(item.image_after);
                 return `
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
-                    <div class="relative h-72">
-                        <img id="img-before-${n}" src="${esc(before)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Before';" alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
-                        <img id="img-after-${n}" src="${esc(after)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=After';" alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
-                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-${n}">BEFORE</div>
-                    </div>
-                    <div class="p-5 flex items-center justify-between">
-                        <div>
-                            <h4 class="font-bold text-stone-800">${esc(item.pup_name)}</h4>
-                            <p class="text-xs text-stone-500">${esc(item.details)}</p>
-                        </div>
-                        <button onclick="toggleGalleryView(${n})" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
-                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
-                        </button>
-                    </div>
-                </div>`;
-            }).join('');
+                <div class="relative aspect-square overflow-hidden bg-cream-200 group">
+                    <img id="img-before-${n}" src="${esc(before)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Before';" alt="${esc(item.pup_name)} before grooming" class="w-full h-full object-cover">
+                    <img id="img-after-${n}" src="${esc(after)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=After';" alt="${esc(item.pup_name)} after grooming" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-300">
+                    <div class="absolute top-3 left-3 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-${n}">AFTER</div>
+                    <button type="button" onclick="toggleGalleryView(${n})" id="gallery-arrow-${n}" aria-label="Toggle before and after photo of ${esc(item.pup_name)}" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white text-stone-800 shadow-md flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>`;            }).join('');
         }
 
         function renderAbout(data) {
