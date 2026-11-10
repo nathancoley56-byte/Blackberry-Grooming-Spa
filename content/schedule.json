@@ -1,0 +1,10 @@
+{
+  "timezone": "America/Denver",
+  "open_days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  "time_slots": ["09:00 AM", "11:00 AM", "01:30 PM", "03:30 PM"],
+  "max_per_slot": 1,
+  "min_notice_days": 1,
+  "days_ahead": 60,
+  "days_off": [],
+  "blocked_slots": []
+}
