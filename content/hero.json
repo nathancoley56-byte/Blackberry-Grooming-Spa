@@ -1,32 +1,64 @@
 {
-  "background_top": "#FDFBF7",
-  "background_bottom": "#F4F7F4",
-  "show_badge": true,
-  "badge_icon": "fa-solid fa-sparkles",
-  "badge_text": "Certified Stress-Free Pet Spa",
-  "badge_bg_color": "#E3EBE3",
-  "badge_text_color": "#4C684C",
-  "badge_icon_color": "#F4A261",
-  "title": "Gentle Care & Premium Pampering for Your Best Friend.",
-  "title_color": "#5C3D2E",
-  "subtitle": "At Blackberry Luxury Grooming, we offer low-stress, organic grooming tailored to your dog's unique needs.",
-  "subtitle_color": "#57534E",
-  "primary_button_text": "Book Your Dog's Visit",
-  "primary_button_color": "",
   "primary_button_text_color": "#FFFFFF",
-  "secondary_button_text": "Estimate Groom Price",
-  "secondary_button_link": "#estimator",
   "secondary_button_color": "#FFFFFF",
-  "secondary_button_text_color": "#5C3D2E",
-  "stat_label_color": "#78716C",
-  "stats": [
-    { "value": "100%", "label": "Organic Shampoos", "icon": "", "value_color": "#5C3D2E", "icon_color": "" },
-    { "value": "10+ Yrs", "label": "Master Groomers", "icon": "", "value_color": "#5C3D2E", "icon_color": "" },
-    { "value": "4.9", "label": "500+ Happy Pups", "icon": "fa-solid fa-star", "value_color": "", "icon_color": "#E9C46A" }
-  ],
-  "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800",
+  "show_badge": true,
+  "card_1": {
+    "show": true,
+    "icon": "fa-solid fa-heart",
+    "icon_color": "#E76F51",
+    "icon_bg_color": "#F5E2B8",
+    "label": "Handling Style",
+    "text": "1-on-1 Gentle Touch"
+  },
+  "card_2": {
+    "show": true,
+    "icon": "fa-solid fa-shield-dog",
+    "icon_color": "#4C684C",
+    "icon_bg_color": "#DDE6DD",
+    "label": "Safety First",
+    "text": "Sanitized Suites"
+  },
+  "background_top": "#FDFBF7",
+  "badge_bg_color": "#E3EBE3",
   "image_alt": "Happy freshly groomed dog",
+  "badge_text": "Certified Stress-Free Pet Spa",
+  "stat_label_color": "#78716C",
+  "badge_text_color": "#4C684C",
+  "secondary_button_text": "Estimate Groom Price",
+  "secondary_button_text_color": "#5C3D2E",
+  "primary_button_color": "",
   "image_border_color": "#FFFFFF",
-  "card_1": { "show": true, "icon": "fa-solid fa-heart", "icon_color": "#E76F51", "icon_bg_color": "#F5E2B8", "label": "Handling Style", "text": "1-on-1 Gentle Touch" },
-  "card_2": { "show": true, "icon": "fa-solid fa-shield-dog", "icon_color": "#4C684C", "icon_bg_color": "#DDE6DD", "label": "Safety First", "text": "Sanitized Private Suites" }
+  "badge_icon": "fa-solid fa-sparkles",
+  "subtitle": "At Blackberry Luxury Grooming, we offer low-stress, organic grooming tailored to your dog's unique needs.",
+  "title": "Gentle Care & Premium Pampering for Your Best Friend.",
+  "badge_icon_color": "#F4A261",
+  "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800",
+  "subtitle_color": "#57534E",
+  "background_bottom": "#F4F7F4",
+  "secondary_button_link": "#estimator",
+  "title_color": "#5C3D2E",
+  "primary_button_text": "Book Your Dog's Visit",
+  "stats": [
+    {
+      "value": "100%",
+      "label": "Organic Shampoos",
+      "icon": "",
+      "value_color": "#5C3D2E",
+      "icon_color": ""
+    },
+    {
+      "value": "10+ Yrs",
+      "label": "Master Groomers",
+      "icon": "",
+      "value_color": "#5C3D2E",
+      "icon_color": ""
+    },
+    {
+      "value": "4.9",
+      "label": "500+ Happy Pups",
+      "icon": "fa-solid fa-star",
+      "value_color": "",
+      "icon_color": "#E9C46A"
+    }
+  ]
 }
