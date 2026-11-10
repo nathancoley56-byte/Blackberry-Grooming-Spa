@@ -43,22 +43,22 @@
       "value": "100%",
       "label": "Organic Shampoos",
       "icon": "",
-      "value_color": "#5C3D2E",
+      "value_color": "#4B5320",
       "icon_color": ""
     },
     {
       "value": "10+ Yrs",
       "label": "Master Groomers",
       "icon": "",
-      "value_color": "#5C3D2E",
+      "value_color": "#4B5320",
       "icon_color": ""
     },
     {
-      "value": "4.9",
-      "label": "500+ Happy Pups",
+      "value": "5.0",
+      "label": "20+ Happy Pups",
       "icon": "fa-solid fa-star",
       "value_color": "",
-      "icon_color": "#E9C46A"
+      "icon_color": "#4B5320"
     }
   ]
 }
