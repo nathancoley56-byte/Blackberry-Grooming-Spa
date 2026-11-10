@@ -1229,8 +1229,8 @@
             const tag = f.tag_text && f.show_tag !== false
                 ? `<div class="mt-4 p-3 rounded-xl text-[11px]" style="${st('background-color', f.tag_bg_color)}${st('color', f.tag_text_color)}${col(f.tag_border_color) ? `border:1px solid ${col(f.tag_border_color)};` : ''}"><i class="${esc(safeClass(f.tag_icon || 'fa-solid fa-kit-medical'))} mr-1"></i> ${esc(f.tag_text)}</div>` : '';
 
-            const legal = (Array.isArray(f.legal_links) ? f.legal_links : []).map(l =>
-                `<a href="${esc(link(l.link))}" class="hover:underline">${esc(l.label)}</a>`).join('');
+            const legal = f.show_legal_links === true ? (Array.isArray(f.legal_links) ? f.legal_links : []).map(l =>
+                `<a href="${esc(link(l.link))}" class="hover:underline">${esc(l.label)}</a>`).join('') : '';
 
             const iconBox = f.logo_image && safeUrl(f.logo_image)
                 ? `<img src="${esc(safeUrl(f.logo_image))}" alt="" class="w-full h-full object-cover">`
