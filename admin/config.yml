@@ -101,7 +101,7 @@ collections:
         fields:
           - { label: "Time Zone (e.g. America/Denver)", name: "timezone", widget: "string", default: "America/Denver" }
           - { label: "Days We Take Appointments", name: "open_days", widget: "select", multiple: true, options: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], default: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] }
-          - { label: "Appointment Times (exactly like 09:00 AM)", name: "time_slots", widget: "list", field: { label: "Time", name: "time", widget: "string" }, default: ["09:00 AM", "11:00 AM", "01:30 PM", "03:30 PM"] }
+          - { label: "Appointment Times (select all that apply)", name: "time_slots", widget: "select", multiple: true, options: ["06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM"], default: ["09:00 AM", "11:00 AM", "01:30 PM", "03:30 PM"] }
           - { label: "Appointments Allowed Per Time Slot", name: "max_per_slot", widget: "number", value_type: "int", min: 1, default: 1 }
           - { label: "Minimum Days Notice (1 = no same-day booking)", name: "min_notice_days", widget: "number", value_type: "int", min: 0, default: 1 }
           - { label: "How Many Days Ahead Customers Can Book", name: "days_ahead", widget: "number", value_type: "int", min: 1, default: 60 }
@@ -110,10 +110,10 @@ collections:
             name: "blocked_slots"
             widget: "list"
             required: false
-            summary: "{{fields.date}} {{fields.time}}"
+            summary: "{{fields.date}}: {{fields.times}}"
             fields:
               - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
-              - { label: "Time (exactly like 09:00 AM)", name: "time", widget: "string" }
+              - { label: "Times To Close (select all that apply)", name: "times", widget: "select", multiple: true, options: ["06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM"] }
 
   # ==========================================
   # 1. GLOBAL SITE SETTINGS & HERO
