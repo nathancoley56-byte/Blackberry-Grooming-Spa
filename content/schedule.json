@@ -22,7 +22,9 @@
   "blocked_slots": [
     {
       "date": "2026-11-10",
-      "time": "9:00 AM"
+      "times": [
+        "09:00 AM"
+      ]
     }
   ]
 }
