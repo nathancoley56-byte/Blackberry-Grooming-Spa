@@ -129,14 +129,6 @@ collections:
         name: "general"
         fields:
           - { label: "Business Name", name: "site_name", widget: "string", default: "Paws & Suds Grooming Spa" }
-          - label: "Footer Social Media Links"
-            name: "social_links"
-            widget: "list"
-            required: false
-            summary: "{{fields.platform}}: {{fields.url}}"
-            fields:
-              - { label: "Platform", name: "platform", widget: "select", options: ["instagram", "facebook", "tiktok", "youtube", "x", "pinterest", "linkedin", "yelp", "google"] }
-              - { label: "Link (full URL, e.g. https://instagram.com/yourpage)", name: "url", widget: "string" }
           - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
@@ -155,16 +147,70 @@ collections:
                 fields:
                   - { label: "Link Text", name: "label", widget: "string" }
                   - { label: "Section (e.g. #services, #gallery)", name: "link", widget: "string" }
-          - { label: "Phone Number", name: "phone", widget: "string", default: "(555) 019-2834" }
-          - { label: "Email Address", name: "email", widget: "string", default: "hello@pawsandsuds.com" }
-          - { label: "Address", name: "address", widget: "string", default: "1244 Barkwood Lane, Suite B, Austin TX" }
+          - { label: "Phone Number (also shown in footer unless the footer has its own)", name: "phone", widget: "string", default: "(555) 019-2834" }
+
+  # ==========================================
+  # FOOTER (colors, brand, social media, hours, contact, legal links)
+  # ==========================================
+  - name: "footer"
+    label: "Footer"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/footer.json"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - { label: "Background Color", name: "bg_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Text Color", name: "text_color", widget: "color", allowInput: true, required: false, default: "#F9F5EC" }
+          - { label: "Heading Color (brand name, column titles, hours)", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+          - { label: "Accent Color (contact icons, highlighted hours)", name: "accent_color", widget: "color", allowInput: true, required: false, default: "#E9C46A" }
+          - { label: "Divider Line Color", name: "divider_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+          - { label: "Logo Image (leave empty to use the icon)", name: "logo_image", widget: "image", required: false }
+          - { label: "Logo Icon (FontAwesome class)", name: "logo_icon", widget: "string", required: false, default: "fa-solid fa-paw" }
+          - { label: "Logo Icon Color", name: "logo_icon_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+          - { label: "Logo Box Color (empty = brand color)", name: "logo_bg_color", widget: "color", allowInput: true, required: false }
+          - { label: "Brand Name (empty = logo name from Global Site Settings)", name: "brand_name", widget: "string", required: false }
+          - { label: "Short Description", name: "description", widget: "text", required: false }
+          - { label: "Social Icon Color", name: "social_color", widget: "color", allowInput: true, required: false, default: "#F2EBD9" }
+          - label: "Social Media Links"
+            name: "social_links"
+            widget: "list"
+            required: false
+            summary: "{{fields.platform}}: {{fields.url}}"
+            fields:
+              - { label: "Platform", name: "platform", widget: "select", options: ["instagram", "facebook", "tiktok", "youtube", "x", "pinterest", "linkedin", "yelp", "google"] }
+              - { label: "Link (full URL, e.g. https://instagram.com/yourpage)", name: "url", widget: "string" }
+          - { label: "Hours Column Title", name: "hours_title", widget: "string", required: false, default: "Hours & Days" }
           - label: "Business Hours"
             name: "hours"
-            widget: "object"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}} {{fields.hours}}"
             fields:
-              - { label: "Weekdays", name: "weekdays", widget: "string", default: "8:00 AM - 6:00 PM" }
-              - { label: "Saturday", name: "saturday", widget: "string", default: "9:00 AM - 5:00 PM" }
-              - { label: "Sunday", name: "sunday", widget: "string", default: "Closed for Rest" }
+              - { label: "Days (e.g. Monday - Friday:)", name: "label", widget: "string" }
+              - { label: "Hours (e.g. 9:00 AM - 6:00 PM)", name: "hours", widget: "string" }
+              - { label: "Highlight in Accent Color (e.g. Closed days)", name: "highlight", widget: "boolean", default: false, required: false }
+          - { label: "Contact Column Title", name: "contact_title", widget: "string", required: false, default: "Contact & Location" }
+          - { label: "Address", name: "address", widget: "string", required: false }
+          - { label: "Phone (empty = use main phone from Global Site Settings)", name: "phone", widget: "string", required: false }
+          - { label: "Email Address", name: "email", widget: "string", required: false }
+          - { label: "Show Highlight Box Under Contact", name: "show_tag", widget: "boolean", default: true, required: false }
+          - { label: "Highlight Box Icon (FontAwesome class)", name: "tag_icon", widget: "string", required: false, default: "fa-solid fa-kit-medical" }
+          - { label: "Highlight Box Text", name: "tag_text", widget: "string", required: false, default: "Urgent Matting Care Available" }
+          - { label: "Highlight Box Background", name: "tag_bg_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+          - { label: "Highlight Box Text Color", name: "tag_text_color", widget: "color", allowInput: true, required: false, default: "#FCD34D" }
+          - { label: "Highlight Box Border Color", name: "tag_border_color", widget: "color", allowInput: true, required: false, default: "#9C6F44" }
+          - { label: "Copyright Text ({year} and {site} are filled in automatically)", name: "copyright_text", widget: "string", required: false, default: "© {year} {site}. All rights reserved." }
+          - label: "Bottom Links (Privacy, Terms, etc.)"
+            name: "legal_links"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Link Text", name: "label", widget: "string" }
+              - { label: "Link (page URL or #section)", name: "link", widget: "string" }
 
   # ==========================================
   # 2. GROOMING PACKAGES & SERVICES
