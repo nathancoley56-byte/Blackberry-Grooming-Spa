@@ -346,6 +346,18 @@ collections:
         label: "Gallery Pups"
         name: "gallery_list"
         fields:
+          - label: "Section Text & Colors"
+            name: "display"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Transformation Gallery" }
+              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+              - { label: "Title", name: "title", widget: "string", required: false, default: "Happy Pups Before & After" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Description Color", name: "description_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
+              - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false }
           - label: "Pups"
             name: "items"
             widget: "list"
@@ -366,6 +378,21 @@ collections:
         label: "Reviews"
         name: "reviews_list"
         fields:
+          - label: "Section Text & Colors"
+            name: "display"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Loved by Pet Parents" }
+              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+              - { label: "Title", name: "title", widget: "string", required: false, default: "What Dog Owners Say" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false }
+              - { label: "Review Card Background Color", name: "card_bg_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+              - { label: "Review Quote Text Color", name: "review_text_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
+              - { label: "Owner Name Color", name: "name_color", widget: "color", allowInput: true, required: false, default: "#292524" }
+              - { label: "Pet Name & Breed Color", name: "pet_info_color", widget: "color", allowInput: true, required: false, default: "#78716C" }
+              - { label: "Star Color", name: "star_color", widget: "color", allowInput: true, required: false, default: "#FBBF24" }
           - label: "Reviews"
             name: "items"
             widget: "list"
@@ -391,7 +418,14 @@ collections:
           - { label: "Left Photo Description (for accessibility)", name: "image_1_alt", widget: "string", required: false, default: "Groomer bathing dog" }
           - { label: "Right Photo", name: "image_2", widget: "image", required: false }
           - { label: "Right Photo Description (for accessibility)", name: "image_2_alt", widget: "string", required: false, default: "Organic dog shampoos" }
+          - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Our Caring Philosophy" }
+          - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
           - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Section Heading Color", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Story Text Color", name: "bio_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
+          - { label: "Principle Title Color", name: "principle_title_color", widget: "color", allowInput: true, required: false, default: "#292524" }
+          - { label: "Principle Description Color", name: "principle_desc_color", widget: "color", allowInput: true, required: false, default: "#78716C" }
+          - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
           - { label: "Main Story / Bio", name: "bio", widget: "markdown" }
           - label: "Core Principles"
             name: "principles"
