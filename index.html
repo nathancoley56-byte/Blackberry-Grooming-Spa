@@ -1132,7 +1132,7 @@
         }
 
         // ---------- CMS content (content/*.json, edited through Decap CMS) ----------
-        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, schedule: null };
+        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, schedule: null, hero: null };
         const cmsSnapshots = {};
         const AVATAR_COLORS = ['bg-sage-500', 'bg-warmbrown-600', 'bg-amber-500'];
         const ICON_TINTS = ['bg-sage-100 text-sage-600', 'bg-cream-200 text-warmbrown-700', 'bg-amber-100 text-amber-600'];
@@ -1213,6 +1213,86 @@
             }).join('');
         }
 
+        function safeColor(value) {
+            const c = String(value ?? '').trim();
+            return /^#[0-9a-f]{3,8}$/i.test(c) ? c : '';
+        }
+
+        function renderHero(h) {
+            if (!h) return;
+            const $ = id => document.getElementById(id);
+            const style = (el, prop, val) => { if (el) el.style[prop] = safeColor(val); };
+
+            const section = $('hero-section');
+            const bgFrom = safeColor(h.background_top), bgTo = safeColor(h.background_bottom);
+            if (bgFrom && bgTo) section.style.background = `linear-gradient(to bottom, ${bgFrom}, ${bgTo})`;
+            else section.style.background = '';
+
+            setText('hero-badge-text', h.badge_text);
+            const badge = $('hero-badge');
+            badge.style.display = h.show_badge === false ? 'none' : '';
+            style(badge, 'backgroundColor', h.badge_bg_color);
+            style(badge, 'color', h.badge_text_color);
+            const badgeIcon = $('hero-badge-icon');
+            if (h.badge_icon) badgeIcon.className = safeClass(h.badge_icon);
+            style(badgeIcon, 'color', h.badge_icon_color);
+
+            setText('hero-title', h.title);
+            style($('hero-title'), 'color', h.title_color);
+            setText('hero-subtitle', h.subtitle);
+            style($('hero-subtitle'), 'color', h.subtitle_color);
+
+            const primary = $('hero-primary-btn');
+            if (h.primary_button_text) primary.textContent = h.primary_button_text;
+            style(primary, 'backgroundColor', h.primary_button_color);
+            style(primary, 'color', h.primary_button_text_color);
+
+            const secondary = $('hero-secondary-btn');
+            if (h.secondary_button_text) secondary.textContent = h.secondary_button_text;
+            if (/^(#[\w-]+|https?:\/\/.+)$/i.test(String(h.secondary_button_link || '').trim())) secondary.href = h.secondary_button_link.trim();
+            style(secondary, 'backgroundColor', h.secondary_button_color);
+            style(secondary, 'color', h.secondary_button_text_color);
+
+            const stats = Array.isArray(h.stats) ? h.stats.slice(0, 4) : [];
+            const statsEl = $('hero-stats');
+            if (stats.length) {
+                statsEl.style.display = '';
+                statsEl.style.gridTemplateColumns = `repeat(${stats.length}, minmax(0, 1fr))`;
+                statsEl.innerHTML = stats.map(st => {
+                    const vColor = safeColor(st.value_color);
+                    const icon = st.icon ? ` <i class="${esc(safeClass(st.icon))} text-xs" ${safeColor(st.icon_color) ? `style="color:${safeColor(st.icon_color)}"` : ''}></i>` : '';
+                    const lColor = safeColor(h.stat_label_color);
+                    return `<div>
+                        <div class="text-2xl font-bold text-warmbrown-800 flex items-center justify-center lg:justify-start gap-1" ${vColor ? `style="color:${vColor}"` : ''}>${esc(st.value)}${icon}</div>
+                        <div class="text-xs text-stone-500" ${lColor ? `style="color:${lColor}"` : ''}>${esc(st.label)}</div>
+                    </div>`;
+                }).join('');
+            } else if (Array.isArray(h.stats)) {
+                statsEl.style.display = 'none';
+            }
+
+            const img = $('hero-image');
+            const src = safeUrl(h.image);
+            if (src && img.getAttribute('src') !== src) img.src = src;
+            if (h.image_alt) img.alt = h.image_alt;
+            style($('hero-image-frame'), 'borderColor', h.image_border_color);
+
+            [['hero-card-1', h.card_1], ['hero-card-2', h.card_2]].forEach(([id, c]) => {
+                const card = $(id);
+                if (!card || !c) return;
+                card.style.display = c.show === false ? 'none' : '';
+                const labels = card.querySelector('.hero-card-label');
+                const text = card.querySelector('.hero-card-text');
+                if (c.label) labels.textContent = c.label;
+                if (c.text) text.textContent = c.text;
+                const box = card.querySelector('.hero-card-icon');
+                if (c.icon) box.querySelector('i').className = safeClass(c.icon);
+                style(box, 'color', c.icon_color);
+                const bg = safeColor(c.icon_bg_color);
+                if (bg) box.style.backgroundColor = bg;
+            });
+        }
+
         function renderSettings(s) {
             renderSocial(s.social_links);
             applyBrandColor(s.brand_color);
@@ -1222,8 +1302,6 @@
                 document.title = `${s.site_name} | Gentle & Professional Pet Care`;
                 setText('footer-site-name', s.site_name);
             }
-            setText('hero-title', s.hero_title);
-            setText('hero-subtitle', s.hero_subtitle);
             setText('footer-address', s.address);
 
             if (s.phone) {
@@ -1414,7 +1492,7 @@
         }
 
         async function loadCmsContent() {
-            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'schedule'];
+            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'schedule', 'hero'];
             const results = await Promise.allSettled(names.map(fetchContent));
             const changed = new Set();
 
@@ -1441,6 +1519,7 @@
             if (changed.has('reviews')) renderReviews(cmsData.reviews);
             if (changed.has('about')) renderAbout(cmsData.about);
             if (changed.has('schedule')) applySchedule(cmsData.schedule);
+            if (changed.has('hero')) renderHero(cmsData.hero);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
