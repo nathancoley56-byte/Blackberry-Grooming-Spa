@@ -937,7 +937,7 @@
             return svc ? Number(svc.base_price) || 0 : 0;
         }
 
-        function setEstimatorAppt(index, price, minutes, name) {
+        function setEstimatorAppt(index, minutes, name) {
             estimatorState.apptIndex = index;
             estimatorState.apptMinutes = Number(minutes) || 0;
             estimatorState.apptName = name || '';
@@ -1524,7 +1524,7 @@
                 apptWrap.classList.toggle('hidden', comp.appointments !== undefined && !appts.length);
                 if (appts.length) {
                     document.getElementById('est-appt-grid').innerHTML = appts.map((a, i) => `
-                    <button type="button" onclick="setEstimatorAppt(${i}, ${Number(a.price_adjust) || 0}, ${Number(a.duration_adjust) || 0}, this.dataset.name)" data-name="${esc(a.name)}" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300">
+                    <button type="button" onclick="setEstimatorAppt(${i}, ${Number(a.duration_adjust) || 0}, this.dataset.name)" data-name="${esc(a.name)}" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300">
                         ${esc(a.name)}
                     </button>`).join('');
                 }
@@ -1567,7 +1567,7 @@
 
             if (sizes.length) setEstimatorSize(0, Number(sizes[0].price) || 0, sizes[0].duration);
             if (coats.length) setEstimatorCoat(safeClass(coats[0].id) || 'coat', Number(coats[0].extra_cost) || 0);
-            if (appts.length) setEstimatorAppt(0, appts[0].price_adjust, appts[0].duration_adjust, appts[0].name);
+            if (appts.length) setEstimatorAppt(0, appts[0].duration_adjust, appts[0].name);
         }
 
         function renderGallery(items) {
