@@ -453,9 +453,9 @@
     <section id="gallery" class="py-20 bg-cream-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center space-y-3 mb-12">
-                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Transformation Gallery</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">Happy Pups Before & After</h2>
-                <p class="text-stone-600 text-sm max-w-xl mx-auto">Tap the arrow on any photo to see how our gentle styling turns fluffy scruffs into gorgeous, confident pets.</p>
+                <span id="gallery-eyebrow" class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Transformation Gallery</span>
+                <h2 id="gallery-title" class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">Happy Pups Before & After</h2>
+                <p id="gallery-description" class="text-stone-600 text-sm max-w-xl mx-auto">Tap the arrow on any photo to see how our gentle styling turns fluffy scruffs into gorgeous, confident pets.</p>
             </div>
 
             <!-- Gallery grid (rendered from content/gallery.json) -->
@@ -480,8 +480,8 @@
 
                 <!-- Right Text -->
                 <div class="space-y-6">
-                    <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Our Caring Philosophy</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">
+                    <span id="about-eyebrow" class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Our Caring Philosophy</span>
+                    <h2 id="about-title" class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">
                         Where Comfort Meets Exceptional Style.
                     </h2>
                     <p class="text-stone-600 text-sm leading-relaxed">
@@ -529,8 +529,8 @@
     <section id="reviews" class="py-20 bg-cream-100 border-t border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center space-y-3 mb-16">
-                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Loved by Pet Parents</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">What Dog Owners Say</h2>
+                <span id="reviews-eyebrow" class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Loved by Pet Parents</span>
+                <h2 id="reviews-title" class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">What Dog Owners Say</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -1493,7 +1493,23 @@
             if (appts.length) setEstimatorAppt(0, appts[0].duration_adjust, appts[0].name);
         }
 
+        function colorAll(selector, prop, value) {
+            const c = safeColor(value);
+            document.querySelectorAll(selector).forEach(el => { el.style[prop] = c; });
+        }
+
+        function renderSectionHeading(prefix, d) {
+            [['eyebrow', d.eyebrow, d.eyebrow_color], ['title', d.title, d.title_color], ['description', d.description, d.description_color]].forEach(([key, text, color]) => {
+                const node = document.getElementById(`${prefix}-${key}`);
+                if (!node) return;
+                if (text) node.innerText = text;
+                node.style.color = safeColor(color);
+            });
+            document.getElementById(prefix).style.backgroundColor = safeColor(d.section_bg_color);
+        }
+
         function renderGallery(items) {
+            renderSectionHeading('gallery', cmsData.galleryDisplay || {});
             if (!items.length) return;
             const grid = document.querySelector('#gallery .grid.md\\:grid-cols-3');
             grid.innerHTML = items.map((item, i) => {
@@ -1514,7 +1530,7 @@
         function renderAbout(data) {
             if (!data) return;
             const section = document.getElementById('about');
-            if (data.heading) section.querySelector('h2').innerText = data.heading;
+            renderSectionHeading('about', { eyebrow: data.eyebrow, eyebrow_color: data.eyebrow_color, title: data.heading, title_color: data.heading_color, section_bg_color: data.section_bg_color });
             [['about-image-1', data.image_1, data.image_1_alt], ['about-image-2', data.image_2, data.image_2_alt]].forEach(([id, src, alt]) => {
                 const img = document.getElementById(id);
                 const url = safeUrl(src);
@@ -1545,9 +1561,14 @@
                         </div>
                     </div>`).join('');
             }
+            colorAll('#about-bio p, #about p.leading-relaxed', 'color', data.bio_color);
+            colorAll('#about .space-y-4.pt-2 h4', 'color', data.principle_title_color);
+            colorAll('#about .space-y-4.pt-2 p', 'color', data.principle_desc_color);
         }
 
         function renderReviews(items) {
+            const d = cmsData.reviewsDisplay || {};
+            renderSectionHeading('reviews', d);
             if (!items.length) return;
             const grid = document.querySelector('#reviews .grid.md\\:grid-cols-3');
             grid.innerHTML = items.map((r, i) => {
@@ -1568,6 +1589,12 @@
                     </div>
                 </div>`;
             }).join('');
+            const cards = '#reviews .grid.md\\:grid-cols-3';
+            colorAll(`${cards} > div`, 'backgroundColor', d.card_bg_color);
+            colorAll(`${cards} p.italic`, 'color', d.review_text_color);
+            colorAll(`${cards} h5`, 'color', d.name_color);
+            colorAll(`${cards} h5 + p`, 'color', d.pet_info_color);
+            colorAll(`${cards} .fa-star`, 'color', d.star_color);
         }
 
         async function fetchContent(name) {
@@ -1591,6 +1618,7 @@
                 try {
                     const parsed = JSON.parse(result.value);
                     cmsData[names[i]] = ['services', 'gallery', 'reviews'].includes(names[i]) ? (parsed.items || []) : parsed;
+                    if (names[i] === 'gallery' || names[i] === 'reviews') cmsData[names[i] + 'Display'] = parsed.display || {};
                     changed.add(names[i]);
                 } catch (err) {
                     console.warn(`Invalid JSON in content/${names[i]}.json`, err);
