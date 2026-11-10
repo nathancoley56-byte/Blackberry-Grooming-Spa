@@ -1,0 +1,189 @@
+# Decap CMS (Formerly Netlify CMS) Configuration
+# File Location: /admin/config.yml
+
+backend:
+  name: git-gateway
+  branch: main # Change to your target branch (e.g., main or master)
+
+local_backend:
+  url: http://localhost:8082/api/v1
+
+# Media & Storage Settings
+media_folder: "assets/images/uploads" # Folder where uploaded images are saved
+public_folder: "/assets/images/uploads" # Public URL path for images
+
+# CMS Collections Configuration
+collections:
+  
+  # ==========================================
+  # 1. GLOBAL SITE SETTINGS & HERO
+  # ==========================================
+  - name: "settings"
+    label: "Global Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/settings.json"
+        label: "Business Details & Hero Banner"
+        name: "general"
+        fields:
+          - { label: "Business Name", name: "site_name", widget: "string", default: "Paws & Suds Grooming Spa" }
+          - label: "Top Heading Banner (Logo & Menu)"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Logo Image (leave empty to use the icon)", name: "logo_image", widget: "image", required: false }
+              - { label: "Logo Icon (FontAwesome class, used when no image)", name: "logo_icon", widget: "string", required: false, default: "fa-solid fa-paw" }
+              - { label: "Logo Name", name: "logo_text", widget: "string", default: "Paws & Suds" }
+              - { label: "Logo Tagline", name: "logo_tagline", widget: "string", required: false, default: "Grooming Spa" }
+              - { label: "Booking Button Text", name: "header_button_text", widget: "string", default: "Book Appointment" }
+              - label: "Menu Links"
+                name: "nav_links"
+                widget: "list"
+                summary: "{{fields.label}} → {{fields.link}}"
+                fields:
+                  - { label: "Link Text", name: "label", widget: "string" }
+                  - { label: "Section (e.g. #services, #gallery)", name: "link", widget: "string" }
+          - { label: "Phone Number", name: "phone", widget: "string", default: "(555) 019-2834" }
+          - { label: "Email Address", name: "email", widget: "string", default: "hello@pawsandsuds.com" }
+          - { label: "Address", name: "address", widget: "string", default: "1244 Barkwood Lane, Suite B, Austin TX" }
+          - { label: "Hero Headline", name: "hero_title", widget: "string", default: "Gentle Care & Premium Pampering for Your Best Friend." }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text", default: "At Paws & Suds, we offer low-stress, organic grooming tailored to your dog's unique needs." }
+          - label: "Business Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Weekdays", name: "weekdays", widget: "string", default: "8:00 AM - 6:00 PM" }
+              - { label: "Saturday", name: "saturday", widget: "string", default: "9:00 AM - 5:00 PM" }
+              - { label: "Sunday", name: "sunday", widget: "string", default: "Closed for Rest" }
+
+  # ==========================================
+  # 2. GROOMING PACKAGES & SERVICES
+  # ==========================================
+  - name: "services"
+    label: "Grooming Services"
+    delete: false
+    files:
+      - file: "content/services.json"
+        label: "Grooming Packages"
+        name: "services_list"
+        fields:
+          - label: "Packages"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Package Title", name: "title", widget: "string" }
+              - { label: "Featured Tag (Optional)", name: "badge", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Base Starting Price ($)", name: "base_price", widget: "number", value_type: "int" }
+              - { label: "Pricing Note", name: "price_note", widget: "string", default: "/ starting rate" }
+              - { label: "Icon FontAwesome Class", name: "icon_class", widget: "string", default: "fa-solid fa-shower" }
+              - label: "Included Features List"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature_text", widget: "string" }
+
+  # ==========================================
+  # 3. ESTIMATOR SURCHARGES & ADD-ONS
+  # ==========================================
+  - name: "estimator"
+    label: "Estimator Surcharges & Rates"
+    delete: false
+    files:
+      - file: "content/estimator.json"
+        label: "Pricing Calculator Rules"
+        name: "calculator_rules"
+        fields:
+          # Dog Size Pricing Rules
+          - label: "Dog Size Base Rates"
+            name: "sizes"
+            widget: "list"
+            fields:
+              - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
+              - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
+              - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
+
+          # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
+          - label: "Coat Type Surcharges"
+            name: "coats"
+            widget: "list"
+            fields:
+              - { label: "Coat ID", name: "id", widget: "string" } # e.g. doodle, short, medium, long
+              - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
+              - { label: "Surcharge Amount ($)", name: "extra_cost", widget: "number", value_type: "int", default: 20 }
+              - { label: "Highlight Badge", name: "badge", widget: "string", required: false, default: "+ $20" }
+
+          # Optional Add-on Services
+          - label: "Optional Add-on Treats"
+            name: "addons"
+            widget: "list"
+            fields:
+              - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
+              - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
+
+  # ==========================================
+  # 4. BEFORE & AFTER GALLERY
+  # ==========================================
+  - name: "gallery"
+    label: "Pups Before & After Gallery"
+    delete: false
+    files:
+      - file: "content/gallery.json"
+        label: "Gallery Pups"
+        name: "gallery_list"
+        fields:
+          - label: "Pups"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.pup_name}}"
+            fields:
+              - { label: "Pup Name", name: "pup_name", widget: "string" }
+              - { label: "Breed & Treatment Tag", name: "details", widget: "string", default: "Goldendoodle • Full Groom" }
+              - { label: "Before Image", name: "image_before", widget: "image" }
+              - { label: "After Image", name: "image_after", widget: "image" }
+
+  # ==========================================
+  # 5. REVIEWS & TESTIMONIALS
+  # ==========================================
+  - name: "reviews"
+    label: "Customer Reviews"
+    delete: false
+    files:
+      - file: "content/reviews.json"
+        label: "Reviews"
+        name: "reviews_list"
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.owner_name}}"
+            fields:
+              - { label: "Owner Name", name: "owner_name", widget: "string" }
+              - { label: "Pet Name & Breed", name: "pet_info", widget: "string" }
+              - { label: "Rating Stars (1 to 5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "Review Quote", name: "review_text", widget: "text" }
+
+  # ==========================================
+  # 6. ABOUT US & PHILOSOPHY
+  # ==========================================
+  - name: "about"
+    label: "About Us & Philosophy"
+    delete: false
+    files:
+      - file: "content/about.json"
+        label: "About Page Content"
+        name: "about_content"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Main Story / Bio", name: "bio", widget: "markdown" }
+          - label: "Core Principles"
+            name: "principles"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Icon Class", name: "icon", widget: "string" }
