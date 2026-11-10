@@ -204,6 +204,41 @@ collections:
         label: "Pricing Calculator Rules"
         name: "calculator_rules"
         fields:
+          # Section text & colors
+          - label: "Section Text & Colors"
+            name: "display"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Instant Quote Tool" }
+              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
+              - { label: "Title", name: "title", widget: "string", default: "Interactive Grooming Cost Estimator" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Description Color", name: "description_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
+              - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+              - { label: "Calculator Panel Background Color", name: "panel_bg_color", widget: "color", allowInput: true, required: false, default: "#FDFBF7" }
+              - { label: "Step 1 Heading (dog size)", name: "size_label", widget: "string", required: false, default: "1. Select Dog Size" }
+              - { label: "Step 2 Heading (coat type)", name: "coat_label", widget: "string", required: false, default: "2. Coat Type / Breed Specialty" }
+              - { label: "Step 3 Heading (add-ons)", name: "addon_label", widget: "string", required: false, default: "3. Optional Add-On Services" }
+              - { label: "Step Heading Color", name: "step_label_color", widget: "color", allowInput: true, required: false, default: "#44403C" }
+              - { label: "Price Card Color - Top Left", name: "card_color_top", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+              - { label: "Price Card Color - Bottom Right", name: "card_color_bottom", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Price Card Text Color", name: "card_text_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+              - { label: "Price Card Small Text Color", name: "card_muted_color", widget: "color", allowInput: true, required: false, default: "#F2EBD9" }
+              - { label: "Total Label (e.g. Estimated Total)", name: "total_label", widget: "string", required: false, default: "Estimated Total" }
+              - { label: "Total Label Color", name: "total_label_color", widget: "color", allowInput: true, required: false, default: "#E9C46A" }
+              - { label: "Currency Symbol", name: "currency_symbol", widget: "string", required: false, default: "$" }
+              - { label: "Price Color", name: "price_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+              - { label: "Note Next To Price", name: "price_note", widget: "string", required: false, default: "*base estimate" }
+              - { label: "Duration Label", name: "duration_label", widget: "string", required: false, default: "Est. Duration:" }
+              - { label: "Included Label", name: "included_label", widget: "string", required: false, default: "Included:" }
+              - { label: "Included Text", name: "included_text", widget: "string", required: false, default: "Nails, Ears & Warm Bath" }
+              - { label: "Included Text Color", name: "included_color", widget: "color", allowInput: true, required: false, default: "#FCD34D" }
+              - { label: "Book Button Text", name: "button_text", widget: "string", required: false, default: "Book This Custom Estimate" }
+              - { label: "Book Button Color", name: "button_color", widget: "color", allowInput: true, required: false, default: "#F4A261" }
+              - { label: "Book Button Text Color", name: "button_text_color", widget: "color", allowInput: true, required: false, default: "#1C1917" }
+              - { label: "Small Print Under Button", name: "disclaimer", widget: "string", required: false, default: "Final pricing confirmed upon physical coat inspection." }
           # Dog Size Pricing Rules
           - label: "Dog Size Base Rates"
             name: "sizes"
@@ -213,6 +248,7 @@ collections:
               - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
               - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
               - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
+              - { label: "Icon (FontAwesome class, optional)", name: "icon", widget: "string", required: false, hint: "e.g. fa-dog or fa-shield-dog" }
 
           # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
           - label: "Coat Type Surcharges"
@@ -223,6 +259,8 @@ collections:
               - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
               - { label: "Surcharge Amount ($)", name: "extra_cost", widget: "number", value_type: "int", default: 20 }
               - { label: "Highlight Badge", name: "badge", widget: "string", required: false, default: "+ $20" }
+              - { label: "Badge Color", name: "badge_color", widget: "color", allowInput: true, required: false, default: "#E9C46A" }
+              - { label: "Badge Text Color", name: "badge_text_color", widget: "color", allowInput: true, required: false, default: "#1C1917" }
 
           # Optional Add-on Services
           - label: "Optional Add-on Treats"
