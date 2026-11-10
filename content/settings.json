@@ -1,11 +1,11 @@
 {
-  "site_name": "Blackberry Grooming Spa",
+  "site_name": "Blackberry Luxury Grooming",
   "brand_color": "#7f3bab",
   "header": {
     "logo_image": "",
     "logo_icon": "fa-solid fa-paw",
     "logo_text": "Blackberry",
-    "logo_tagline": "Grooming Spa",
+    "logo_tagline": "Luxury Grooming",
     "header_button_text": "Book Appointment",
     "nav_links": [
       {
