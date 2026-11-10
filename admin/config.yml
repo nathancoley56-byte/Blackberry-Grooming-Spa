@@ -16,6 +16,77 @@ public_folder: "/assets/images/uploads" # Public URL path for images
 collections:
   
   # ==========================================
+  # HERO SECTION (top of page: headline, stats, photo)
+  # ==========================================
+  - name: "hero"
+    label: "Hero Section (Top of Page)"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/hero.json"
+        label: "Hero Section"
+        name: "hero"
+        fields:
+          - { label: "Background Color - Top", name: "background_top", widget: "color", allowInput: true, required: false, default: "#FDFBF7" }
+          - { label: "Background Color - Bottom", name: "background_bottom", widget: "color", allowInput: true, required: false, default: "#F4F7F4" }
+          - { label: "Show Badge Above Headline", name: "show_badge", widget: "boolean", default: true }
+          - { label: "Badge Icon (FontAwesome class)", name: "badge_icon", widget: "string", required: false, default: "fa-solid fa-sparkles", hint: "Browse icons at fontawesome.com/icons, e.g. fa-solid fa-paw" }
+          - { label: "Badge Text", name: "badge_text", widget: "string", required: false, default: "Certified Stress-Free Pet Spa" }
+          - { label: "Badge Background Color", name: "badge_bg_color", widget: "color", allowInput: true, required: false, default: "#E3EBE3" }
+          - { label: "Badge Text Color", name: "badge_text_color", widget: "color", allowInput: true, required: false, default: "#4C684C" }
+          - { label: "Badge Icon Color", name: "badge_icon_color", widget: "color", allowInput: true, required: false, default: "#F4A261" }
+          - { label: "Headline", name: "title", widget: "string", default: "Gentle Care & Premium Pampering for Your Best Friend." }
+          - { label: "Headline Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Subtitle", name: "subtitle", widget: "text", default: "At Paws & Suds, we offer low-stress, organic grooming tailored to your dog's unique needs." }
+          - { label: "Subtitle Color", name: "subtitle_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
+          - { label: "Main Button Text", name: "primary_button_text", widget: "string", default: "Book Your Dog's Visit" }
+          - { label: "Main Button Color (empty = brand color)", name: "primary_button_color", widget: "color", allowInput: true, required: false }
+          - { label: "Main Button Text Color", name: "primary_button_text_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+          - { label: "Second Button Text", name: "secondary_button_text", widget: "string", default: "Estimate Groom Price" }
+          - { label: "Second Button Link (#section or full URL)", name: "secondary_button_link", widget: "string", default: "#estimator" }
+          - { label: "Second Button Color", name: "secondary_button_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+          - { label: "Second Button Text Color", name: "secondary_button_text_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Stat Label Color", name: "stat_label_color", widget: "color", allowInput: true, required: false, default: "#78716C" }
+          - label: "Highlight Stats (up to 4)"
+            name: "stats"
+            widget: "list"
+            max: 4
+            required: false
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: "Big Text (e.g. 100% or 10+ Yrs)", name: "value", widget: "string" }
+              - { label: "Small Text Underneath", name: "label", widget: "string" }
+              - { label: "Big Text Color", name: "value_color", widget: "color", allowInput: true, required: false }
+              - { label: "Icon After Big Text (FontAwesome class, optional)", name: "icon", widget: "string", required: false }
+              - { label: "Icon Color", name: "icon_color", widget: "color", allowInput: true, required: false }
+          - { label: "Hero Photo", name: "image", widget: "image", required: false }
+          - { label: "Photo Description (for accessibility)", name: "image_alt", widget: "string", required: false, default: "Happy freshly groomed dog" }
+          - { label: "Photo Border Color", name: "image_border_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
+          - label: "Floating Card - Bottom Left"
+            name: "card_1"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Show Card", name: "show", widget: "boolean", default: true }
+              - { label: "Icon (FontAwesome class)", name: "icon", widget: "string", default: "fa-solid fa-heart" }
+              - { label: "Icon Color", name: "icon_color", widget: "color", allowInput: true, required: false, default: "#E76F51" }
+              - { label: "Icon Background Color", name: "icon_bg_color", widget: "color", allowInput: true, required: false, default: "#F5E2B8" }
+              - { label: "Small Text", name: "label", widget: "string", default: "Handling Style" }
+              - { label: "Bold Text", name: "text", widget: "string", default: "1-on-1 Gentle Touch" }
+          - label: "Floating Card - Top Right"
+            name: "card_2"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Show Card", name: "show", widget: "boolean", default: true }
+              - { label: "Icon (FontAwesome class)", name: "icon", widget: "string", default: "fa-solid fa-shield-dog" }
+              - { label: "Icon Color", name: "icon_color", widget: "color", allowInput: true, required: false, default: "#4C684C" }
+              - { label: "Icon Background Color", name: "icon_bg_color", widget: "color", allowInput: true, required: false, default: "#DDE6DD" }
+              - { label: "Small Text", name: "label", widget: "string", default: "Safety First" }
+              - { label: "Bold Text", name: "text", widget: "string", default: "Sanitized Private Suites" }
+
+  # ==========================================
   # BOOKING SCHEDULE
   # ==========================================
   - name: "schedule"
