@@ -1,41 +1,53 @@
 {
   "display": {
-    "eyebrow": "Instant Quote Tool",
-    "title": "Interactive Grooming Cost Estimator",
-    "title_color": "#5C3D2E",
-    "description": "Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!",
+    "card_muted_color": "#F2EBD9",
     "description_color": "#57534E",
+    "included_color": "#FCD34D",
+    "card_text_color": "#FFFFFF",
     "section_bg_color": "#FFFFFF",
     "panel_bg_color": "#FDFBF7",
-    "size_label": "1. Select Dog Size",
+    "step_label_color": "#44403C",
+    "currency_symbol": "$",
+    "price_note": "*base estimate",
+    "appt_label": "4. Appointment Type",
+    "duration_label": "Est. Duration:",
+    "eyebrow": "Instant Quote Tool",
+    "card_color_top": "#7F5539",
+    "price_color": "#FFFFFF",
+    "included_text": "Nails, Ears & Warm Bath",
+    "included_label": "Included:",
     "coat_label": "2. Coat Type / Breed Specialty",
     "addon_label": "3. Optional Add-On Services",
-    "step_label_color": "#44403C",
-    "card_color_top": "#7F5539",
-    "card_color_bottom": "#5C3D2E",
-    "card_text_color": "#FFFFFF",
-    "card_muted_color": "#F2EBD9",
-    "total_label": "Estimated Total",
-    "total_label_color": "#E9C46A",
-    "currency_symbol": "$",
-    "price_color": "#FFFFFF",
-    "price_note": "*base estimate",
-    "duration_label": "Est. Duration:",
-    "included_label": "Included:",
-    "included_text": "Nails, Ears & Warm Bath",
-    "included_color": "#FCD34D",
-    "button_text": "Book This Custom Estimate",
     "button_color": "#F4A261",
-    "button_text_color": "#1C1917",
+    "size_label": "1. Select Dog Size",
+    "card_color_bottom": "#4B5320",
+    "title": "Interactive Grooming Cost Estimator",
+    "total_label": "Estimated Total",
+    "button_text": "Book This Custom Estimate",
     "disclaimer": "Final pricing confirmed upon physical coat inspection.",
-    "appt_label": "4. Appointment Type"
+    "title_color": "#4B5320",
+    "description": "Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!",
+    "total_label_color": "#E9C46A",
+    "button_text_color": "#1C1917"
   },
   "components": {
     "appointments": [
-      { "name": "Essential Bath & Brush", "duration_adjust": 0 },
-      { "name": "Pampered Pup Full Groom", "duration_adjust": 60 },
-      { "name": "Puppy's First Groom", "duration_adjust": 0 },
-      { "name": "Nail & Paw Care Spa", "duration_adjust": -30 }
+      {
+        "name": "Essential Bath & Brush",
+        "duration_adjust": 0
+      },
+      {
+        "name": "Pampered Pup Full Groom",
+        "duration_adjust": 60
+      },
+      {
+        "name": "Puppy's First Groom",
+        "duration_adjust": 0
+      },
+      {
+        "name": "Nail & Paw Care Spa",
+        "duration_adjust": -30
+      }
     ],
     "sizes": [
       {
