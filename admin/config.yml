@@ -297,7 +297,6 @@ collections:
               - label: "Dog Size Base Rates"
                 name: "sizes"
                 widget: "list"
-                label_singular: "price components"
                 fields:
                   - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
                   - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
@@ -309,7 +308,6 @@ collections:
               - label: "Coat Type Surcharges"
                 name: "coats"
                 widget: "list"
-                label_singular: "price components"
                 fields:
                   - { label: "Coat ID", name: "id", widget: "string" } # e.g. doodle, short, medium, long
                   - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
@@ -322,7 +320,6 @@ collections:
               - label: "Optional Add-on Treats"
                 name: "addons"
                 widget: "list"
-                label_singular: "price components"
                 fields:
                   - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
                   - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
