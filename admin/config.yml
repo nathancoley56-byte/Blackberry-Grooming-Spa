@@ -38,7 +38,7 @@ collections:
           - { label: "Badge Icon Color", name: "badge_icon_color", widget: "color", allowInput: true, required: false, default: "#F4A261" }
           - { label: "Headline", name: "title", widget: "string", default: "Gentle Care & Premium Pampering for Your Best Friend." }
           - { label: "Headline Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
-          - { label: "Subtitle", name: "subtitle", widget: "text", default: "At Paws & Suds, we offer low-stress, organic grooming tailored to your dog's unique needs." }
+          - { label: "Subtitle", name: "subtitle", widget: "text", default: "At Blackberry Luxury Grooming, we offer low-stress, organic grooming tailored to your dog's unique needs." }
           - { label: "Subtitle Color", name: "subtitle_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
           - { label: "Main Button Text", name: "primary_button_text", widget: "string", default: "Book Your Dog's Visit" }
           - { label: "Main Button Color (empty = brand color)", name: "primary_button_color", widget: "color", allowInput: true, required: false }
@@ -128,7 +128,7 @@ collections:
         label: "Business Details & Hero Banner"
         name: "general"
         fields:
-          - { label: "Business Name", name: "site_name", widget: "string", default: "Paws & Suds Grooming Spa" }
+          - { label: "Business Name", name: "site_name", widget: "string", default: "Blackberry Luxury Grooming" }
           - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
@@ -137,8 +137,8 @@ collections:
             fields:
               - { label: "Logo Image (leave empty to use the icon)", name: "logo_image", widget: "image", required: false }
               - { label: "Logo Icon (FontAwesome class, used when no image)", name: "logo_icon", widget: "string", required: false, default: "fa-solid fa-paw" }
-              - { label: "Logo Name", name: "logo_text", widget: "string", default: "Paws & Suds" }
-              - { label: "Logo Tagline", name: "logo_tagline", widget: "string", required: false, default: "Grooming Spa" }
+              - { label: "Logo Name", name: "logo_text", widget: "string", default: "Blackberry" }
+              - { label: "Logo Tagline", name: "logo_tagline", widget: "string", required: false, default: "Luxury Grooming" }
               - { label: "Booking Button Text", name: "header_button_text", widget: "string", default: "Book Appointment" }
               - label: "Menu Links"
                 name: "nav_links"
@@ -370,6 +370,10 @@ collections:
         label: "About Page Content"
         name: "about_content"
         fields:
+          - { label: "Left Photo", name: "image_1", widget: "image", required: false }
+          - { label: "Left Photo Description (for accessibility)", name: "image_1_alt", widget: "string", required: false, default: "Groomer bathing dog" }
+          - { label: "Right Photo", name: "image_2", widget: "image", required: false }
+          - { label: "Right Photo Description (for accessibility)", name: "image_2_alt", widget: "string", required: false, default: "Organic dog shampoos" }
           - { label: "Section Heading", name: "heading", widget: "string" }
           - { label: "Main Story / Bio", name: "bio", widget: "markdown" }
           - label: "Core Principles"
