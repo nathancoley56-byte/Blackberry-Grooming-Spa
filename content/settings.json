@@ -1,19 +1,5 @@
 {
   "site_name": "Blackberry Grooming Spa",
-  "social_links": [
-    {
-      "platform": "instagram",
-      "url": "https://instagram.com/"
-    },
-    {
-      "platform": "facebook",
-      "url": "https://facebook.com/"
-    },
-    {
-      "platform": "tiktok",
-      "url": "https://tiktok.com/"
-    }
-  ],
   "brand_color": "#7f3bab",
   "header": {
     "logo_image": "",
