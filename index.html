@@ -686,11 +686,7 @@
                     <p class="text-xs text-cream-200/80 leading-relaxed">
                         Providing gentle, organic, low-stress pet grooming services for dogs of all breeds and sizes.
                     </p>
-                    <div class="flex gap-3 text-lg pt-2 text-cream-200">
-                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
+                    <div id="social-links" class="flex gap-3 text-lg pt-2 text-cream-200">
                 </div>
 
                 <!-- Col 2: Business Hours -->
@@ -1111,7 +1107,19 @@
             root.setProperty('--sage-50', mix(base, 255, 0.93));
         }
 
+        function renderSocial(list) {
+            const el = document.getElementById('social-links');
+            if (!el) return;
+            const icons = { instagram: 'fa-instagram', facebook: 'fa-facebook', tiktok: 'fa-tiktok', youtube: 'fa-youtube', x: 'fa-x-twitter', pinterest: 'fa-pinterest', linkedin: 'fa-linkedin', yelp: 'fa-yelp', google: 'fa-google' };
+            el.innerHTML = (Array.isArray(list) ? list : []).map(l => {
+                const url = safeUrl(l.url);
+                const icon = icons[l.platform];
+                return url && icon ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.platform)}" class="hover:text-amber-400 transition-colors"><i class="fa-brands ${icon}"></i></a>` : '';
+            }).join('');
+        }
+
         function renderSettings(s) {
+            renderSocial(s.social_links);
             applyBrandColor(s.brand_color);
             if (!s) return;
             renderHeader(s.header || {});
