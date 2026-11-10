@@ -1108,13 +1108,21 @@
             const slots = sch.time_slots || [];
             const myRequest = ++slotRequestId;
             setOptions([{ value: '', label: 'Checking availability…' }]);
-            let taken = [];
+            const normTime = v => {
+                const m = /^\s*(\d{1,2}):?(\d{2})?\s*([ap])\.?m?\.?\s*$/i.exec(String(v ?? ''));
+                return m ? `${m[1].padStart(2, '0')}:${m[2] || '00'} ${m[3].toUpperCase()}M` : String(v ?? '').trim().toUpperCase();
+            };
+            const closedTimes = new Set();
+            (sch.blocked_slots || []).forEach(b => {
+                if (b && b.date === date) [...(b.times || []), b.time].forEach(t => { if (t) closedTimes.add(normTime(t)); });
+            });
+            let taken = slots.filter(t => closedTimes.has(normTime(t)));
             try {
                 const res = await fetch(`/api/bookings?date=${encodeURIComponent(date)}`, { cache: 'no-store' });
                 if (res.ok) {
                     const data = await res.json();
                     if (data.closed) return myRequest === slotRequestId && setOptions([{ value: '', label: 'Unavailable' }], data.reason);
-                    taken = data.taken || [];
+                    taken = [...new Set([...taken, ...(data.taken || [])])];
                 }
             } catch (err) { /* offline or no booking service: server still validates on submit */ }
             if (myRequest !== slotRequestId) return;
