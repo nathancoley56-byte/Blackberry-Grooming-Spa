@@ -301,7 +301,7 @@ collections:
                 fields:
                   - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
                   - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
-                  - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
+                  - { label: "Base Price ($) - not used; price now comes from the appointment type's package starting price", name: "price", widget: "number", value_type: "int", required: false }
                   - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
                   - { label: "Icon (FontAwesome class, optional)", name: "icon", widget: "string", required: false, hint: "e.g. fa-dog or fa-shield-dog" }
 
@@ -330,11 +330,10 @@ collections:
                 name: "appointments"
                 widget: "list"
                 summary: "{{fields.name}}"
-                hint: "Choices in the estimator's Appointment Type step. Time adjustment is added to (or, if negative, subtracted from) the Est. Duration."
+                hint: "Choices in the estimator's Appointment Type step. The price comes from the matching package's Starting Price (name must match the Grooming Package title). Time adjustment is added to (or, if negative, subtracted from) the Est. Duration."
                 fields:
                   - { label: "Appointment Name", name: "name", widget: "string" }
                   - { label: "Time Adjustment (minutes, negative to subtract)", name: "duration_adjust", widget: "number", value_type: "int", default: 0 }
-                  - { label: "Price Adjustment ($, optional)", name: "price_adjust", widget: "number", value_type: "int", default: 0, required: false }
 
   # ==========================================
   # 4. BEFORE & AFTER GALLERY
