@@ -206,19 +206,19 @@
     <section id="estimator" class="py-16 bg-white border-y border-cream-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center space-y-3 mb-10">
-                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Instant Quote Tool</span>
-                <h2 class="text-3xl font-bold text-warmbrown-800">Interactive Grooming Cost Estimator</h2>
-                <p class="text-stone-600 text-sm max-w-xl mx-auto">Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!</p>
+                <span id="est-eyebrow" class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Instant Quote Tool</span>
+                <h2 id="est-title" class="text-3xl font-bold text-warmbrown-800">Interactive Grooming Cost Estimator</h2>
+                <p id="est-description" class="text-stone-600 text-sm max-w-xl mx-auto">Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!</p>
             </div>
 
-            <div class="bg-cream-50 rounded-3xl p-6 sm:p-10 border border-cream-200 shadow-md">
+            <div id="est-panel" class="bg-cream-50 rounded-3xl p-6 sm:p-10 border border-cream-200 shadow-md">
                 <div class="grid md:grid-cols-3 gap-8">
                     
                     <!-- Form Controls -->
                     <div class="md:col-span-2 space-y-6">
                         <!-- Step 1: Dog Size -->
                         <div>
-                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">1. Select Dog Size</label>
+                            <label id="est-size-label" class="est-step-label block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">1. Select Dog Size</label>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 <button type="button" onclick="setEstimatorSize('small', 45, '1.0 hr')" id="btn-size-small" class="estimator-size-btn p-3 rounded-2xl border-2 border-sage-500 bg-sage-50 text-stone-800 text-center transition-all">
                                     <i class="fa-solid fa-dog text-lg block mb-1 text-sage-600"></i>
@@ -245,7 +245,7 @@
 
                         <!-- Step 2: Coat Type -->
                         <div>
-                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">2. Coat Type / Breed Specialty</label>
+                            <label id="est-coat-label" class="est-step-label block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">2. Coat Type / Breed Specialty</label>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 <button type="button" onclick="setEstimatorCoat('short', 0)" id="btn-coat-short" class="estimator-coat-btn p-3 rounded-xl border-2 border-sage-500 bg-sage-50 text-xs font-semibold text-stone-800 text-center">
                                     Short / Smooth
@@ -265,7 +265,7 @@
 
                         <!-- Step 3: Add-ons -->
                         <div>
-                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">3. Optional Add-On Services</label>
+                            <label id="est-addon-label" class="est-step-label block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">3. Optional Add-On Services</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                                 <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
                                     <input type="checkbox" onchange="calculateEstimatorTotal()" id="addon-deshed" value="20" class="rounded text-sage-500 focus:ring-sage-500">
@@ -288,30 +288,30 @@
                     </div>
 
                     <!-- Calculation Output -->
-                    <div class="bg-gradient-to-br from-warmbrown-700 to-warmbrown-800 rounded-2xl p-6 text-white flex flex-col justify-between shadow-xl">
+                    <div id="est-card" class="bg-gradient-to-br from-warmbrown-700 to-warmbrown-800 rounded-2xl p-6 text-white flex flex-col justify-between shadow-xl">
                         <div>
-                            <div class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1">Estimated Total</div>
-                            <div class="text-4xl font-extrabold flex items-baseline gap-1">
-                                $<span id="estimated-price">45</span>
-                                <span class="text-xs font-normal text-cream-200">*base estimate</span>
+                            <div id="est-total-label" class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1">Estimated Total</div>
+                            <div id="est-price-row" class="text-4xl font-extrabold flex items-baseline gap-1">
+                                <span id="est-currency">$</span><span id="estimated-price">45</span>
+                                <span id="est-price-note" class="est-card-muted text-xs font-normal text-cream-200">*base estimate</span>
                             </div>
                             <div class="mt-4 pt-4 border-t border-white/20 space-y-2 text-xs">
                                 <div class="flex justify-between">
-                                    <span class="text-cream-200">Est. Duration:</span>
+                                    <span id="est-duration-label" class="est-card-muted text-cream-200">Est. Duration:</span>
                                     <span id="estimated-time" class="font-semibold">1.0 hr</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-cream-200">Included:</span>
-                                    <span class="font-semibold text-amber-300">Nails, Ears & Warm Bath</span>
+                                    <span id="est-included-label" class="est-card-muted text-cream-200">Included:</span>
+                                    <span id="est-included-text" class="font-semibold text-amber-300">Nails, Ears & Warm Bath</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-6">
-                            <button onclick="bookWithEstimate()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold text-sm shadow-md transition-all text-center">
+                            <button id="est-button" onclick="bookWithEstimate()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold text-sm shadow-md transition-all text-center">
                                 Book This Custom Estimate
                             </button>
-                            <p class="text-[10px] text-cream-200 text-center mt-2">Final pricing confirmed upon physical coat inspection.</p>
+                            <p id="est-disclaimer" class="est-card-muted text-[10px] text-cream-200 text-center mt-2">Final pricing confirmed upon physical coat inspection.</p>
                         </div>
                     </div>
 
@@ -1360,8 +1360,46 @@
             if (items.some(i => i.title === previous)) select.value = previous;
         }
 
+        function renderEstimatorDisplay(d) {
+            if (!d) return;
+            const $ = id => document.getElementById(id);
+            const color = (el, prop, v) => { if (el) el.style[prop] = safeColor(v); };
+            const text = (id, v, colorKey) => { setText(id, v); if (colorKey !== undefined) color($(id), 'color', colorKey); };
+
+            text('est-eyebrow', d.eyebrow, d.eyebrow_color);
+            text('est-title', d.title, d.title_color);
+            text('est-description', d.description, d.description_color);
+            color($('estimator'), 'backgroundColor', d.section_bg_color);
+            color($('est-panel'), 'backgroundColor', d.panel_bg_color);
+
+            ['est-size-label', 'est-coat-label', 'est-addon-label'].forEach(id => color($(id), 'color', d.step_label_color));
+            text('est-size-label', d.size_label);
+            text('est-coat-label', d.coat_label);
+            text('est-addon-label', d.addon_label);
+
+            const card = $('est-card');
+            const from = safeColor(d.card_color_top), to = safeColor(d.card_color_bottom);
+            card.style.background = from && to ? `linear-gradient(to bottom right, ${from}, ${to})` : '';
+            color(card, 'color', d.card_text_color);
+            text('est-total-label', d.total_label, d.total_label_color);
+            if (d.currency_symbol) setText('est-currency', d.currency_symbol);
+            color($('est-price-row'), 'color', d.price_color);
+            text('est-price-note', d.price_note);
+            document.querySelectorAll('.est-card-muted').forEach(el => color(el, 'color', d.card_muted_color));
+            text('est-duration-label', d.duration_label);
+            text('est-included-label', d.included_label);
+            text('est-included-text', d.included_text, d.included_color);
+            text('est-disclaimer', d.disclaimer);
+
+            const btn = $('est-button');
+            if (d.button_text) btn.textContent = d.button_text;
+            color(btn, 'backgroundColor', d.button_color);
+            color(btn, 'color', d.button_text_color);
+        }
+
         function renderEstimator(data) {
             if (!data) return;
+            renderEstimatorDisplay(data.display);
             const sizes = data.sizes || [];
             const coats = data.coats || [];
             const addons = data.addons || [];
@@ -1371,7 +1409,7 @@
                 const iconSizes = ['text-lg', 'text-xl', 'text-2xl', 'text-2xl'];
                 container.innerHTML = sizes.map((s, i) => `
                     <button type="button" onclick="setEstimatorSize(${i}, ${Number(s.price) || 0}, this.dataset.duration)" data-duration="${esc(s.duration)}" id="btn-size-${i}" class="estimator-size-btn p-3 rounded-2xl border-2 border-cream-200 bg-white text-stone-700 text-center transition-all hover:border-sage-300">
-                        <i class="fa-solid ${i === sizes.length - 1 && sizes.length > 3 ? 'fa-shield-dog' : 'fa-dog'} ${iconSizes[Math.min(i, 3)]} block mb-1 text-sage-600"></i>
+                        <i class="fa-solid ${safeClass(s.icon) || (i === sizes.length - 1 && sizes.length > 3 ? 'fa-shield-dog' : 'fa-dog')} ${iconSizes[Math.min(i, 3)]} block mb-1 text-sage-600"></i>
                         <span class="text-xs font-bold block">${esc(s.name)}</span>
                         <span class="text-[10px] text-stone-500">${esc(s.label)}</span>
                     </button>`).join('');
