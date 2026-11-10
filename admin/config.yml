@@ -291,7 +291,7 @@ collections:
             name: "components"
             widget: "object"
             collapsed: false
-            hint: "Dog size base rates, coat type surcharges and optional add-on treats. Use Add price components inside each group."
+            hint: "Dog size base rates, coat type surcharges and optional add-on treats. Use Add price components above to add to any group."
             fields:
               # Dog Size Pricing Rules
               - label: "Dog Size Base Rates"
