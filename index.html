@@ -1187,21 +1187,82 @@
             root.setProperty('--sage-50', mix(base, 255, 0.93));
         }
 
-        function renderSocial(list) {
-            const el = document.getElementById('social-links');
-            if (!el) return;
+        function renderFooter() {
+            const f = cmsData.footer;
+            const footer = document.getElementById('site-footer');
+            if (!f || !footer) return;
+            const s = cmsData.settings || {};
+            const col = v => safeColor(v);
+            const st = (prop, v) => col(v) ? `${prop}:${col(v)};` : '';
+            const link = v => {
+                const l = String(v ?? '').trim();
+                return /^(#[\w-]*|https?:\/\/\S+|mailto:\S+|tel:\S+|\/\S*)$/i.test(l) ? l : '#';
+            };
             const icons = { instagram: 'fa-instagram', facebook: 'fa-facebook', tiktok: 'fa-tiktok', youtube: 'fa-youtube', x: 'fa-x-twitter', pinterest: 'fa-pinterest', linkedin: 'fa-linkedin', yelp: 'fa-yelp', google: 'fa-google' };
-            el.innerHTML = (Array.isArray(list) ? list : []).map(l => {
-                const url = safeUrl(l.url);
-                const icon = icons[l.platform];
-                return url && icon ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.platform)}" class="hover:text-amber-400 transition-colors"><i class="fa-brands ${icon}"></i></a>` : '';
+
+            footer.style.cssText = st('background-color', f.bg_color) + st('color', f.text_color);
+            const accent = st('color', f.accent_color);
+            const heading = st('color', f.heading_color);
+            const muted = st('color', f.text_color);
+            const brandName = f.brand_name || (s.header && s.header.logo_text) || s.site_name || '';
+            const phone = f.phone || s.phone || '';
+            const year = new Date().getFullYear();
+            const siteName = s.site_name || brandName;
+            const copyright = (f.copyright_text || '© {year} {site}. All rights reserved.').replace('{year}', year).replace('{site}', siteName);
+
+            const social = (Array.isArray(f.social_links) ? f.social_links : []).map(l => {
+                const url = safeUrl(l.url), icon = icons[l.platform];
+                return url && icon ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.platform)}" class="hover:opacity-70 transition-opacity" style="${st('color', f.social_color)}"><i class="fa-brands ${icon}"></i></a>` : '';
             }).join('');
+
+            const hours = (Array.isArray(f.hours) ? f.hours : []).map(h =>
+                `<li class="flex justify-between gap-3"><span>${esc(h.label)}</span> <span class="font-semibold" style="${st('color', h.highlight ? f.accent_color : f.heading_color)}">${esc(h.hours)}</span></li>`).join('');
+
+            const contactRow = (icon, inner) => `<li class="flex items-center gap-2"><i class="${esc(safeClass(icon))}" style="${st('color', f.accent_color)}"></i>${inner}</li>`;
+            const contact = [
+                f.address ? contactRow('fa-solid fa-location-dot', `<span>${esc(f.address)}</span>`) : '',
+                phone ? contactRow('fa-solid fa-phone', `<a href="tel:${esc(digitsOnly(phone))}" class="hover:underline">${esc(phone)}</a>`) : '',
+                f.email ? contactRow('fa-solid fa-envelope', `<a href="mailto:${esc(f.email)}" class="hover:underline">${esc(f.email)}</a>`) : ''
+            ].join('');
+
+            const tag = f.tag_text && f.show_tag !== false
+                ? `<div class="mt-4 p-3 rounded-xl text-[11px]" style="${st('background-color', f.tag_bg_color)}${st('color', f.tag_text_color)}${col(f.tag_border_color) ? `border:1px solid ${col(f.tag_border_color)};` : ''}"><i class="${esc(safeClass(f.tag_icon || 'fa-solid fa-kit-medical'))} mr-1"></i> ${esc(f.tag_text)}</div>` : '';
+
+            const legal = (Array.isArray(f.legal_links) ? f.legal_links : []).map(l =>
+                `<a href="${esc(link(l.link))}" class="hover:underline">${esc(l.label)}</a>`).join('');
+
+            const iconBox = f.logo_image && safeUrl(f.logo_image)
+                ? `<img src="${esc(safeUrl(f.logo_image))}" alt="" class="w-full h-full object-cover">`
+                : `<i class="${esc(safeClass(f.logo_icon || 'fa-solid fa-paw'))}" style="${st('color', f.logo_icon_color)}"></i>`;
+
+            footer.innerHTML = `
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b" style="${st('border-color', f.divider_color)}">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-lg overflow-hidden" style="${st('background-color', f.logo_bg_color)}">${iconBox}</div>
+                        <span class="text-xl font-bold tracking-tight" style="${heading}">${esc(brandName)}</span>
+                    </div>
+                    <p class="text-xs leading-relaxed opacity-80">${esc(f.description || '')}</p>
+                    <div class="flex gap-3 text-lg pt-2">${social}</div>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider" style="${heading}">${esc(f.hours_title || '')}</h4>
+                    <ul class="text-xs space-y-2 opacity-90">${hours}</ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider" style="${heading}">${esc(f.contact_title || '')}</h4>
+                    <ul class="text-xs space-y-2 opacity-90">${contact}</ul>
+                    ${tag}
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4 opacity-70" style="${muted}">
+                <p>${esc(copyright)}</p>
+                <div class="flex gap-4">${legal}</div>
+            </div>
+        </div>`;
         }
 
-        function safeColor(value) {
-            const c = String(value ?? '').trim();
-            return /^#[0-9a-f]{3,8}$/i.test(c) ? c : '';
-        }
 
         function renderHero(h) {
             if (!h) return;
@@ -1279,34 +1340,17 @@
         }
 
         function renderSettings(s) {
-            renderSocial(s.social_links);
-            applyBrandColor(s.brand_color);
             if (!s) return;
+            applyBrandColor(s.brand_color);
             renderHeader(s.header || {});
-            if (s.site_name) {
-                document.title = `${s.site_name} | Gentle & Professional Pet Care`;
-                setText('footer-site-name', s.site_name);
-            }
-            setText('footer-address', s.address);
+            if (s.site_name) document.title = `${s.site_name} | Gentle & Professional Pet Care`;
 
             if (s.phone) {
                 const header = document.getElementById('header-phone');
                 header.href = `tel:${digitsOnly(s.phone)}`;
                 header.innerHTML = `<i class="fa-solid fa-phone"></i> ${esc(s.phone)}`;
-                const footer = document.getElementById('footer-phone');
-                footer.href = `tel:${digitsOnly(s.phone)}`;
-                footer.innerText = s.phone;
             }
-            if (s.email) {
-                const footer = document.getElementById('footer-email');
-                footer.href = `mailto:${s.email}`;
-                footer.innerText = s.email;
-            }
-            if (s.hours) {
-                setText('hours-weekdays', s.hours.weekdays);
-                setText('hours-saturday', s.hours.saturday);
-                setText('hours-sunday', s.hours.sunday);
-            }
+            renderFooter();
         }
 
         function renderServices(items) {
