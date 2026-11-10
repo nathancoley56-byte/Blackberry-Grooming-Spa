@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "title": "Essential Bath & Brush",
+      "badge": "",
+      "description": "Perfect for short coats needing a fresh, squeaky-clean maintenance wash.",
+      "base_price": 45,
+      "price_note": "/ starting rate",
+      "icon_class": "fa-solid fa-shower",
+      "features": [
+        "Organic Shampoo Hydro-bath",
+        "Warm Fluff Drying",
+        "Thorough Brush Out",
+        "Nail Clipping & Filing",
+        "Ear Cleaning & Deodorizer"
+      ]
+    },
+    {
+      "title": "Pampered Pup Full Groom",
+      "badge": "Most Popular",
+      "description": "Full body haircut styled to breed standard or custom owner preference.",
+      "base_price": 75,
+      "price_note": "/ starting rate",
+      "icon_class": "fa-solid fa-scissors",
+      "features": [
+        "Everything in Essential Bath",
+        "Custom Scissors Styling Cut",
+        "Sanitary Area Trimming",
+        "Paw Pad Hair Trim & Balm",
+        "Teeth Brushing Gel"
+      ]
+    },
+    {
+      "title": "Puppy's First Groom",
+      "badge": "",
+      "description": "Gentle introduction for puppies under 6 months to build positive grooming habits.",
+      "base_price": 35,
+      "price_note": "/ flat rate",
+      "icon_class": "fa-solid fa-baby-carriage",
+      "features": [
+        "Gentle Warm Water Bath",
+        "Low-Noise Dryer Intro",
+        "Eye & Face Hair Trim",
+        "Gentle Paw & Nail Touch",
+        "Extra Play & Treat Rewards"
+      ]
+    },
+    {
+      "title": "Nail & Paw Care Spa",
+      "badge": "",
+      "description": "Quick walk-in session focusing entirely on paw comfort and hygiene.",
+      "base_price": 25,
+      "price_note": "/ session",
+      "icon_class": "fa-solid fa-paw",
+      "features": [
+        "Precision Nail Trimming",
+        "Smooth Dremel Grinding",
+        "Paw Pad Hair Tidy",
+        "Soothing Organic Paw Butter",
+        "Ear Flush & Clean"
+      ]
+    }
+  ]
+}
