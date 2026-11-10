@@ -203,6 +203,7 @@ collections:
           - { label: "Highlight Box Text Color", name: "tag_text_color", widget: "color", allowInput: true, required: false, default: "#FCD34D" }
           - { label: "Highlight Box Border Color", name: "tag_border_color", widget: "color", allowInput: true, required: false, default: "#9C6F44" }
           - { label: "Copyright Text ({year} and {site} are filled in automatically)", name: "copyright_text", widget: "string", required: false, default: "© {year} {site}. All rights reserved." }
+          - { label: "Show Bottom Links on the Site (Privacy, Terms, etc.)", name: "show_legal_links", widget: "boolean", default: false, required: false }
           - label: "Bottom Links (Privacy, Terms, etc.)"
             name: "legal_links"
             widget: "list"
