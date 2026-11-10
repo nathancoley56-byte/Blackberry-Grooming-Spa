@@ -352,7 +352,6 @@ collections:
             summary: "{{fields.pup_name}}"
             fields:
               - { label: "Pup Name", name: "pup_name", widget: "string" }
-              - { label: "Breed & Treatment Tag", name: "details", widget: "string", default: "Goldendoodle • Full Groom" }
               - { label: "Before Image", name: "image_before", widget: "image" }
               - { label: "After Image", name: "image_after", widget: "image" }
 
