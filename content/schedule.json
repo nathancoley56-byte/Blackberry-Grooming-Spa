@@ -16,7 +16,9 @@
   "max_per_slot": 1,
   "min_notice_days": 1,
   "days_ahead": 60,
-  "days_off": [],
+  "days_off": [
+    "2026-11-11"
+  ],
   "blocked_slots": [
     {
       "date": "2026-11-10",
