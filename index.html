@@ -973,7 +973,7 @@
             const showingAfter = !after.classList.contains('opacity-0');
             after.classList.toggle('opacity-0', showingAfter);
             badge.innerText = showingAfter ? 'BEFORE' : 'AFTER';
-            const arrow = document.querySelector(#gallery-arrow-${n} i);
+            const arrow = document.querySelector(`#gallery-arrow-${n} i`);
             if (arrow) arrow.className = showingAfter ? 'fa-solid fa-chevron-left' : 'fa-solid fa-chevron-right';
         }
 
