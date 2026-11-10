@@ -352,7 +352,7 @@ collections:
             collapsed: false
             fields:
               - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Transformation Gallery" }
-              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
               - { label: "Title", name: "title", widget: "string", required: false, default: "Happy Pups Before & After" }
               - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
               - { label: "Description", name: "description", widget: "text", required: false }
@@ -384,7 +384,7 @@ collections:
             collapsed: false
             fields:
               - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Loved by Pet Parents" }
-              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+              - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
               - { label: "Title", name: "title", widget: "string", required: false, default: "What Dog Owners Say" }
               - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
               - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false }
@@ -419,7 +419,7 @@ collections:
           - { label: "Right Photo", name: "image_2", widget: "image", required: false }
           - { label: "Right Photo Description (for accessibility)", name: "image_2_alt", widget: "string", required: false, default: "Organic dog shampoos" }
           - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Our Caring Philosophy" }
-          - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false, default: "#7F5539" }
+          - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
           - { label: "Section Heading", name: "heading", widget: "string" }
           - { label: "Section Heading Color", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
           - { label: "Story Text Color", name: "bio_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
