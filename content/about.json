@@ -21,5 +21,12 @@
       "desc": "Individual relaxing lounge areas instead of loud, stressful cage banks.",
       "icon": "fa-solid fa-house-chimney-window"
     }
-  ]
+  ],
+  "eyebrow": "Our Caring Philosophy",
+  "eyebrow_color": "#7F5539",
+  "heading_color": "#5C3D2E",
+  "bio_color": "#57534E",
+  "principle_title_color": "#292524",
+  "principle_desc_color": "#78716C",
+  "section_bg_color": "#FFFFFF"
 }
