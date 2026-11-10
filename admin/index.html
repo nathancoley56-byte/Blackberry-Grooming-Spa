@@ -3,57 +3,6 @@
 <head><title>Content Manager</title></head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // Adds an "Add price components" menu next to the Price Components heading.
-    // Each choice clicks the matching list's own add button.
-    (function () {
-      var choices = [
-        ['Dog size base rate', /^add dog size base rates/i],
-        ['Coat type surcharge', /^add coat type surcharges/i],
-        ['Optional add-on treat', /^add optional add-on treats/i]
-      ];
-      function inject() {
-        document.querySelectorAll('label').forEach(function (label) {
-          if (label.textContent.trim().toLowerCase() !== 'price components') return;
-          var bar = label.parentElement;
-          if (!bar || bar.querySelector('.pc-add')) return;
-          var wrap = document.createElement('span');
-          wrap.className = 'pc-add';
-          wrap.style.cssText = 'position:relative;display:inline-block;margin-left:12px;';
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.textContent = 'Add price components';
-          btn.style.cssText = 'background:#3a69c7;color:#fff;border:0;border-radius:5px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;';
-          var menu = document.createElement('div');
-          menu.style.cssText = 'display:none;position:absolute;left:0;top:100%;margin-top:4px;background:#fff;border:1px solid #dfdfe3;border-radius:5px;box-shadow:0 2px 6px rgba(0,0,0,.2);z-index:100;min-width:200px;';
-          choices.forEach(function (c) {
-            var item = document.createElement('button');
-            item.type = 'button';
-            item.textContent = c[0];
-            item.style.cssText = 'display:block;width:100%;text-align:left;background:none;border:0;padding:8px 12px;font-size:13px;cursor:pointer;color:#313d3e;';
-            item.onmouseenter = function () { item.style.background = '#f0f3f4'; };
-            item.onmouseleave = function () { item.style.background = 'none'; };
-            item.onclick = function () {
-              menu.style.display = 'none';
-              var target = Array.prototype.find.call(document.querySelectorAll('button'), function (b) {
-                return c[1].test(b.textContent.trim());
-              });
-              if (target) { target.click(); target.scrollIntoView({ block: 'center' }); }
-            };
-            menu.appendChild(item);
-          });
-          btn.onclick = function (e) {
-            e.stopPropagation();
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-          };
-          document.addEventListener('click', function () { menu.style.display = 'none'; });
-          wrap.appendChild(btn);
-          wrap.appendChild(menu);
-          bar.appendChild(wrap);
-        });
-      }
-      new MutationObserver(inject).observe(document.body, { childList: true, subtree: true });
-    })();
-  </script>
+
 </body>
 </html>
