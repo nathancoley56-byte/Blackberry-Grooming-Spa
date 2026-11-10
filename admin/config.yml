@@ -286,36 +286,46 @@ collections:
               - { label: "Book Button Color", name: "button_color", widget: "color", allowInput: true, required: false, default: "#F4A261" }
               - { label: "Book Button Text Color", name: "button_text_color", widget: "color", allowInput: true, required: false, default: "#1C1917" }
               - { label: "Small Print Under Button", name: "disclaimer", widget: "string", required: false, default: "Final pricing confirmed upon physical coat inspection." }
-          # Dog Size Pricing Rules
-          - label: "Dog Size Base Rates"
-            name: "sizes"
-            widget: "list"
+          # Price components: all three rate groups
+          - label: "Price Components"
+            name: "components"
+            widget: "object"
+            collapsed: false
+            hint: "Dog size base rates, coat type surcharges and optional add-on treats. Use Add price components inside each group."
             fields:
-              - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
-              - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
-              - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
-              - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
-              - { label: "Icon (FontAwesome class, optional)", name: "icon", widget: "string", required: false, hint: "e.g. fa-dog or fa-shield-dog" }
+              # Dog Size Pricing Rules
+              - label: "Dog Size Base Rates"
+                name: "sizes"
+                widget: "list"
+                add_label: "Add price components"
+                fields:
+                  - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
+                  - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
+                  - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
+                  - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
+                  - { label: "Icon (FontAwesome class, optional)", name: "icon", widget: "string", required: false, hint: "e.g. fa-dog or fa-shield-dog" }
 
-          # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
-          - label: "Coat Type Surcharges"
-            name: "coats"
-            widget: "list"
-            fields:
-              - { label: "Coat ID", name: "id", widget: "string" } # e.g. doodle, short, medium, long
-              - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
-              - { label: "Surcharge Amount ($)", name: "extra_cost", widget: "number", value_type: "int", default: 20 }
-              - { label: "Highlight Badge", name: "badge", widget: "string", required: false, default: "+ $20" }
-              - { label: "Badge Color", name: "badge_color", widget: "color", allowInput: true, required: false, default: "#E9C46A" }
-              - { label: "Badge Text Color", name: "badge_text_color", widget: "color", allowInput: true, required: false, default: "#1C1917" }
+              # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
+              - label: "Coat Type Surcharges"
+                name: "coats"
+                widget: "list"
+                add_label: "Add price components"
+                fields:
+                  - { label: "Coat ID", name: "id", widget: "string" } # e.g. doodle, short, medium, long
+                  - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
+                  - { label: "Surcharge Amount ($)", name: "extra_cost", widget: "number", value_type: "int", default: 20 }
+                  - { label: "Highlight Badge", name: "badge", widget: "string", required: false, default: "+ $20" }
+                  - { label: "Badge Color", name: "badge_color", widget: "color", allowInput: true, required: false, default: "#E9C46A" }
+                  - { label: "Badge Text Color", name: "badge_text_color", widget: "color", allowInput: true, required: false, default: "#1C1917" }
 
-          # Optional Add-on Services
-          - label: "Optional Add-on Treats"
-            name: "addons"
-            widget: "list"
-            fields:
-              - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
-              - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
+              # Optional Add-on Services
+              - label: "Optional Add-on Treats"
+                name: "addons"
+                widget: "list"
+                add_label: "Add price components"
+                fields:
+                  - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
+                  - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
 
   # ==========================================
   # 4. BEFORE & AFTER GALLERY
