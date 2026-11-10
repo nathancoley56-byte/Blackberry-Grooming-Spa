@@ -1,42 +1,72 @@
 {
-  "bg_color": "#5C3D2E",
-  "text_color": "#F9F5EC",
-  "heading_color": "#FFFFFF",
-  "accent_color": "#E9C46A",
-  "divider_color": "#7F5539",
-  "logo_icon": "fa-solid fa-paw",
-  "logo_icon_color": "#FFFFFF",
-  "logo_bg_color": "",
-  "logo_image": "",
   "brand_name": "Blackberry Luxury Grooming",
-  "description": "Providing gentle, organic, low-stress pet grooming services for dogs of all breeds and sizes.",
-  "social_color": "#F2EBD9",
-  "social_links": [
-    { "platform": "instagram", "url": "https://instagram.com/" },
-    { "platform": "facebook", "url": "https://facebook.com/" },
-    { "platform": "tiktok", "url": "https://tiktok.com/" }
-  ],
-  "hours_title": "Hours & Days",
-  "hours": [
-    { "label": "Monday - Friday:", "hours": "9:00 AM - 6:00 PM", "highlight": false },
-    { "label": "Saturday:", "hours": "9:00 AM - 5:00 PM", "highlight": false },
-    { "label": "Sunday:", "hours": "Closed for Rest", "highlight": true }
-  ],
-  "contact_title": "Contact & Location",
-  "address": "1244 Barkwood Lane, Suite B, Austin TX",
-  "phone": "",
-  "email": "hello@pawsandsuds.com",
-  "show_tag": true,
-  "tag_icon": "fa-solid fa-kit-medical",
-  "tag_text": "Urgent Matting Care Available",
-  "tag_bg_color": "#7F5539",
-  "tag_text_color": "#FCD34D",
-  "tag_border_color": "#9C6F44",
   "copyright_text": "© {year} {site}. All rights reserved.",
+  "heading_color": "#FFFFFF",
+  "social_links": [
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com/"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://facebook.com/"
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://tiktok.com/"
+    }
+  ],
+  "logo_image": "",
+  "hours_title": "Hours & Days",
+  "bg_color": "#4B5320",
+  "logo_icon": "fa-solid fa-paw",
+  "phone": "",
+  "tag_bg_color": "#4B5320",
+  "accent_color": "#50d22d",
+  "hours": [
+    {
+      "label": "Monday - Friday:",
+      "hours": "9:00 AM - 6:00 PM",
+      "highlight": false
+    },
+    {
+      "label": "Saturday:",
+      "hours": "9:00 AM - 5:00 PM",
+      "highlight": false
+    },
+    {
+      "label": "Sunday:",
+      "hours": "Closed for Rest",
+      "highlight": true
+    }
+  ],
+  "social_color": "#F2EBD9",
   "show_legal_links": false,
+  "text_color": "#F9F5EC",
+  "logo_icon_color": "#FFFFFF",
+  "tag_text": "Urgent Matting Care Available",
   "legal_links": [
-    { "label": "Privacy Policy", "link": "#" },
-    { "label": "Terms of Service", "link": "#" },
-    { "label": "Cancellation Policy", "link": "#" }
-  ]
+    {
+      "label": "Privacy Policy",
+      "link": "#"
+    },
+    {
+      "label": "Terms of Service",
+      "link": "#"
+    },
+    {
+      "label": "Cancellation Policy",
+      "link": "#"
+    }
+  ],
+  "address": "1244 Barkwood Lane, Suite B, Austin TX",
+  "tag_border_color": "#758132",
+  "tag_text_color": "#FFFF",
+  "show_tag": true,
+  "contact_title": "Contact & Location",
+  "email": "hello@pawsandsuds.com",
+  "description": "Providing gentle, organic, low-stress pet grooming services for dogs of all breeds and sizes.",
+  "divider_color": "#758132",
+  "logo_bg_color": "",
+  "tag_icon": "fa-solid fa-kit-medical"
 }
