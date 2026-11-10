@@ -891,6 +891,7 @@
         <input name="bot-field">
         <input name="date"><input name="time"><input name="dog_name"><input name="dog_breed">
         <input name="service"><input name="weight"><textarea name="notes"></textarea>
+        <input name="estimate_appointment"><input name="estimate_dog_size"><input name="estimate_coat_type"><input name="estimate_addons"><input name="estimated_price"><input name="estimated_duration">
         <input name="owner_name"><input name="owner_phone"><input name="owner_email">
     </form>
 
@@ -909,7 +910,8 @@
             duration: '1.0 hr',
             coatType: 'short',
             apptIndex: 0,
-            apptPrice: 0,
+            sizeName: '',
+            coatName: '',
             apptMinutes: 0,
             apptName: ''
         };
@@ -928,9 +930,15 @@
             return `${h.toFixed(1)} ${h === 1 ? 'hr' : 'hrs'}`;
         }
 
+        const normName = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+        function packageStartingPrice(name) {
+            const svc = (cmsData.services || []).find(s => normName(s.title) === normName(name));
+            return svc ? Number(svc.base_price) || 0 : 0;
+        }
+
         function setEstimatorAppt(index, price, minutes, name) {
             estimatorState.apptIndex = index;
-            estimatorState.apptPrice = Number(price) || 0;
             estimatorState.apptMinutes = Number(minutes) || 0;
             estimatorState.apptName = name || '';
             document.querySelectorAll('.estimator-appt-btn').forEach((btn, i) => {
@@ -955,6 +963,8 @@
         function setEstimatorSize(size, price, duration) {
             estimatorState.basePrice = price;
             estimatorState.duration = duration;
+            const sizeBtn = document.getElementById(`btn-size-${size}`);
+            estimatorState.sizeName = sizeBtn ? (sizeBtn.querySelector('.font-bold') || sizeBtn).innerText.trim() : '';
 
             document.querySelectorAll('.estimator-size-btn').forEach(btn => {
                 btn.classList.remove('border-sage-500', 'bg-sage-50', 'text-stone-800');
@@ -974,6 +984,8 @@
         function setEstimatorCoat(coat, addPrice) {
             estimatorState.coatPrice = addPrice;
             estimatorState.coatType = coat;
+            const coatBtn = document.getElementById(`btn-coat-${coat}`);
+            estimatorState.coatName = coatBtn ? (coatBtn.dataset.name || coatBtn.innerText.trim()) : '';
 
             document.querySelectorAll('.estimator-coat-btn').forEach(btn => {
                 btn.classList.remove('border-sage-500', 'bg-sage-50', 'text-stone-800');
@@ -991,7 +1003,7 @@
 
         // Estimator Total Calculation
         function calculateEstimatorTotal() {
-            let total = estimatorState.basePrice + estimatorState.coatPrice + estimatorState.apptPrice;
+            let total = packageStartingPrice(estimatorState.apptName) + estimatorState.coatPrice;
 
             document.querySelectorAll('.estimator-addon:checked').forEach(box => {
                 total += Number(box.value) || 0;
@@ -1002,12 +1014,28 @@
         }
 
         // Transfer Estimator Choice to Modal
+        function currentEstimate() {
+            const addons = Array.from(document.querySelectorAll('.estimator-addon:checked')).map(b => b.parentElement.innerText.trim());
+            return {
+                appointment: estimatorState.apptName,
+                size: estimatorState.sizeName,
+                coat: estimatorState.coatName,
+                addons: addons.join(', '),
+                price: document.getElementById('estimated-price').innerText,
+                duration: document.getElementById('estimated-time').innerText
+            };
+        }
+
         function bookWithEstimate() {
+            const estimate = currentEstimate();
             const featured = cmsData.services.find(s => s.badge) || cmsData.services[0];
             const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
             const matched = estimatorState.apptName && cmsData.services.find(s => norm(s.title) === norm(estimatorState.apptName));
             const pick = matched || featured;
-            openBookingModal(pick ? pick.title : undefined);
+            openBookingModal(pick ? pick.title : undefined, estimate);
+            const weightSel = document.getElementById('input-weight');
+            const sizeOpt = Array.from(weightSel.options).find(o => estimate.size && o.value.startsWith(estimate.size + ' ('));
+            if (sizeOpt) weightSel.value = sizeOpt.value;
             if (estimatorState.coatType === 'doodle') {
                 const breedInput = document.getElementById('input-dog-breed');
                 if (breedInput) {
@@ -1027,7 +1055,9 @@
         }
 
         // Booking Modal
-        function openBookingModal(packageName) {
+        let bookingEstimate = null;
+        function openBookingModal(packageName, estimate) {
+            bookingEstimate = estimate || null;
             const modal = document.getElementById('bookingModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -1076,6 +1106,7 @@
                 service: value('input-service'), weight: value('input-weight'), notes: value('input-notes'),
                 ownerName: value('input-owner-name'), ownerPhone: value('input-owner-phone'), ownerEmail: value('input-owner-email')
             };
+            const est = bookingEstimate || {};
             const submitBtn = event.submitter;
             if (submitBtn) submitBtn.disabled = true;
             try {
@@ -1092,7 +1123,9 @@
                 const params = new URLSearchParams({
                     'form-name': 'booking', date: booking.date, time: booking.time, dog_name: booking.dogName,
                     dog_breed: booking.dogBreed, service: booking.service, weight: booking.weight, notes: booking.notes,
-                    owner_name: booking.ownerName, owner_phone: booking.ownerPhone, owner_email: booking.ownerEmail
+                    owner_name: booking.ownerName, owner_phone: booking.ownerPhone, owner_email: booking.ownerEmail,
+                    estimate_appointment: est.appointment || '', estimate_dog_size: est.size || '', estimate_coat_type: est.coat || '',
+                    estimate_addons: est.addons || '', estimated_price: est.price ? '$' + est.price : '', estimated_duration: est.duration || ''
                 });
                 fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() }).catch(() => {});
                 closeBookingModal();
@@ -1516,7 +1549,7 @@
                 container.innerHTML = coats.map(c => {
                     const id = safeClass(c.id) || 'coat';
                     return `
-                    <button type="button" onclick="setEstimatorCoat('${id}', ${Number(c.extra_cost) || 0})" id="btn-coat-${id}" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300 relative">
+                    <button type="button" onclick="setEstimatorCoat('${id}', ${Number(c.extra_cost) || 0})" id="btn-coat-${id}" data-name="${esc(c.name)}" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300 relative">
                         ${c.badge ? `<span class="absolute -top-2 -right-1 px-1.5 py-0.5 rounded-full bg-amber-400 text-stone-900 text-[9px] font-bold" style="${safeColor(c.badge_color) ? `background-color:${safeColor(c.badge_color)};` : ''}${safeColor(c.badge_text_color) ? `color:${safeColor(c.badge_text_color)};` : ''}">${esc(c.badge)}</span>` : ''}
                         ${esc(c.name)}
                     </button>`;
@@ -1651,7 +1684,7 @@
             });
 
             if (changed.has('settings')) renderSettings(cmsData.settings);
-            if (changed.has('services')) renderServices(cmsData.services);
+            if (changed.has('services')) { renderServices(cmsData.services); calculateEstimatorTotal(); }
             if (changed.has('estimator')) renderEstimator(cmsData.estimator);
             if (changed.has('gallery')) renderGallery(cmsData.gallery);
             if (changed.has('reviews')) renderReviews(cmsData.reviews);
