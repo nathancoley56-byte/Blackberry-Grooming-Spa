@@ -268,6 +268,7 @@ collections:
               - { label: "Step 1 Heading (dog size)", name: "size_label", widget: "string", required: false, default: "1. Select Dog Size" }
               - { label: "Step 2 Heading (coat type)", name: "coat_label", widget: "string", required: false, default: "2. Coat Type / Breed Specialty" }
               - { label: "Step 3 Heading (add-ons)", name: "addon_label", widget: "string", required: false, default: "3. Optional Add-On Services" }
+              - { label: "Step 4 Heading (appointment type)", name: "appt_label", widget: "string", required: false, default: "4. Appointment Type" }
               - { label: "Step Heading Color", name: "step_label_color", widget: "color", allowInput: true, required: false, default: "#44403C" }
               - { label: "Price Card Color - Top Left", name: "card_color_top", widget: "color", allowInput: true, required: false, default: "#7F5539" }
               - { label: "Price Card Color - Bottom Right", name: "card_color_bottom", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
@@ -291,7 +292,7 @@ collections:
             name: "components"
             widget: "object"
             collapsed: false
-            hint: "Dog size base rates, coat type surcharges and optional add-on treats. Use Add price components above to add to any group."
+            hint: "Dog size base rates, coat type surcharges and optional add-on treats and appointment types."
             fields:
               # Dog Size Pricing Rules
               - label: "Dog Size Base Rates"
@@ -323,6 +324,17 @@ collections:
                 fields:
                   - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
                   - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
+
+              # Appointment types (adjust the estimated duration)
+              - label: "Appointment Types"
+                name: "appointments"
+                widget: "list"
+                summary: "{{fields.name}}"
+                hint: "Choices in the estimator's Appointment Type step. Time adjustment is added to (or, if negative, subtracted from) the Est. Duration."
+                fields:
+                  - { label: "Appointment Name", name: "name", widget: "string" }
+                  - { label: "Time Adjustment (minutes, negative to subtract)", name: "duration_adjust", widget: "number", value_type: "int", default: 0 }
+                  - { label: "Price Adjustment ($, optional)", name: "price_adjust", widget: "number", value_type: "int", default: 0, required: false }
 
   # ==========================================
   # 4. BEFORE & AFTER GALLERY
