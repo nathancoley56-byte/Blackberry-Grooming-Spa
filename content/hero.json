@@ -25,7 +25,7 @@
   "stat_label_color": "#78716C",
   "badge_text_color": "#4C684C",
   "secondary_button_text": "Estimate Groom Price",
-  "secondary_button_text_color": "#5C3D2E",
+  "secondary_button_text_color": "#4B5320",
   "primary_button_color": "",
   "image_border_color": "#FFFFFF",
   "badge_icon": "fa-solid fa-sparkles",
@@ -36,7 +36,7 @@
   "subtitle_color": "#57534E",
   "background_bottom": "#F4F7F4",
   "secondary_button_link": "#estimator",
-  "title_color": "#5C3D2E",
+  "title_color": "#4B5320",
   "primary_button_text": "Book Your Dog's Visit",
   "stats": [
     {
