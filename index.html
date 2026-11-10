@@ -1430,9 +1430,10 @@
         function renderEstimator(data) {
             if (!data) return;
             renderEstimatorDisplay(data.display);
-            const sizes = data.sizes || [];
-            const coats = data.coats || [];
-            const addons = data.addons || [];
+            const comp = data.components || data;
+            const sizes = comp.sizes || [];
+            const coats = comp.coats || [];
+            const addons = comp.addons || [];
 
             if (sizes.length) {
                 const container = document.querySelector('#estimator .estimator-size-btn').parentElement;
