@@ -37,7 +37,7 @@ collections:
           - { label: "Badge Text Color", name: "badge_text_color", widget: "color", allowInput: true, required: false, default: "#4C684C" }
           - { label: "Badge Icon Color", name: "badge_icon_color", widget: "color", allowInput: true, required: false, default: "#F4A261" }
           - { label: "Headline", name: "title", widget: "string", default: "Gentle Care & Premium Pampering for Your Best Friend." }
-          - { label: "Headline Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Headline Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#4B5320" }
           - { label: "Subtitle", name: "subtitle", widget: "text", default: "At Blackberry Luxury Grooming, we offer low-stress, organic grooming tailored to your dog's unique needs." }
           - { label: "Subtitle Color", name: "subtitle_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
           - { label: "Main Button Text", name: "primary_button_text", widget: "string", default: "Book Your Dog's Visit" }
@@ -130,6 +130,7 @@ collections:
         fields:
           - { label: "Business Name", name: "site_name", widget: "string", default: "Blackberry Luxury Grooming" }
           - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
+          - { label: "Heading Color (big headings on every section)", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#4B5320", hint: "Second brand color. Each section can still override it with its own title color." }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
             widget: "object"
@@ -260,7 +261,7 @@ collections:
               - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Instant Quote Tool" }
               - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
               - { label: "Title", name: "title", widget: "string", default: "Interactive Grooming Cost Estimator" }
-              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#4B5320" }
               - { label: "Description", name: "description", widget: "text", required: false }
               - { label: "Description Color", name: "description_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
               - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
@@ -354,7 +355,7 @@ collections:
               - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Transformation Gallery" }
               - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
               - { label: "Title", name: "title", widget: "string", required: false, default: "Happy Pups Before & After" }
-              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false }
               - { label: "Description", name: "description", widget: "text", required: false }
               - { label: "Description Color", name: "description_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
               - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false }
@@ -386,7 +387,7 @@ collections:
               - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Loved by Pet Parents" }
               - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
               - { label: "Title", name: "title", widget: "string", required: false, default: "What Dog Owners Say" }
-              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+              - { label: "Title Color", name: "title_color", widget: "color", allowInput: true, required: false }
               - { label: "Section Background Color", name: "section_bg_color", widget: "color", allowInput: true, required: false }
               - { label: "Review Card Background Color", name: "card_bg_color", widget: "color", allowInput: true, required: false, default: "#FFFFFF" }
               - { label: "Review Quote Text Color", name: "review_text_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
@@ -421,7 +422,7 @@ collections:
           - { label: "Small Heading Above Title", name: "eyebrow", widget: "string", required: false, default: "Our Caring Philosophy" }
           - { label: "Small Heading Color", name: "eyebrow_color", widget: "color", allowInput: true, required: false }
           - { label: "Section Heading", name: "heading", widget: "string" }
-          - { label: "Section Heading Color", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#5C3D2E" }
+          - { label: "Section Heading Color", name: "heading_color", widget: "color", allowInput: true, required: false }
           - { label: "Story Text Color", name: "bio_color", widget: "color", allowInput: true, required: false, default: "#57534E" }
           - { label: "Principle Title Color", name: "principle_title_color", widget: "color", allowInput: true, required: false, default: "#292524" }
           - { label: "Principle Description Color", name: "principle_desc_color", widget: "color", allowInput: true, required: false, default: "#78716C" }
