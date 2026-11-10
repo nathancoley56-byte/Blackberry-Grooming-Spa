@@ -1,0 +1,27 @@
+{
+  "site_name": "Blackberry Grooming Spa",
+  "header": {
+    "logo_image": "",
+    "logo_icon": "fa-solid fa-paw",
+    "logo_text": "Blackberry",
+    "logo_tagline": "Grooming Spa",
+    "header_button_text": "Book Appointment",
+    "nav_links": [
+      { "label": "Services & Rates", "link": "#services" },
+      { "label": "Price Estimator", "link": "#estimator" },
+      { "label": "Pups Gallery", "link": "#gallery" },
+      { "label": "About Us", "link": "#about" },
+      { "label": "Reviews", "link": "#reviews" }
+    ]
+  },
+  "phone": "(801) 960-6426",
+  "email": "hello@pawsandsuds.com",
+  "address": "1244 Barkwood Lane, Suite B, Austin TX",
+  "hero_title": "Gentle Care & Premium Pampering for Your Best Friend.",
+  "hero_subtitle": "At Blackberry Grooming Spa, we offer low-stress, organic grooming tailored to your dog's unique needs.",
+  "hours": {
+    "weekdays": "9:00 AM - 6:00 PM",
+    "saturday": "9:00 AM - 5:00 PM",
+    "sunday": "Closed for Rest"
+  }
+}
