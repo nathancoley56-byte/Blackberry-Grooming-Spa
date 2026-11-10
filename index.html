@@ -1157,6 +1157,7 @@
 
             const box = document.getElementById('logo-box');
             const image = safeUrl(s.logo_image);
+            try { localStorage.setItem('cachedLogoImage', image); } catch (e) {}
             if (image) {
                 box.className = 'w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden';
                 box.innerHTML = `<img src="${esc(image)}" alt="${esc(s.logo_text || 'Logo')}" class="w-full h-full object-contain">`;
@@ -1637,6 +1638,11 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            // Show the last known logo right away so the placeholder paw doesn't flash while content loads
+            try {
+                const cached = safeUrl(localStorage.getItem('cachedLogoImage'));
+                if (cached) renderHeader({ logo_image: cached });
+            } catch (e) {}
             document.getElementById('input-date').addEventListener('change', refreshSlots);
             loadCmsContent();
             setInterval(loadCmsContent, 10000);
