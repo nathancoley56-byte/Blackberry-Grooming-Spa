@@ -671,7 +671,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-warmbrown-800 text-cream-100 pt-16 pb-12">
+    <footer id="site-footer" class="bg-warmbrown-800 text-cream-100 pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-warmbrown-700">
                 
@@ -1117,7 +1117,7 @@
         }
 
         // ---------- CMS content (content/*.json, edited through Decap CMS) ----------
-        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, schedule: null, hero: null };
+        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, schedule: null, hero: null, footer: null };
         const cmsSnapshots = {};
         const AVATAR_COLORS = ['bg-sage-500', 'bg-warmbrown-600', 'bg-amber-500'];
         const ICON_TINTS = ['bg-sage-100 text-sage-600', 'bg-cream-200 text-warmbrown-700', 'bg-amber-100 text-amber-600'];
@@ -1145,11 +1145,7 @@
         }
 
         function renderHeader(s) {
-            if (s.logo_text) {
-                setText('logo-text', s.logo_text);
-                const footerBrand = document.querySelector('footer .text-xl.font-bold');
-                if (footerBrand) footerBrand.innerText = s.logo_text;
-            }
+            if (s.logo_text) setText('logo-text', s.logo_text);
             if (s.logo_tagline !== undefined) document.getElementById('logo-tagline').innerText = s.logo_tagline;
             setText('header-button-text', s.header_button_text);
             setText('mobile-button', s.header_button_text);
@@ -1185,6 +1181,11 @@
             root.setProperty('--sage-700', mix(base, 0, 0.4));
             root.setProperty('--sage-100', mix(base, 255, 0.85));
             root.setProperty('--sage-50', mix(base, 255, 0.93));
+        }
+
+        function safeColor(value) {
+            const c = String(value ?? '').trim();
+            return /^#[0-9a-f]{3,8}$/i.test(c) ? c : '';
         }
 
         function renderFooter() {
@@ -1559,7 +1560,7 @@
         }
 
         async function loadCmsContent() {
-            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'schedule', 'hero'];
+            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'schedule', 'hero', 'footer'];
             const results = await Promise.allSettled(names.map(fetchContent));
             const changed = new Set();
 
@@ -1587,6 +1588,7 @@
             if (changed.has('about')) renderAbout(cmsData.about);
             if (changed.has('schedule')) applySchedule(cmsData.schedule);
             if (changed.has('hero')) renderHero(cmsData.hero);
+            if (changed.has('footer') && !changed.has('settings')) renderFooter();
         }
 
         window.addEventListener('DOMContentLoaded', () => {
