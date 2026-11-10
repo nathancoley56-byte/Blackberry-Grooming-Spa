@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paws & Suds Grooming Spa | Gentle & Professional Pet Care</title>
     <!-- Tailwind CSS CDN -->
+    <style>
+        :root { --sage-50: 244 247 244; --sage-100: 227 235 227; --sage-500: 126 159 126; --sage-600: 100 133 100; --sage-700: 76 104 76; }
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,11 +21,11 @@
                             300: '#E4D7BA',
                         },
                         sage: {
-                            50: '#F4F7F4',
-                            100: '#E3EBE3',
-                            500: '#7E9F7E',
-                            600: '#648564',
-                            700: '#4C684C',
+                            50: 'rgb(var(--sage-50) / <alpha-value>)',
+                            100: 'rgb(var(--sage-100) / <alpha-value>)',
+                            500: 'rgb(var(--sage-500) / <alpha-value>)',
+                            600: 'rgb(var(--sage-600) / <alpha-value>)',
+                            700: 'rgb(var(--sage-700) / <alpha-value>)',
                         },
                         warmbrown: {
                             500: '#B08968',
@@ -1094,7 +1097,22 @@
             }
         }
 
+        function applyBrandColor(hex) {
+            const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || '').trim());
+            const root = document.documentElement.style;
+            const names = ['50', '100', '500', '600', '700'];
+            if (!m) { names.forEach(n => root.removeProperty('--sage-' + n)); return; }
+            const base = [0, 2, 4].map(i => parseInt(m[1].substr(i, 2), 16));
+            const mix = (c, t, f) => c.map(v => Math.round(v + (t - v) * f)).join(' ');
+            root.setProperty('--sage-500', base.join(' '));
+            root.setProperty('--sage-600', mix(base, 0, 0.2));
+            root.setProperty('--sage-700', mix(base, 0, 0.4));
+            root.setProperty('--sage-100', mix(base, 255, 0.85));
+            root.setProperty('--sage-50', mix(base, 255, 0.93));
+        }
+
         function renderSettings(s) {
+            applyBrandColor(s.brand_color);
             if (!s) return;
             renderHeader(s.header || {});
             if (s.site_name) {
