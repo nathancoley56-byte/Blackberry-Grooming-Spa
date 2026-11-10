@@ -1,11 +1,20 @@
 {
   "site_name": "Blackberry Grooming Spa",
-  "brand_color": "#7E9F7E",
   "social_links": [
-    { "platform": "instagram", "url": "https://instagram.com/" },
-    { "platform": "facebook", "url": "https://facebook.com/" },
-    { "platform": "tiktok", "url": "https://tiktok.com/" }
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com/"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://facebook.com/"
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://tiktok.com/"
+    }
   ],
+  "brand_color": "#7f3bab",
   "header": {
     "logo_image": "",
     "logo_icon": "fa-solid fa-paw",
@@ -13,21 +22,36 @@
     "logo_tagline": "Grooming Spa",
     "header_button_text": "Book Appointment",
     "nav_links": [
-      { "label": "Services & Rates", "link": "#services" },
-      { "label": "Price Estimator", "link": "#estimator" },
-      { "label": "Pups Gallery", "link": "#gallery" },
-      { "label": "About Us", "link": "#about" },
-      { "label": "Reviews", "link": "#reviews" }
+      {
+        "label": "Services & Rates",
+        "link": "#services"
+      },
+      {
+        "label": "Price Estimator",
+        "link": "#estimator"
+      },
+      {
+        "label": "Pups Gallery",
+        "link": "#gallery"
+      },
+      {
+        "label": "About Us",
+        "link": "#about"
+      },
+      {
+        "label": "Reviews",
+        "link": "#reviews"
+      }
     ]
   },
   "phone": "(801) 960-6426",
-  "email": "hello@pawsandsuds.com",
-  "address": "1244 Barkwood Lane, Suite B, Austin TX",
-  "hero_title": "Gentle Care & Premium Pampering for Your Best Friend.",
-  "hero_subtitle": "At Blackberry Grooming Spa, we offer low-stress, organic grooming tailored to your dog's unique needs.",
   "hours": {
     "weekdays": "9:00 AM - 6:00 PM",
     "saturday": "9:00 AM - 5:00 PM",
     "sunday": "Closed for Rest"
-  }
+  },
+  "hero_title": "Gentle Care & Premium Pampering for Your Best Friend.",
+  "address": "1244 Barkwood Lane, Suite B, Austin TX",
+  "email": "hello@pawsandsuds.com",
+  "hero_subtitle": "At Blackberry Grooming Spa, we offer low-stress, organic grooming tailored to your dog's unique needs."
 }
