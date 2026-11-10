@@ -87,8 +87,6 @@ collections:
           - { label: "Phone Number", name: "phone", widget: "string", default: "(555) 019-2834" }
           - { label: "Email Address", name: "email", widget: "string", default: "hello@pawsandsuds.com" }
           - { label: "Address", name: "address", widget: "string", default: "1244 Barkwood Lane, Suite B, Austin TX" }
-          - { label: "Hero Headline", name: "hero_title", widget: "string", default: "Gentle Care & Premium Pampering for Your Best Friend." }
-          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text", default: "At Paws & Suds, we offer low-stress, organic grooming tailored to your dog's unique needs." }
           - label: "Business Hours"
             name: "hours"
             widget: "object"
