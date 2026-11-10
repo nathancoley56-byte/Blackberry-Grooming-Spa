@@ -32,10 +32,10 @@
   },
   "components": {
     "appointments": [
-      { "name": "Essential Bath & Brush", "duration_adjust": 0, "price_adjust": 0 },
-      { "name": "Pampered Pup Full Groom", "duration_adjust": 60, "price_adjust": 0 },
-      { "name": "Puppy's First Groom", "duration_adjust": 0, "price_adjust": 0 },
-      { "name": "Nail & Paw Care Spa", "duration_adjust": -30, "price_adjust": 0 }
+      { "name": "Essential Bath & Brush", "duration_adjust": 0 },
+      { "name": "Pampered Pup Full Groom", "duration_adjust": 60 },
+      { "name": "Puppy's First Groom", "duration_adjust": 0 },
+      { "name": "Nail & Paw Care Spa", "duration_adjust": -30 }
     ],
     "sizes": [
       {
