@@ -285,6 +285,17 @@
                                 </label>
                             </div>
                         </div>
+
+                        <!-- Step 4: Appointment Type -->
+                        <div id="est-appt-wrap">
+                            <label id="est-appt-label" class="est-step-label block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">4. Appointment Type</label>
+                            <div id="est-appt-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <button type="button" class="estimator-appt-btn p-3 rounded-xl border-2 border-sage-500 bg-sage-50 text-xs font-semibold text-stone-800 text-center">Essential Bath & Brush</button>
+                                <button type="button" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center">Pampered Pup Full Groom</button>
+                                <button type="button" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center">Puppy's First Groom</button>
+                                <button type="button" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center">Nail & Paw Care Spa</button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Calculation Output -->
@@ -896,8 +907,43 @@
             basePrice: 45,
             coatPrice: 0,
             duration: '1.0 hr',
-            coatType: 'short'
+            coatType: 'short',
+            apptIndex: 0,
+            apptPrice: 0,
+            apptMinutes: 0,
+            apptName: ''
         };
+
+        function durationToMinutes(text) {
+            const s = String(text || '').toLowerCase();
+            const n = parseFloat(s);
+            if (isNaN(n)) return 0;
+            return /min/.test(s) ? Math.round(n) : Math.round(n * 60);
+        }
+
+        function formatDuration(minutes) {
+            const m = Math.max(15, Math.round(minutes / 5) * 5);
+            if (m < 60) return `${m} mins`;
+            const h = m / 60;
+            return `${h.toFixed(1)} ${h === 1 ? 'hr' : 'hrs'}`;
+        }
+
+        function setEstimatorAppt(index, price, minutes, name) {
+            estimatorState.apptIndex = index;
+            estimatorState.apptPrice = Number(price) || 0;
+            estimatorState.apptMinutes = Number(minutes) || 0;
+            estimatorState.apptName = name || '';
+            document.querySelectorAll('.estimator-appt-btn').forEach((btn, i) => {
+                const on = i === index;
+                btn.classList.toggle('border-sage-500', on);
+                btn.classList.toggle('bg-sage-50', on);
+                btn.classList.toggle('text-stone-800', on);
+                btn.classList.toggle('border-cream-200', !on);
+                btn.classList.toggle('bg-white', !on);
+                btn.classList.toggle('text-stone-700', !on);
+            });
+            calculateEstimatorTotal();
+        }
 
         // Mobile Menu Toggle
         function toggleMobileMenu() {
@@ -945,20 +991,23 @@
 
         // Estimator Total Calculation
         function calculateEstimatorTotal() {
-            let total = estimatorState.basePrice + estimatorState.coatPrice;
+            let total = estimatorState.basePrice + estimatorState.coatPrice + estimatorState.apptPrice;
 
             document.querySelectorAll('.estimator-addon:checked').forEach(box => {
                 total += Number(box.value) || 0;
             });
 
             document.getElementById('estimated-price').innerText = total;
-            document.getElementById('estimated-time').innerText = estimatorState.duration;
+            document.getElementById('estimated-time').innerText = formatDuration(durationToMinutes(estimatorState.duration) + estimatorState.apptMinutes);
         }
 
         // Transfer Estimator Choice to Modal
         function bookWithEstimate() {
             const featured = cmsData.services.find(s => s.badge) || cmsData.services[0];
-            openBookingModal(featured ? featured.title : undefined);
+            const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const matched = estimatorState.apptName && cmsData.services.find(s => norm(s.title) === norm(estimatorState.apptName));
+            const pick = matched || featured;
+            openBookingModal(pick ? pick.title : undefined);
             if (estimatorState.coatType === 'doodle') {
                 const breedInput = document.getElementById('input-dog-breed');
                 if (breedInput) {
@@ -1402,10 +1451,11 @@
             color($('estimator'), 'backgroundColor', d.section_bg_color);
             color($('est-panel'), 'backgroundColor', d.panel_bg_color);
 
-            ['est-size-label', 'est-coat-label', 'est-addon-label'].forEach(id => color($(id), 'color', d.step_label_color));
+            ['est-size-label', 'est-coat-label', 'est-addon-label', 'est-appt-label'].forEach(id => color($(id), 'color', d.step_label_color));
             text('est-size-label', d.size_label);
             text('est-coat-label', d.coat_label);
             text('est-addon-label', d.addon_label);
+            text('est-appt-label', d.appt_label);
 
             const card = $('est-card');
             const from = safeColor(d.card_color_top), to = safeColor(d.card_color_bottom);
@@ -1434,6 +1484,18 @@
             const sizes = comp.sizes || [];
             const coats = comp.coats || [];
             const addons = comp.addons || [];
+            const appts = comp.appointments || [];
+
+            const apptWrap = document.getElementById('est-appt-wrap');
+            if (apptWrap) {
+                apptWrap.classList.toggle('hidden', comp.appointments !== undefined && !appts.length);
+                if (appts.length) {
+                    document.getElementById('est-appt-grid').innerHTML = appts.map((a, i) => `
+                    <button type="button" onclick="setEstimatorAppt(${i}, ${Number(a.price_adjust) || 0}, ${Number(a.duration_adjust) || 0}, this.dataset.name)" data-name="${esc(a.name)}" class="estimator-appt-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300">
+                        ${esc(a.name)}
+                    </button>`).join('');
+                }
+            }
 
             if (sizes.length) {
                 const container = document.querySelector('#estimator .estimator-size-btn').parentElement;
@@ -1472,6 +1534,7 @@
 
             if (sizes.length) setEstimatorSize(0, Number(sizes[0].price) || 0, sizes[0].duration);
             if (coats.length) setEstimatorCoat(safeClass(coats[0].id) || 'coat', Number(coats[0].extra_cost) || 0);
+            if (appts.length) setEstimatorAppt(0, appts[0].price_adjust, appts[0].duration_adjust, appts[0].name);
         }
 
         function renderGallery(items) {
