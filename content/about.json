@@ -1,0 +1,21 @@
+{
+  "heading": "Where Comfort Meets Exceptional Style.",
+  "bio": "Founded in 2026 by certified master groomers, Blackberry Grooming Spa was built on a simple premise: dogs deserve a peaceful, enjoyable grooming experience without harsh cages or hurried treatments.",
+  "principles": [
+    {
+      "title": "100% Hypoallergenic & Organic",
+      "desc": "We exclusively use eco-friendly, sulfate-free shampoos formulated for sensitive canine skin.",
+      "icon": "fa-solid fa-leaf"
+    },
+    {
+      "title": "Fear-Free Certified Handling",
+      "desc": "Our staff is trained in positive reinforcement techniques to calm nervous or rescue pets.",
+      "icon": "fa-solid fa-heart-pulse"
+    },
+    {
+      "title": "Private Quiet Suites",
+      "desc": "Individual relaxing lounge areas instead of loud, stressful cage banks.",
+      "icon": "fa-solid fa-house-chimney-window"
+    }
+  ]
+}
