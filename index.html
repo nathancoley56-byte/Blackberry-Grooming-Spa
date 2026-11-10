@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Suds Grooming Spa | Gentle & Professional Pet Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#F9F5EC',
+                            200: '#F2EBD9',
+                            300: '#E4D7BA',
+                        },
+                        sage: {
+                            50: '#F4F7F4',
+                            100: '#E3EBE3',
+                            500: '#7E9F7E',
+                            600: '#648564',
+                            700: '#4C684C',
+                        },
+                        warmbrown: {
+                            500: '#B08968',
+                            600: '#9C6F44',
+                            700: '#7F5539',
+                            800: '#5C3D2E',
+                        },
+                        amber: {
+                            400: '#E9C46A',
+                            500: '#F4A261',
+                            600: '#E76F51',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .modal-active { overflow: hidden; }
+    </style>
+</head>
+<body class="bg-cream-50 text-stone-800 antialiased selection:bg-sage-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div id="logo-box" class="w-12 h-12 rounded-2xl bg-sage-500 flex items-center justify-center text-white text-xl shadow-md group-hover:bg-sage-600 transition-colors overflow-hidden">
+                        <i id="logo-icon" class="fa-solid fa-paw"></i>
+                    </div>
+                    <div>
+                        <span id="logo-text" class="text-xl font-bold text-warmbrown-800 tracking-tight block leading-none">Paws & Suds</span>
+                        <span id="logo-tagline" class="text-xs text-sage-600 font-semibold tracking-widest uppercase">Grooming Spa</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav id="desktop-nav" class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="#services" class="hover:text-sage-600 transition-colors">Services & Rates</a>
+                    <a href="#estimator" class="hover:text-sage-600 transition-colors">Price Estimator</a>
+                    <a href="#gallery" class="hover:text-sage-600 transition-colors">Pups Gallery</a>
+                    <a href="#about" class="hover:text-sage-600 transition-colors">About Us</a>
+                    <a href="#reviews" class="hover:text-sage-600 transition-colors">Reviews</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a id="header-phone" href="tel:5550192834" class="text-xs font-semibold text-warmbrown-700 hover:text-warmbrown-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-phone"></i> (555) 019-2834
+                    </a>
+                    <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full bg-sage-500 text-white font-medium text-sm hover:bg-sage-600 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        <i class="fa-regular fa-calendar-check mr-2"></i><span id="header-button-text">Book Appointment</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-stone-600 hover:bg-cream-200">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cream-100 border-b border-cream-200 px-4 pt-2 pb-6 space-y-3">
+            <div id="mobile-nav-links" class="space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">Services & Rates</a>
+            <a href="#estimator" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">Price Estimator</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">Pups Gallery</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">About Us</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">Reviews</a>
+            </div>
+            <button id="mobile-button" onclick="toggleMobileMenu(); openBookingModal()" class="w-full mt-2 py-3 rounded-xl bg-sage-500 text-white font-semibold text-center shadow">
+                Book Appointment
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-cream-50 via-cream-100 to-sage-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-100 text-sage-700 text-xs font-semibold tracking-wide border border-sage-500/20">
+                        <i class="fa-solid fa-sparkles text-amber-500"></i> Certified Stress-Free Pet Spa
+                    </div>
+                    <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-warmbrown-800 tracking-tight leading-tight">
+                        Gentle Care & Premium Pampering for Your Best Friend.
+                    </h1>
+                    <p id="hero-subtitle" class="text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        At Paws & Suds, we offer low-stress, organic grooming tailored to your dog's unique needs. From soothing warm hydro-baths to custom styling cuts.
+                    </p>
+                    
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-base shadow-lg shadow-sage-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                            Book Your Dog's Visit
+                        </button>
+                        <a href="#estimator" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-cream-100 text-warmbrown-800 border border-cream-300 font-semibold text-base text-center transition-all">
+                            Estimate Groom Price
+                        </a>
+                    </div>
+
+                    <!-- Highlights Badge Row -->
+                    <div class="pt-6 border-t border-cream-300/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl font-bold text-warmbrown-800">100%</div>
+                            <div class="text-xs text-stone-500">Organic Shampoos</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-warmbrown-800">10+ Yrs</div>
+                            <div class="text-xs text-stone-500">Master Groomers</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-sage-600 flex items-center justify-center lg:justify-start gap-1">
+                                4.9 <i class="fa-solid fa-star text-xs text-amber-400"></i>
+                            </div>
+                            <div class="text-xs text-stone-500">500+ Happy Pups</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image & Visuals -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Main Dog Image with fallback -->
+                        <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x1000/7E9F7E/FFFFFF?text=Paws+%26+Suds+Grooming';" 
+                                 alt="Happy freshly groomed dog" 
+                                 class="w-full h-full object-cover">
+                        </div>
+
+                        <!-- Floating Card 1 -->
+                        <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-white/80 hidden sm:flex">
+                            <div class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-500">Handling Style</p>
+                                <p class="text-sm font-bold text-stone-800">1-on-1 Gentle Touch</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2 -->
+                        <div class="absolute -top-6 -right-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-white/80 hidden sm:flex">
+                            <div class="w-10 h-10 rounded-xl bg-sage-500/20 text-sage-700 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-shield-dog"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-500">Safety First</p>
+                                <p class="text-sm font-bold text-stone-800">Sanitized Private Suites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE ESTIMATOR WIDGET -->
+    <section id="estimator" class="py-16 bg-white border-y border-cream-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Instant Quote Tool</span>
+                <h2 class="text-3xl font-bold text-warmbrown-800">Interactive Grooming Cost Estimator</h2>
+                <p class="text-stone-600 text-sm max-w-xl mx-auto">Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!</p>
+            </div>
+
+            <div class="bg-cream-50 rounded-3xl p-6 sm:p-10 border border-cream-200 shadow-md">
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Form Controls -->
+                    <div class="md:col-span-2 space-y-6">
+                        <!-- Step 1: Dog Size -->
+                        <div>
+                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">1. Select Dog Size</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <button type="button" onclick="setEstimatorSize('small', 45, '1.0 hr')" id="btn-size-small" class="estimator-size-btn p-3 rounded-2xl border-2 border-sage-500 bg-sage-50 text-stone-800 text-center transition-all">
+                                    <i class="fa-solid fa-dog text-lg block mb-1 text-sage-600"></i>
+                                    <span class="text-xs font-bold block">Small</span>
+                                    <span class="text-[10px] text-stone-500">Under 20 lbs</span>
+                                </button>
+                                <button type="button" onclick="setEstimatorSize('medium', 60, '1.5 hrs')" id="btn-size-medium" class="estimator-size-btn p-3 rounded-2xl border-2 border-cream-200 bg-white text-stone-700 text-center transition-all hover:border-sage-300">
+                                    <i class="fa-solid fa-dog text-xl block mb-1 text-sage-600"></i>
+                                    <span class="text-xs font-bold block">Medium</span>
+                                    <span class="text-[10px] text-stone-500">21 - 45 lbs</span>
+                                </button>
+                                <button type="button" onclick="setEstimatorSize('large', 80, '2.0 hrs')" id="btn-size-large" class="estimator-size-btn p-3 rounded-2xl border-2 border-cream-200 bg-white text-stone-700 text-center transition-all hover:border-sage-300">
+                                    <i class="fa-solid fa-dog text-2xl block mb-1 text-sage-600"></i>
+                                    <span class="text-xs font-bold block">Large</span>
+                                    <span class="text-[10px] text-stone-500">46 - 80 lbs</span>
+                                </button>
+                                <button type="button" onclick="setEstimatorSize('xlarge', 105, '2.5 hrs')" id="btn-size-xlarge" class="estimator-size-btn p-3 rounded-2xl border-2 border-cream-200 bg-white text-stone-700 text-center transition-all hover:border-sage-300">
+                                    <i class="fa-solid fa-shield-dog text-2xl block mb-1 text-sage-600"></i>
+                                    <span class="text-xs font-bold block">X-Large</span>
+                                    <span class="text-[10px] text-stone-500">80+ lbs</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Coat Type -->
+                        <div>
+                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">2. Coat Type / Breed Specialty</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <button type="button" onclick="setEstimatorCoat('short', 0)" id="btn-coat-short" class="estimator-coat-btn p-3 rounded-xl border-2 border-sage-500 bg-sage-50 text-xs font-semibold text-stone-800 text-center">
+                                    Short / Smooth
+                                </button>
+                                <button type="button" onclick="setEstimatorCoat('medium', 15)" id="btn-coat-medium" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300">
+                                    Medium / Wavy
+                                </button>
+                                <button type="button" onclick="setEstimatorCoat('long', 25)" id="btn-coat-long" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300">
+                                    Long / Double Coat
+                                </button>
+                                <button type="button" onclick="setEstimatorCoat('doodle', 20)" id="btn-coat-doodle" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300 relative">
+                                    <span class="absolute -top-2 -right-1 px-1.5 py-0.5 rounded-full bg-amber-400 text-stone-900 text-[9px] font-bold">+ $20</span>
+                                    Poodle / Doodle
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Add-ons -->
+                        <div>
+                            <label class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-3">3. Optional Add-On Services</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
+                                    <input type="checkbox" onchange="calculateEstimatorTotal()" id="addon-deshed" value="20" class="rounded text-sage-500 focus:ring-sage-500">
+                                    <span>De-shedding Treatment (+$20)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
+                                    <input type="checkbox" onchange="calculateEstimatorTotal()" id="addon-teeth" value="12" class="rounded text-sage-500 focus:ring-sage-500">
+                                    <span>Teeth Brushing & Breath Gel (+$12)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
+                                    <input type="checkbox" onchange="calculateEstimatorTotal()" id="addon-blueberry" value="15" class="rounded text-sage-500 focus:ring-sage-500">
+                                    <span>Blueberry Facial Soak (+$15)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
+                                    <input type="checkbox" onchange="calculateEstimatorTotal()" id="addon-flea" value="18" class="rounded text-sage-500 focus:ring-sage-500">
+                                    <span>Organic Flea & Tick Dip (+$18)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculation Output -->
+                    <div class="bg-gradient-to-br from-warmbrown-700 to-warmbrown-800 rounded-2xl p-6 text-white flex flex-col justify-between shadow-xl">
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1">Estimated Total</div>
+                            <div class="text-4xl font-extrabold flex items-baseline gap-1">
+                                $<span id="estimated-price">45</span>
+                                <span class="text-xs font-normal text-cream-200">*base estimate</span>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-white/20 space-y-2 text-xs">
+                                <div class="flex justify-between">
+                                    <span class="text-cream-200">Est. Duration:</span>
+                                    <span id="estimated-time" class="font-semibold">1.0 hr</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-cream-200">Included:</span>
+                                    <span class="font-semibold text-amber-300">Nails, Ears & Warm Bath</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <button onclick="bookWithEstimate()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold text-sm shadow-md transition-all text-center">
+                                Book This Custom Estimate
+                            </button>
+                            <p class="text-[10px] text-cream-200 text-center mt-2">Final pricing confirmed upon physical coat inspection.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PRICING PACKAGES -->
+    <section id="services" class="py-20 bg-cream-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-16">
+                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Spoil Your Companion</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">Our Grooming Packages</h2>
+                <p class="text-stone-600 text-sm max-w-xl mx-auto">Every session includes gentle hand drying, pad trim, sanitary cut, and a cute complimentary bandana!</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Package 1 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-cream-200 hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cream-100 text-warmbrown-700 flex items-center justify-center text-xl mb-4 group-hover:bg-sage-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-shower"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800">Essential Bath & Brush</h3>
+                        <p class="text-xs text-stone-500 mt-1">Perfect for short coats needing a fresh, squeaky-clean maintenance wash.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-warmbrown-800">$45</span>
+                            <span class="text-xs text-stone-500"> / starting rate</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Organic Shampoo Hydro-bath</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Warm Fluff Drying</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Thorough Brush Out</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Nail Clipping & Filing</li>
+                            <li class="flex items-center gap-2"><li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Ear Cleaning & Deodorizer</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Essential Bath & Brush')" class="mt-8 w-full py-3 rounded-xl bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700 font-semibold text-xs transition-all">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Package 2 (Featured) -->
+                <div class="bg-white rounded-3xl p-6 shadow-md border-2 border-sage-500 hover:shadow-xl transition-all flex flex-col justify-between relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-sage-500 text-white text-[10px] font-bold uppercase tracking-wider">
+                        Most Popular
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sage-100 text-sage-600 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-[#1] fa-scissors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800">Pampered Pup Full Groom</h3>
+                        <p class="text-xs text-stone-500 mt-1">Full body haircut styled to breed standard or custom owner preference.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-warmbrown-800">$75</span>
+                            <span class="text-xs text-stone-500"> / starting rate</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500 font-bold"></i> Everything in Essential Bath</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500 font-bold"></i> Custom Scissors Styling Cut</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500 font-bold"></i> Sanitary Area Trimming</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500 font-bold"></i> Paw Pad Hair Trim & Balm</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500 font-bold"></i> Teeth Brushing Gel</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Pampered Pup Full Groom')" class="mt-8 w-full py-3 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-xs transition-all shadow-sm">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-cream-200 hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cream-100 text-warmbrown-700 flex items-center justify-center text-xl mb-4 group-hover:bg-sage-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-baby-carriage"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800">Puppy's First Groom</h3>
+                        <p class="text-xs text-stone-500 mt-1">Gentle introduction for puppies under 6 months to build positive grooming habits.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-warmbrown-800">$35</span>
+                            <span class="text-xs text-stone-500"> / flat rate</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Gentle Warm Water Bath</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Low-Noise Dryer Intro</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Eye & Face Hair Trim</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Gentle Paw & Nail Touch</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Extra Play & Treat Rewards</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Puppys First Groom')" class="mt-8 w-full py-3 rounded-xl bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700 font-semibold text-xs transition-all">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-cream-200 hover:shadow-lg transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-cream-100 text-warmbrown-700 flex items-center justify-center text-xl mb-4 group-hover:bg-sage-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800">Nail & Paw Care Spa</h3>
+                        <p class="text-xs text-stone-500 mt-1">Quick walk-in session focusing entirely on paw comfort and hygiene.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-warmbrown-800">$25</span>
+                            <span class="text-xs text-stone-500"> / session</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Precision Nail Trimming</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Smooth Dremel Grinding</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Paw Pad Hair Tidy</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Soothing Organic Paw Butter</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> Ear Flush & Clean</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Nail & Paw Care Spa')" class="mt-8 w-full py-3 rounded-xl bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700 font-semibold text-xs transition-all">
+                        Select Package
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE & AFTER GALLERY -->
+    <section id="gallery" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-12">
+                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Transformation Gallery</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">Happy Pups Before & After</h2>
+                <p class="text-stone-600 text-sm max-w-xl mx-auto">Toggle or slide to see how our gentle styling turns fluffy scruffs into gorgeous, confident pets.</p>
+            </div>
+
+            <!-- Gallery Cards Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Transformation Item 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
+                    <div class="relative h-72">
+                        <!-- Before Image -->
+                        <img id="img-before-1" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Scruffy+Before';" 
+                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
+                        <!-- After Image -->
+                        <img id="img-after-1" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=Groomed+After';" 
+                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+                        
+                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-1">
+                            BEFORE
+                        </div>
+                    </div>
+                    <div class="p-5 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-stone-800">Milo</h4>
+                            <p class="text-xs text-stone-500">Golden Doodle • Full Grooming</p>
+                        </div>
+                        <button onclick="toggleGalleryView(1)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
+                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transformation Item 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
+                    <div class="relative h-72">
+                        <img id="img-before-2" src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Before+Groom';" 
+                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
+                        <img id="img-after-2" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=After+Groom';" 
+                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+                        
+                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-2">
+                            BEFORE
+                        </div>
+                    </div>
+                    <div class="p-5 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-stone-800">Teddy</h4>
+                            <p class="text-xs text-stone-500">Shih Tzu • Teddy Bear Cut</p>
+                        </div>
+                        <button onclick="toggleGalleryView(2)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
+                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transformation Item 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
+                    <div class="relative h-72">
+                        <img id="img-before-3" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Shaggy+Before';" 
+                             alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
+                        <img id="img-after-3" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=600" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=Fresh+After';" 
+                             alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+                        
+                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-3">
+                            BEFORE
+                        </div>
+                    </div>
+                    <div class="p-5 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-stone-800">Bella</h4>
+                            <p class="text-xs text-stone-500">French Bulldog • De-shed Spa</p>
+                        </div>
+                        <button onclick="toggleGalleryView(3)" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
+                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US & PHILOSOPHY -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Image Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=600" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=Groomer+At+Work';" 
+                         alt="Groomer bathing dog" class="rounded-3xl object-cover h-64 w-full shadow-md">
+                    <img src="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&q=80&w=600" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x600/B08968/FFFFFF?text=Organic+Shampoos';" 
+                         alt="Organic dog shampoos" class="rounded-3xl object-cover h-64 w-full shadow-md mt-6">
+                </div>
+
+                <!-- Right Text -->
+                <div class="space-y-6">
+                    <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Our Caring Philosophy</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">
+                        Where Comfort Meets Exceptional Style.
+                    </h2>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Founded in 2014 by certified master groomers, Paws & Suds was built on a simple premise: dogs deserve a peaceful, enjoyable grooming experience without harsh cages or hurried treatments.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-sage-100 text-sage-600 flex items-center justify-center shrink-0 text-base">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-stone-800 text-sm">100% Hypoallergenic & Organic</h4>
+                                <p class="text-xs text-stone-500">We exclusively use eco-friendly, sulfate-free shampoos formulated for sensitive canine skin.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-cream-200 text-warmbrown-700 flex items-center justify-center shrink-0 text-base">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-stone-800 text-sm">Fear-Free Certified Handling</h4>
+                                <p class="text-xs text-stone-500">Our staff is trained in positive reinforcement techniques to calm nervous or rescue pets.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 text-base">
+                                <i class="fa-solid fa-house-chimney-window"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-stone-800 text-sm">Private Quiet Suites</h4>
+                                <p class="text-xs text-stone-500">Individual relaxing lounge areas instead of loud, stressful cage banks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="reviews" class="py-20 bg-cream-100 border-t border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-16">
+                <span class="text-sage-600 font-semibold text-xs tracking-wider uppercase">Loved by Pet Parents</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-warmbrown-800">What Dog Owners Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-cream-200 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-stone-600 leading-relaxed italic">
+                            "My rescue dog Barnaby used to shake uncontrollably at groomers. The team at Paws & Suds took their time, gave him breaks, and now he practically trots right in!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sage-500 text-white font-bold flex items-center justify-center text-sm">
+                            SR
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-stone-800">Sarah R.</h5>
+                            <p class="text-[10px] text-stone-500">Barnaby's Mom (Goldendoodle)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-cream-200 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-stone-600 leading-relaxed italic">
+                            "The haircut precision is unmatched! They actually listen to how you want your dog cut. The blueberry facial left Charlie smelling amazing for weeks."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-warmbrown-600 text-white font-bold flex items-center justify-center text-sm">
+                            MC
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-stone-800">Marcus C.</h5>
+                            <p class="text-[10px] text-stone-500">Charlie's Dad (Bichon Frise)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-cream-200 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-stone-600 leading-relaxed italic">
+                            "Easy online booking, fair pricing, and clean facilities. The nail trim and dremel smoothing is the best in town. Highly recommend!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-sm">
+                            EL
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-stone-800">Elena L.</h5>
+                            <p class="text-[10px] text-stone-500">Luna's Mom (Husky)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-warmbrown-800 text-cream-100 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-warmbrown-700">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white text-lg">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight text-white">Paws & Suds</span>
+                    </div>
+                    <p class="text-xs text-cream-200/80 leading-relaxed">
+                        Providing gentle, organic, low-stress pet grooming services for dogs of all breeds and sizes.
+                    </p>
+                    <div class="flex gap-3 text-lg pt-2 text-cream-200">
+                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Business Hours -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Hours & Days</h4>
+                    <ul class="text-xs space-y-2 text-cream-200/80">
+                        <li class="flex justify-between"><span>Monday - Friday:</span> <span id="hours-weekdays" class="font-semibold text-white">8:00 AM - 6:00 PM</span></li>
+                        <li class="flex justify-between"><span>Saturday:</span> <span id="hours-saturday" class="font-semibold text-white">9:00 AM - 5:00 PM</span></li>
+                        <li class="flex justify-between"><span>Sunday:</span> <span id="hours-sunday" class="text-amber-400 font-semibold">Closed for Rest</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact Info -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Contact & Location</h4>
+                    <ul class="text-xs space-y-2 text-cream-200/80">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-amber-400"></i>
+                            <span id="footer-address">1244 Barkwood Lane, Suite B, Austin TX</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-amber-400"></i>
+                            <a id="footer-phone" href="tel:5550192834" class="hover:underline">(555) 019-2834</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-amber-400"></i>
+                            <a id="footer-email" href="mailto:hello@pawsandsuds.com" class="hover:underline">hello@pawsandsuds.com</a>
+                        </li>
+                    </ul>
+                    <!-- Emergency Tag -->
+                    <div class="mt-4 p-3 rounded-xl bg-warmbrown-700/60 border border-warmbrown-600 text-[11px] text-amber-300">
+                        <i class="fa-solid fa-kit-medical mr-1"></i> Urgent Matting Care Available
+                    </div>
+                </div>
+
+                <!-- Col 4: Map Preview Placeholder -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Find Us</h4>
+                    <div class="relative w-full h-32 rounded-2xl overflow-hidden bg-warmbrown-700 border border-warmbrown-600 flex items-center justify-center group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=400" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x200/5C3D2E/FFFFFF?text=Map+Location';" 
+                             alt="Map placeholder" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-stone-900/40 flex items-center justify-center">
+                            <span class="px-3 py-1.5 rounded-full bg-white text-stone-900 text-xs font-bold shadow flex items-center gap-1.5">
+                                <i class="fa-solid fa-map-pin text-sage-600"></i> Open Maps
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-200/60 gap-4">
+                <p>&copy; 2026 <span id="footer-site-name">Paws & Suds Grooming Spa</span>. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Cancellation Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- BOOKING APPOINTMENT MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-cream-200 overflow-hidden my-8 relative animate-fadeIn">
+            
+            <!-- Modal Header -->
+            <div class="bg-cream-100 p-6 border-b border-cream-200 flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-warmbrown-800">Schedule Dog Grooming</h3>
+                    <p class="text-xs text-stone-500">Step <span id="modal-step-num">1</span> of 3</p>
+                </div>
+                <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full bg-cream-200 hover:bg-cream-300 text-stone-600 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Body -->
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-6 space-y-6">
+                
+                <!-- STEP 1: Service & Dog Info -->
+                <div id="step-1" class="space-y-4">
+                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">1. Pet & Service Details</h4>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Dog's Name *</label>
+                            <input type="text" id="input-dog-name" required placeholder="e.g. Buster" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Dog Breed *</label>
+                            <input type="text" id="input-dog-breed" required placeholder="e.g. Poodle, Mixed" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Service Package *</label>
+                            <select id="input-service" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                                <option value="Essential Bath & Brush">Essential Bath & Brush ($45+)</option>
+                                <option value="Pampered Pup Full Groom">Pampered Pup Full Groom ($75+)</option>
+                                <option value="Puppys First Groom">Puppy's First Groom ($35)</option>
+                                <option value="Nail & Paw Care Spa">Nail & Paw Care Spa ($25)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Weight Category *</label>
+                            <select id="input-weight" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                                <option value="Small (under 20 lbs)">Small (under 20 lbs)</option>
+                                <option value="Medium (21-45 lbs)">Medium (21-45 lbs)</option>
+                                <option value="Large (46-80 lbs)">Large (46-80 lbs)</option>
+                                <option value="X-Large (80+ lbs)">X-Large (80+ lbs)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 mb-1">Special Handling / Temperament Notes</label>
+                        <textarea id="input-notes" rows="2" placeholder="e.g. Sensitive ears, nervous around blowdryer" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="pt-2 flex justify-end">
+                        <button type="button" onclick="goToStep(2)" class="px-6 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-xs transition-all">
+                            Next: Date & Time <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Date & Owner Details -->
+                <div id="step-2" class="space-y-4 hidden">
+                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">2. Preferred Date & Owner Info</h4>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Preferred Date *</label>
+                            <input type="date" id="input-date" required class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Preferred Time *</label>
+                            <select id="input-time" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                                <option>09:00 AM</option>
+                                <option>11:00 AM</option>
+                                <option>01:30 PM</option>
+                                <option>03:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Owner's Full Name *</label>
+                            <input type="text" id="input-owner-name" required placeholder="Jane Doe" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 mb-1">Phone Number *</label>
+                            <input type="tel" id="input-owner-phone" required placeholder="(555) 000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 mb-1">Email Address *</label>
+                        <input type="email" id="input-owner-email" required placeholder="jane@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                    </div>
+
+                    <div class="pt-2 flex justify-between">
+                        <button type="button" onclick="goToStep(1)" class="px-5 py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-stone-700 font-semibold text-xs">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                        </button>
+                        <button type="button" onclick="goToStep(3)" class="px-6 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-xs transition-all">
+                            Review & Confirm <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Review & Submit -->
+                <div id="step-3" class="space-y-4 hidden">
+                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">3. Confirm Your Booking</h4>
+
+                    <div class="bg-cream-100 p-4 rounded-2xl space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-stone-500">Pet:</span> <span id="summary-dog" class="font-bold text-stone-800">-</span></div>
+                        <div class="flex justify-between"><span class="text-stone-500">Service:</span> <span id="summary-service" class="font-bold text-stone-800">-</span></div>
+                        <div class="flex justify-between"><span class="text-stone-500">Date & Time:</span> <span id="summary-datetime" class="font-bold text-stone-800">-</span></div>
+                        <div class="flex justify-between"><span class="text-stone-500">Owner Contact:</span> <span id="summary-owner" class="font-bold text-stone-800">-</span></div>
+                    </div>
+
+                    <p class="text-[11px] text-stone-500">
+                        * No payment is required right now. We will send an SMS/Email confirmation once your slot is locked.
+                    </p>
+
+                    <div class="pt-2 flex justify-between">
+                        <button type="button" onclick="goToStep(2)" class="px-5 py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-stone-700 font-semibold text-xs">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Back
+                        </button>
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold text-xs shadow-md transition-all">
+                            Confirm Appointment
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST MESSAGE CONTAINER -->
+    <div id="toastMessage" class="fixed bottom-6 right-6 z-50 hidden bg-stone-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-stone-700 text-xs">
+        <i class="fa-solid fa-circle-check text-sage-500 text-base"></i>
+        <span id="toastText">Appointment request received! We will contact you shortly.</span>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTION LOGIC -->
+    <script>
+        // State for Estimator Widget
+        let estimatorState = {
+            basePrice: 45,
+            coatPrice: 0,
+            duration: '1.0 hr',
+            coatType: 'short'
+        };
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Estimator Size Selector
+        function setEstimatorSize(size, price, duration) {
+            estimatorState.basePrice = price;
+            estimatorState.duration = duration;
+
+            document.querySelectorAll('.estimator-size-btn').forEach(btn => {
+                btn.classList.remove('border-sage-500', 'bg-sage-50', 'text-stone-800');
+                btn.classList.add('border-cream-200', 'bg-white', 'text-stone-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-size-${size}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-cream-200', 'bg-white', 'text-stone-700');
+                activeBtn.classList.add('border-sage-500', 'bg-sage-50', 'text-stone-800');
+            }
+
+            calculateEstimatorTotal();
+        }
+
+        // Estimator Coat Selector
+        function setEstimatorCoat(coat, addPrice) {
+            estimatorState.coatPrice = addPrice;
+            estimatorState.coatType = coat;
+
+            document.querySelectorAll('.estimator-coat-btn').forEach(btn => {
+                btn.classList.remove('border-sage-500', 'bg-sage-50', 'text-stone-800');
+                btn.classList.add('border-cream-200', 'bg-white', 'text-stone-700');
+            });
+
+            const activeBtn = document.getElementById(`btn-coat-${coat}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-cream-200', 'bg-white', 'text-stone-700');
+                activeBtn.classList.add('border-sage-500', 'bg-sage-50', 'text-stone-800');
+            }
+
+            calculateEstimatorTotal();
+        }
+
+        // Estimator Total Calculation
+        function calculateEstimatorTotal() {
+            let total = estimatorState.basePrice + estimatorState.coatPrice;
+
+            document.querySelectorAll('.estimator-addon:checked').forEach(box => {
+                total += Number(box.value) || 0;
+            });
+
+            document.getElementById('estimated-price').innerText = total;
+            document.getElementById('estimated-time').innerText = estimatorState.duration;
+        }
+
+        // Transfer Estimator Choice to Modal
+        function bookWithEstimate() {
+            const featured = cmsData.services.find(s => s.badge) || cmsData.services[0];
+            openBookingModal(featured ? featured.title : undefined);
+            if (estimatorState.coatType === 'doodle') {
+                const breedInput = document.getElementById('input-dog-breed');
+                if (breedInput) {
+                    breedInput.value = 'Poodle / Doodle Mix';
+                }
+            }
+        }
+
+        // Before/After Image Toggle
+        function toggleGalleryView(n) {
+            const after = document.getElementById(`img-after-${n}`);
+            const badge = document.getElementById(`badge-${n}`);
+            if (!after || !badge) return;
+            const showingAfter = !after.classList.contains('opacity-0');
+            after.classList.toggle('opacity-0', showingAfter);
+            badge.innerText = showingAfter ? 'BEFORE' : 'AFTER';
+        }
+
+        // Booking Modal
+        function openBookingModal(packageName) {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-active');
+            if (packageName) {
+                const select = document.getElementById('input-service');
+                const match = Array.from(select.options).find(o => o.value === packageName);
+                if (match) select.value = packageName;
+            }
+            goToStep(1);
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('modal-active');
+        }
+
+        function goToStep(step) {
+            const current = [1, 2, 3].find(n => !document.getElementById(`step-${n}`).classList.contains('hidden')) || 1;
+            if (step > current) {
+                const required = document.querySelectorAll(`#step-${current} [required]`);
+                for (const field of required) {
+                    if (!field.reportValidity()) return;
+                }
+            }
+            [1, 2, 3].forEach(n => document.getElementById(`step-${n}`).classList.toggle('hidden', n !== step));
+            document.getElementById('modal-step-num').innerText = step;
+
+            if (step === 3) {
+                const value = id => document.getElementById(id).value;
+                document.getElementById('summary-dog').innerText = `${value('input-dog-name')} (${value('input-dog-breed')})`;
+                document.getElementById('summary-service').innerText = value('input-service');
+                document.getElementById('summary-datetime').innerText = `${value('input-date')} at ${value('input-time')}`;
+                document.getElementById('summary-owner').innerText = `${value('input-owner-name')} • ${value('input-owner-phone')}`;
+            }
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            closeBookingModal();
+            document.getElementById('bookingForm').reset();
+            const toast = document.getElementById('toastMessage');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4500);
+        }
+
+        // ---------- CMS content (content/*.json, edited through Decap CMS) ----------
+        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null };
+        const cmsSnapshots = {};
+        const AVATAR_COLORS = ['bg-sage-500', 'bg-warmbrown-600', 'bg-amber-500'];
+        const ICON_TINTS = ['bg-sage-100 text-sage-600', 'bg-cream-200 text-warmbrown-700', 'bg-amber-100 text-amber-600'];
+
+        function esc(value) {
+            return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function safeClass(value) {
+            return String(value ?? '').replace(/[^\w\s-]/g, '').trim();
+        }
+
+        function safeUrl(value) {
+            const url = String(value ?? '').trim();
+            return /^(https?:\/\/|\/|[\w.-]+\/)/i.test(url) && !/^javascript:/i.test(url) ? url : '';
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el && value) el.innerText = value;
+        }
+
+        function digitsOnly(value) {
+            return String(value ?? '').replace(/[^\d+]/g, '');
+        }
+
+        function renderHeader(s) {
+            if (s.logo_text) {
+                setText('logo-text', s.logo_text);
+                const footerBrand = document.querySelector('footer .text-xl.font-bold');
+                if (footerBrand) footerBrand.innerText = s.logo_text;
+            }
+            if (s.logo_tagline !== undefined) document.getElementById('logo-tagline').innerText = s.logo_tagline;
+            setText('header-button-text', s.header_button_text);
+            setText('mobile-button', s.header_button_text);
+
+            const box = document.getElementById('logo-box');
+            const image = safeUrl(s.logo_image);
+            if (image) {
+                box.className = 'w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden';
+                box.innerHTML = `<img src="${esc(image)}" alt="${esc(s.logo_text || 'Logo')}" class="w-full h-full object-contain">`;
+            } else {
+                box.className = 'w-12 h-12 rounded-2xl bg-sage-500 flex items-center justify-center text-white text-xl shadow-md group-hover:bg-sage-600 transition-colors overflow-hidden';
+                box.innerHTML = `<i class="${safeClass(s.logo_icon) || 'fa-solid fa-paw'}"></i>`;
+            }
+
+            const links = (s.nav_links || []).filter(l => l.label && /^#[\w-]*$|^https?:\/\//.test(l.link || ''));
+            if (links.length) {
+                document.getElementById('desktop-nav').innerHTML = links.map(l =>
+                    `<a href="${esc(l.link)}" class="hover:text-sage-600 transition-colors">${esc(l.label)}</a>`).join('');
+                document.getElementById('mobile-nav-links').innerHTML = links.map(l =>
+                    `<a href="${esc(l.link)}" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium">${esc(l.label)}</a>`).join('');
+            }
+        }
+
+        function renderSettings(s) {
+            if (!s) return;
+            renderHeader(s.header || {});
+            if (s.site_name) {
+                document.title = `${s.site_name} | Gentle & Professional Pet Care`;
+                setText('footer-site-name', s.site_name);
+            }
+            setText('hero-title', s.hero_title);
+            setText('hero-subtitle', s.hero_subtitle);
+            setText('footer-address', s.address);
+
+            if (s.phone) {
+                const header = document.getElementById('header-phone');
+                header.href = `tel:${digitsOnly(s.phone)}`;
+                header.innerHTML = `<i class="fa-solid fa-phone"></i> ${esc(s.phone)}`;
+                const footer = document.getElementById('footer-phone');
+                footer.href = `tel:${digitsOnly(s.phone)}`;
+                footer.innerText = s.phone;
+            }
+            if (s.email) {
+                const footer = document.getElementById('footer-email');
+                footer.href = `mailto:${s.email}`;
+                footer.innerText = s.email;
+            }
+            if (s.hours) {
+                setText('hours-weekdays', s.hours.weekdays);
+                setText('hours-saturday', s.hours.saturday);
+                setText('hours-sunday', s.hours.sunday);
+            }
+        }
+
+        function renderServices(items) {
+            if (!items.length) return;
+            const grid = document.querySelector('#services .grid.lg\\:grid-cols-4');
+            grid.innerHTML = items.map(item => {
+                const featured = Boolean(item.badge);
+                const features = (item.features || []).map(f => {
+                    const text = typeof f === 'string' ? f : f.feature_text;
+                    return `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage-500"></i> ${esc(text)}</li>`;
+                }).join('');
+                return `
+                <div class="bg-white rounded-3xl p-6 ${featured ? 'shadow-md border-2 border-sage-500 relative' : 'shadow-sm border border-cream-200 group'} hover:shadow-lg transition-all flex flex-col justify-between">
+                    ${featured ? `<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-sage-500 text-white text-[10px] font-bold uppercase tracking-wider">${esc(item.badge)}</div>` : ''}
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl ${featured ? 'bg-sage-100 text-sage-600' : 'bg-cream-100 text-warmbrown-700'} flex items-center justify-center text-xl mb-4">
+                            <i class="${safeClass(item.icon_class) || 'fa-solid fa-paw'}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800">${esc(item.title)}</h3>
+                        <p class="text-xs text-stone-500 mt-1">${esc(item.description)}</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-warmbrown-800">$${esc(item.base_price)}</span>
+                            <span class="text-xs text-stone-500"> ${esc(item.price_note)}</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">${features}</ul>
+                    </div>
+                    <button data-service="${esc(item.title)}" onclick="openBookingModal(this.dataset.service)" class="mt-8 w-full py-3 rounded-xl ${featured ? 'bg-sage-500 hover:bg-sage-600 text-white shadow-sm' : 'bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700'} font-semibold text-xs transition-all">
+                        Select Package
+                    </button>
+                </div>`;
+            }).join('');
+
+            const select = document.getElementById('input-service');
+            const previous = select.value;
+            select.innerHTML = items.map(item => `<option value="${esc(item.title)}">${esc(item.title)} ($${esc(item.base_price)}${/starting/i.test(item.price_note || '') ? '+' : ''})</option>`).join('');
+            if (items.some(i => i.title === previous)) select.value = previous;
+        }
+
+        function renderEstimator(data) {
+            if (!data) return;
+            const sizes = data.sizes || [];
+            const coats = data.coats || [];
+            const addons = data.addons || [];
+
+            if (sizes.length) {
+                const container = document.querySelector('#estimator .estimator-size-btn').parentElement;
+                const iconSizes = ['text-lg', 'text-xl', 'text-2xl', 'text-2xl'];
+                container.innerHTML = sizes.map((s, i) => `
+                    <button type="button" onclick="setEstimatorSize(${i}, ${Number(s.price) || 0}, this.dataset.duration)" data-duration="${esc(s.duration)}" id="btn-size-${i}" class="estimator-size-btn p-3 rounded-2xl border-2 border-cream-200 bg-white text-stone-700 text-center transition-all hover:border-sage-300">
+                        <i class="fa-solid ${i === sizes.length - 1 && sizes.length > 3 ? 'fa-shield-dog' : 'fa-dog'} ${iconSizes[Math.min(i, 3)]} block mb-1 text-sage-600"></i>
+                        <span class="text-xs font-bold block">${esc(s.name)}</span>
+                        <span class="text-[10px] text-stone-500">${esc(s.label)}</span>
+                    </button>`).join('');
+
+                const select = document.getElementById('input-weight');
+                select.innerHTML = sizes.map(s => `<option value="${esc(s.name)} (${esc(s.label)})">${esc(s.name)} (${esc(s.label)})</option>`).join('');
+            }
+
+            if (coats.length) {
+                const container = document.querySelector('#estimator .estimator-coat-btn').parentElement;
+                container.innerHTML = coats.map(c => {
+                    const id = safeClass(c.id) || 'coat';
+                    return `
+                    <button type="button" onclick="setEstimatorCoat('${id}', ${Number(c.extra_cost) || 0})" id="btn-coat-${id}" class="estimator-coat-btn p-3 rounded-xl border-2 border-cream-200 bg-white text-xs font-semibold text-stone-700 text-center hover:border-sage-300 relative">
+                        ${c.badge ? `<span class="absolute -top-2 -right-1 px-1.5 py-0.5 rounded-full bg-amber-400 text-stone-900 text-[9px] font-bold">${esc(c.badge)}</span>` : ''}
+                        ${esc(c.name)}
+                    </button>`;
+                }).join('');
+            }
+
+            const addonBox = document.querySelector('#estimator .estimator-addon, #estimator #addon-deshed');
+            if (addonBox) {
+                addonBox.closest('.grid').innerHTML = addons.map(a => `
+                    <label class="flex items-center gap-2 p-2.5 rounded-xl border border-cream-200 bg-white cursor-pointer hover:bg-cream-100">
+                        <input type="checkbox" onchange="calculateEstimatorTotal()" value="${Number(a.price) || 0}" class="estimator-addon rounded text-sage-500 focus:ring-sage-500">
+                        <span>${esc(a.title)} (+$${esc(a.price)})</span>
+                    </label>`).join('');
+            }
+
+            if (sizes.length) setEstimatorSize(0, Number(sizes[0].price) || 0, sizes[0].duration);
+            if (coats.length) setEstimatorCoat(safeClass(coats[0].id) || 'coat', Number(coats[0].extra_cost) || 0);
+        }
+
+        function renderGallery(items) {
+            if (!items.length) return;
+            const grid = document.querySelector('#gallery .grid.md\\:grid-cols-3');
+            grid.innerHTML = items.map((item, i) => {
+                const n = i + 1;
+                const before = safeUrl(item.image_before);
+                const after = safeUrl(item.image_after);
+                return `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-cream-200 group">
+                    <div class="relative h-72">
+                        <img id="img-before-${n}" src="${esc(before)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/D4A373/FFFFFF?text=Before';" alt="Before grooming" class="w-full h-full object-cover transition-opacity duration-300">
+                        <img id="img-after-${n}" src="${esc(after)}" onerror="this.onerror=null; this.src='https://placehold.co/600x600/7E9F7E/FFFFFF?text=After';" alt="After grooming" class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-300">
+                        <div class="absolute top-4 left-4 bg-stone-900/70 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm" id="badge-${n}">BEFORE</div>
+                    </div>
+                    <div class="p-5 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-stone-800">${esc(item.pup_name)}</h4>
+                            <p class="text-xs text-stone-500">${esc(item.details)}</p>
+                        </div>
+                        <button onclick="toggleGalleryView(${n})" class="px-4 py-2 rounded-xl bg-sage-100 hover:bg-sage-500 hover:text-white text-sage-700 font-semibold text-xs transition-colors">
+                            Toggle After <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                        </button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function renderAbout(data) {
+            if (!data) return;
+            const section = document.getElementById('about');
+            if (data.heading) section.querySelector('h2').innerText = data.heading;
+            if (data.bio) {
+                const paragraphs = String(data.bio).split(/\n\s*\n/).map(p => `<p class="text-stone-600 text-sm leading-relaxed">${esc(p.trim())}</p>`).join('');
+                const existing = document.getElementById('about-bio');
+                if (existing) {
+                    existing.innerHTML = paragraphs;
+                } else {
+                    const bio = section.querySelector('p.leading-relaxed');
+                    bio.insertAdjacentHTML('afterend', `<div class="space-y-3" id="about-bio">${paragraphs}</div>`);
+                    bio.remove();
+                }
+            }
+            if ((data.principles || []).length) {
+                const list = section.querySelector('.space-y-4.pt-2');
+                list.innerHTML = data.principles.map((p, i) => `
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-2xl ${ICON_TINTS[i % ICON_TINTS.length]} flex items-center justify-center shrink-0 text-base">
+                            <i class="${safeClass(p.icon) || 'fa-solid fa-paw'}"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-stone-800 text-sm">${esc(p.title)}</h4>
+                            <p class="text-xs text-stone-500">${esc(p.desc)}</p>
+                        </div>
+                    </div>`).join('');
+            }
+        }
+
+        function renderReviews(items) {
+            if (!items.length) return;
+            const grid = document.querySelector('#reviews .grid.md\\:grid-cols-3');
+            grid.innerHTML = items.map((r, i) => {
+                const rating = Math.max(0, Math.min(5, Number(r.rating) || 5));
+                const initials = String(r.owner_name || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+                return `
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-cream-200 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 gap-1 text-sm">${'<i class="fa-solid fa-star"></i>'.repeat(rating)}</div>
+                        <p class="text-xs text-stone-600 leading-relaxed italic">"${esc(r.review_text)}"</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full ${AVATAR_COLORS[i % AVATAR_COLORS.length]} text-white font-bold flex items-center justify-center text-sm">${esc(initials)}</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-stone-800">${esc(r.owner_name)}</h5>
+                            <p class="text-[10px] text-stone-500">${esc(r.pet_info)}</p>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        async function fetchContent(name) {
+            const response = await fetch(`content/${name}.json?t=${Date.now()}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
+            return response.text();
+        }
+
+        async function loadCmsContent() {
+            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about'];
+            const results = await Promise.allSettled(names.map(fetchContent));
+            const changed = new Set();
+
+            results.forEach((result, i) => {
+                if (result.status !== 'fulfilled') {
+                    if (!(names[i] in cmsSnapshots)) console.warn('CMS content unavailable, keeping built-in content:', result.reason);
+                    return;
+                }
+                if (cmsSnapshots[names[i]] === result.value) return;
+                cmsSnapshots[names[i]] = result.value;
+                try {
+                    const parsed = JSON.parse(result.value);
+                    cmsData[names[i]] = ['services', 'gallery', 'reviews'].includes(names[i]) ? (parsed.items || []) : parsed;
+                    changed.add(names[i]);
+                } catch (err) {
+                    console.warn(`Invalid JSON in content/${names[i]}.json`, err);
+                }
+            });
+
+            if (changed.has('settings')) renderSettings(cmsData.settings);
+            if (changed.has('services')) renderServices(cmsData.services);
+            if (changed.has('estimator')) renderEstimator(cmsData.estimator);
+            if (changed.has('gallery')) renderGallery(cmsData.gallery);
+            if (changed.has('reviews')) renderReviews(cmsData.reviews);
+            if (changed.has('about')) renderAbout(cmsData.about);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCmsContent();
+            setInterval(loadCmsContent, 10000);
+        });
+    </script>
+</body>
+</html>
