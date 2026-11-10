@@ -27,9 +27,16 @@
     "button_text": "Book This Custom Estimate",
     "button_color": "#F4A261",
     "button_text_color": "#1C1917",
-    "disclaimer": "Final pricing confirmed upon physical coat inspection."
+    "disclaimer": "Final pricing confirmed upon physical coat inspection.",
+    "appt_label": "4. Appointment Type"
   },
   "components": {
+    "appointments": [
+      { "name": "Essential Bath & Brush", "duration_adjust": 0, "price_adjust": 0 },
+      { "name": "Pampered Pup Full Groom", "duration_adjust": 60, "price_adjust": 0 },
+      { "name": "Puppy's First Groom", "duration_adjust": 0, "price_adjust": 0 },
+      { "name": "Nail & Paw Care Spa", "duration_adjust": -30, "price_adjust": 0 }
+    ],
     "sizes": [
       {
         "name": "Small",
