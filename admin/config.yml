@@ -29,6 +29,7 @@ collections:
         name: "general"
         fields:
           - { label: "Business Name", name: "site_name", widget: "string", default: "Paws & Suds Grooming Spa" }
+          - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
             widget: "object"
