@@ -2,7 +2,7 @@
   "display": {
     "card_muted_color": "#F2EBD9",
     "description_color": "#33332d",
-    "included_color": "#758132",
+    "included_color": "#454a26",
     "card_text_color": "#FFFFFF",
     "section_bg_color": "#FFFFFF",
     "panel_bg_color": "#FDFBF7",
@@ -27,7 +27,7 @@
     "disclaimer": "Final pricing confirmed upon physical coat inspection.",
     "title_color": "#4B5320",
     "description": "Select your dog's size, coat length, and extra treats to get an instant estimated rate and grooming duration!",
-    "total_label_color": "#758132",
+    "total_label_color": "#454a26",
     "button_text_color": "#1C1917"
   },
   "components": {
