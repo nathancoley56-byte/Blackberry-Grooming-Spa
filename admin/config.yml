@@ -29,6 +29,14 @@ collections:
         name: "general"
         fields:
           - { label: "Business Name", name: "site_name", widget: "string", default: "Paws & Suds Grooming Spa" }
+          - label: "Footer Social Media Links"
+            name: "social_links"
+            widget: "list"
+            required: false
+            summary: "{{fields.platform}}: {{fields.url}}"
+            fields:
+              - { label: "Platform", name: "platform", widget: "select", options: ["instagram", "facebook", "tiktok", "youtube", "x", "pinterest", "linkedin", "yelp", "google"] }
+              - { label: "Link (full URL, e.g. https://instagram.com/yourpage)", name: "url", widget: "string" }
           - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
