@@ -1,58 +1,97 @@
-{
-  "items": [
-    {
-      "title": "Small Dog Full Groom",
-      "badge": "",
-      "description": "Full groom for dogs 1 - 25 lbs. Approx. 2 hrs.",
-      "base_price": 95,
-      "price_note": "/ session",
-      "icon_class": "fa-solid fa-scissors",
-      "features": ["Bath & Blow Dry", "Custom Styling Cut", "Sanitary Area Trimming", "Nail Clipping & Filing", "Ear Cleaning"]
-    },
-    {
-      "title": "Medium Dog Full Groom",
-      "badge": "Most Popular",
-      "description": "Full groom for dogs 25 - 50 lbs. Approx. 2 hrs 40 mins.",
-      "base_price": 110,
-      "price_note": "/ session",
-      "icon_class": "fa-solid fa-scissors",
-      "features": ["Bath & Blow Dry", "Custom Styling Cut", "Sanitary Area Trimming", "Nail Clipping & Filing", "Ear Cleaning"]
-    },
-    {
-      "title": "Large Dog Full Groom",
-      "badge": "",
-      "description": "Full groom for dogs 50 - 75 lbs. Approx. 3 hrs.",
-      "base_price": 125,
-      "price_note": "/ session",
-      "icon_class": "fa-solid fa-dog",
-      "features": ["Bath & Blow Dry", "Custom Styling Cut", "Sanitary Area Trimming", "Nail Clipping & Filing", "Ear Cleaning"]
-    },
-    {
-      "title": "Extra Large Dog Full Groom",
-      "badge": "",
-      "description": "Full groom for dogs 75 - 90 lbs. Approx. 3 hrs 30 mins.",
-      "base_price": 135,
-      "price_note": "/ session",
-      "icon_class": "fa-solid fa-dog",
-      "features": ["Bath & Blow Dry", "Custom Styling Cut", "Sanitary Area Trimming", "Nail Clipping & Filing", "Ear Cleaning"]
-    },
-    {
-      "title": "The Little Luxuries Package",
-      "badge": "",
-      "description": "A pampering package. Approx. 2 hrs 20 mins. Additional charges may apply depending on your dog's size.",
-      "base_price": 55,
-      "price_note": "/ starting rate",
-      "icon_class": "fa-solid fa-gem",
-      "features": ["Pampering Treatments", "Gentle Handling", "Finishing Spritz"]
-    },
-    {
-      "title": "Nails, Teeth, Eyes, and Ears",
-      "badge": "",
-      "description": "Quick hygiene session. Approx. 30 mins.",
-      "base_price": 25,
-      "price_note": "/ session",
-      "icon_class": "fa-solid fa-paw",
-      "features": ["Nail Trimming", "Teeth Cleaning", "Eye Tidy", "Ear Cleaning"]
-    }
-  ]
+﻿{
+    "items":  [
+                  {
+                      "title":  "Small Dog Full Groom",
+                      "badge":  "",
+                      "description":  "Full groom for dogs 1 - 25 lbs. Approx. 2 hrs.",
+                      "base_price":  95,
+                      "price_note":  "/ session",
+                      "icon_class":  "fa-solid fa-scissors",
+                      "features":  [
+                                       "Bath \u0026 Blow Dry",
+                                       "Custom Styling Cut",
+                                       "Sanitary Area Trimming",
+                                       "Nail Clipping \u0026 Filing",
+                                       "Ear Cleaning"
+                                   ],
+                      "acuity_id":  "100376088"
+                  },
+                  {
+                      "title":  "Medium Dog Full Groom",
+                      "badge":  "Most Popular",
+                      "description":  "Full groom for dogs 25 - 50 lbs. Approx. 2 hrs 40 mins.",
+                      "base_price":  110,
+                      "price_note":  "/ session",
+                      "icon_class":  "fa-solid fa-scissors",
+                      "features":  [
+                                       "Bath \u0026 Blow Dry",
+                                       "Custom Styling Cut",
+                                       "Sanitary Area Trimming",
+                                       "Nail Clipping \u0026 Filing",
+                                       "Ear Cleaning"
+                                   ],
+                      "acuity_id":  "100376129"
+                  },
+                  {
+                      "title":  "Large Dog Full Groom",
+                      "badge":  "",
+                      "description":  "Full groom for dogs 50 - 75 lbs. Approx. 3 hrs.",
+                      "base_price":  125,
+                      "price_note":  "/ session",
+                      "icon_class":  "fa-solid fa-dog",
+                      "features":  [
+                                       "Bath \u0026 Blow Dry",
+                                       "Custom Styling Cut",
+                                       "Sanitary Area Trimming",
+                                       "Nail Clipping \u0026 Filing",
+                                       "Ear Cleaning"
+                                   ],
+                      "acuity_id":  "100376155"
+                  },
+                  {
+                      "title":  "Extra Large Dog Full Groom",
+                      "badge":  "",
+                      "description":  "Full groom for dogs 75 - 90 lbs. Approx. 3 hrs 30 mins.",
+                      "base_price":  135,
+                      "price_note":  "/ session",
+                      "icon_class":  "fa-solid fa-dog",
+                      "features":  [
+                                       "Bath \u0026 Blow Dry",
+                                       "Custom Styling Cut",
+                                       "Sanitary Area Trimming",
+                                       "Nail Clipping \u0026 Filing",
+                                       "Ear Cleaning"
+                                   ],
+                      "acuity_id":  "100376181"
+                  },
+                  {
+                      "title":  "The Little Luxuries Package",
+                      "badge":  "",
+                      "description":  "A pampering package. Approx. 2 hrs 20 mins. Additional charges may apply depending on your dog\u0027s size.",
+                      "base_price":  55,
+                      "price_note":  "/ starting rate",
+                      "icon_class":  "fa-solid fa-gem",
+                      "features":  [
+                                       "Pampering Treatments",
+                                       "Gentle Handling",
+                                       "Finishing Spritz"
+                                   ],
+                      "acuity_id":  "100376449"
+                  },
+                  {
+                      "title":  "Nails, Teeth, Eyes, and Ears",
+                      "badge":  "",
+                      "description":  "Quick hygiene session. Approx. 30 mins.",
+                      "base_price":  25,
+                      "price_note":  "/ session",
+                      "icon_class":  "fa-solid fa-paw",
+                      "features":  [
+                                       "Nail Trimming",
+                                       "Teeth Cleaning",
+                                       "Eye Tidy",
+                                       "Ear Cleaning"
+                                   ],
+                      "acuity_id":  "100376320"
+                  }
+              ]
 }
