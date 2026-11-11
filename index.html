@@ -670,153 +670,29 @@
     </footer>
 
 
-    <!-- BOOKING APPOINTMENT MODAL -->
-    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 overflow-y-auto">
-        <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-cream-200 overflow-hidden my-8 relative animate-fadeIn">
-            
-            <!-- Modal Header -->
+    <!-- ACUITY SCHEDULING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+        <div class="bg-white rounded-3xl max-w-5xl w-full shadow-2xl border border-cream-200 overflow-hidden my-8 relative">
             <div class="bg-cream-100 p-6 border-b border-cream-200 flex items-center justify-between">
                 <div>
-                    <h3 class="text-xl font-bold text-warmbrown-800">Schedule Dog Grooming</h3>
-                    <p class="text-xs text-stone-500">Step <span id="modal-step-num">1</span> of 3</p>
+                    <h3 id="booking-modal-title" class="text-xl font-bold text-warmbrown-800">Book an Appointment</h3>
+                    <p class="text-xs text-stone-500">Choose your grooming service and appointment time.</p>
                 </div>
-                <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full bg-cream-200 hover:bg-cream-300 text-stone-600 flex items-center justify-center">
+                <button type="button" onclick="closeBookingModal()" aria-label="Close booking window" class="w-8 h-8 rounded-full bg-cream-200 hover:bg-cream-300 text-stone-600 flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-
-            <!-- Modal Content Body -->
-            <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-6 space-y-6">
-                
-                <!-- STEP 1: Service & Dog Info -->
-                <div id="step-1" class="space-y-4">
-                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">1. Pet & Service Details</h4>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Dog's Name *</label>
-                            <input type="text" id="input-dog-name" required placeholder="e.g. Buster" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Dog Breed *</label>
-                            <input type="text" id="input-dog-breed" required placeholder="e.g. Poodle, Mixed" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Service Package *</label>
-                            <select id="input-service" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                                <option value="Essential Bath & Brush">Essential Bath & Brush ($45+)</option>
-                                <option value="Pampered Pup Full Groom">Pampered Pup Full Groom ($75+)</option>
-                                <option value="Puppys First Groom">Puppy's First Groom ($35)</option>
-                                <option value="Nail & Paw Care Spa">Nail & Paw Care Spa ($25)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Weight Category *</label>
-                            <select id="input-weight" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                                <option value="Small (under 20 lbs)">Small (under 20 lbs)</option>
-                                <option value="Medium (21-45 lbs)">Medium (21-45 lbs)</option>
-                                <option value="Large (46-80 lbs)">Large (46-80 lbs)</option>
-                                <option value="X-Large (80+ lbs)">X-Large (80+ lbs)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-stone-700 mb-1">Special Handling / Temperament Notes</label>
-                        <textarea id="input-notes" rows="2" placeholder="e.g. Sensitive ears, nervous around blowdryer" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none"></textarea>
-                    </div>
-
-                    <div class="pt-2 flex justify-end">
-                        <button type="button" onclick="goToStep(2)" class="px-6 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-xs transition-all">
-                            Next: Date & Time <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
+            <div class="p-4 sm:p-6">
+                <div id="acuity-setup-notice" class="rounded-2xl bg-cream-100 p-6 text-center text-sm text-stone-700" role="status">
+                    Online booking is being set up. Please call us using the phone number above to schedule.
                 </div>
-
-                <!-- STEP 2: Date & Owner Details -->
-                <div id="step-2" class="space-y-4 hidden">
-                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">2. Preferred Date & Owner Info</h4>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Preferred Date *</label>
-                            <input type="date" id="input-date" required class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Preferred Time *</label>
-                            <select id="input-time" required class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                                <option value="">Pick a date first</option>
-                            </select>
-                            <p id="slot-message" class="text-[11px] text-stone-500 mt-1 min-h-[1rem]"></p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Owner's Full Name *</label>
-                            <input type="text" id="input-owner-name" required placeholder="Jane Doe" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-700 mb-1">Phone Number *</label>
-                            <input type="tel" id="input-owner-phone" required placeholder="(555) 000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-stone-700 mb-1">Email Address *</label>
-                        <input type="email" id="input-owner-email" required placeholder="jane@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
-                    </div>
-
-                    <div class="pt-2 flex justify-between">
-                        <button type="button" onclick="goToStep(1)" class="px-5 py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-stone-700 font-semibold text-xs">
-                            <i class="fa-solid fa-arrow-left mr-1"></i> Back
-                        </button>
-                        <button type="button" onclick="goToStep(3)" class="px-6 py-2.5 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-semibold text-xs transition-all">
-                            Review & Confirm <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- STEP 3: Review & Submit -->
-                <div id="step-3" class="space-y-4 hidden">
-                    <h4 class="text-sm font-bold text-stone-800 border-b pb-2">3. Confirm Your Booking</h4>
-
-                    <div class="bg-cream-100 p-4 rounded-2xl space-y-2 text-xs">
-                        <div class="flex justify-between"><span class="text-stone-500">Pet:</span> <span id="summary-dog" class="font-bold text-stone-800">-</span></div>
-                        <div class="flex justify-between"><span class="text-stone-500">Service:</span> <span id="summary-service" class="font-bold text-stone-800">-</span></div>
-                        <div class="flex justify-between"><span class="text-stone-500">Date & Time:</span> <span id="summary-datetime" class="font-bold text-stone-800">-</span></div>
-                        <div class="flex justify-between"><span class="text-stone-500">Owner Contact:</span> <span id="summary-owner" class="font-bold text-stone-800">-</span></div>
-                    </div>
-
-                    <p class="text-[11px] text-stone-500">
-                        * No payment is required right now. We will send an SMS/Email confirmation once your slot is locked.
-                    </p>
-
-                    <div class="pt-2 flex justify-between">
-                        <button type="button" onclick="goToStep(2)" class="px-5 py-2.5 rounded-xl bg-cream-200 hover:bg-cream-300 text-stone-700 font-semibold text-xs">
-                            <i class="fa-solid fa-arrow-left mr-1"></i> Back
-                        </button>
-                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold text-xs shadow-md transition-all">
-                            Confirm Appointment
-                        </button>
-                    </div>
-                </div>
-
-            </form>
+                <iframe id="acuity-scheduler" class="hidden w-full min-h-[70vh] border-0" title="Acuity online appointment scheduler" loading="lazy"></iframe>
+                <a id="acuity-open-link" class="hidden mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sage-700 underline" target="_blank" rel="noopener noreferrer">
+                    Open the booking page in a new tab <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
         </div>
     </div>
-
-    <!-- Static copy of the booking form so Netlify Forms detects it and emails/stores each booking -->
-    <form name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
-        <input name="bot-field">
-        <input name="date"><input name="time"><input name="dog_name"><input name="dog_breed">
-        <input name="service"><input name="weight"><textarea name="notes"></textarea>
-        <input name="estimate_appointment"><input name="estimate_dog_size"><input name="estimate_coat_type"><input name="estimate_addons"><input name="estimated_price"><input name="estimated_duration">
-        <input name="owner_name"><input name="owner_phone"><input name="owner_email">
-    </form>
 
     <!-- NOTIFICATION TOAST MESSAGE CONTAINER -->
     <div id="toastMessage" class="fixed bottom-6 right-6 z-50 hidden bg-stone-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-stone-700 text-xs">
@@ -950,21 +826,7 @@
         }
 
         function bookWithEstimate() {
-            const estimate = currentEstimate();
-            const featured = cmsData.services.find(s => s.badge) || cmsData.services[0];
-            const norm = t => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-            const matched = estimatorState.apptName && cmsData.services.find(s => norm(s.title) === norm(estimatorState.apptName));
-            const pick = matched || featured;
-            openBookingModal(pick ? pick.title : undefined, estimate);
-            const weightSel = document.getElementById('input-weight');
-            const sizeOpt = Array.from(weightSel.options).find(o => estimate.size && o.value.startsWith(estimate.size + ' ('));
-            if (sizeOpt) weightSel.value = sizeOpt.value;
-            if (estimatorState.coatType === 'doodle') {
-                const breedInput = document.getElementById('input-dog-breed');
-                if (breedInput) {
-                    breedInput.value = 'Poodle / Doodle Mix';
-                }
-            }
+            openBookingModal();
         }
 
         // Before/After Image Toggle
@@ -979,20 +841,12 @@
             if (arrow) arrow.className = showingAfter ? 'fa-solid fa-chevron-left' : 'fa-solid fa-chevron-right';
         }
 
-        // Booking Modal
-        let bookingEstimate = null;
-        function openBookingModal(packageName, estimate) {
-            bookingEstimate = estimate || null;
+        // Acuity booking modal
+        function openBookingModal() {
             const modal = document.getElementById('bookingModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.classList.add('modal-active');
-            if (packageName) {
-                const select = document.getElementById('input-service');
-                const match = Array.from(select.options).find(o => o.value === packageName);
-                if (match) select.value = packageName;
-            }
-            goToStep(1);
         }
 
         function closeBookingModal() {
@@ -1002,64 +856,45 @@
             document.body.classList.remove('modal-active');
         }
 
-        function goToStep(step) {
-            const current = [1, 2, 3].find(n => !document.getElementById(`step-${n}`).classList.contains('hidden')) || 1;
-            if (step > current) {
-                const required = document.querySelectorAll(`#step-${current} [required]`);
-                for (const field of required) {
-                    if (!field.reportValidity()) return;
-                }
-            }
-            [1, 2, 3].forEach(n => document.getElementById(`step-${n}`).classList.toggle('hidden', n !== step));
-            document.getElementById('modal-step-num').innerText = step;
-
-            if (step === 3) {
-                const value = id => document.getElementById(id).value;
-                document.getElementById('summary-dog').innerText = `${value('input-dog-name')} (${value('input-dog-breed')})`;
-                document.getElementById('summary-service').innerText = value('input-service');
-                document.getElementById('summary-datetime').innerText = `${value('input-date')} at ${value('input-time')}`;
-                document.getElementById('summary-owner').innerText = `${value('input-owner-name')} • ${value('input-owner-phone')}`;
-            }
-        }
-
-        async function handleBookingSubmit(event) {
-            event.preventDefault();
-            const value = id => document.getElementById(id).value;
-            const booking = {
-                date: value('input-date'), time: value('input-time'),
-                dogName: value('input-dog-name'), dogBreed: value('input-dog-breed'),
-                service: value('input-service'), weight: value('input-weight'), notes: value('input-notes'),
-                ownerName: value('input-owner-name'), ownerPhone: value('input-owner-phone'), ownerEmail: value('input-owner-email')
-            };
-            const est = bookingEstimate || {};
-            const submitBtn = event.submitter;
-            if (submitBtn) submitBtn.disabled = true;
+        function renderAcuityScheduler(value) {
+            const notice = document.getElementById('acuity-setup-notice');
+            const iframe = document.getElementById('acuity-scheduler');
+            const link = document.getElementById('acuity-open-link');
+            const rawUrl = String(value ?? '').trim();
+            let bookingUrl = '';
             try {
-                const res = await fetch('/api/bookings', {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(booking)
-                });
-                const result = await res.json().catch(() => ({}));
-                if (!res.ok) {
-                    showToast(result.error || 'Sorry, we could not book that time. Please try again.');
-                    if (res.status === 409) { goToStep(2); refreshSlots(); }
-                    return;
+                const url = new URL(rawUrl);
+                const host = url.hostname.toLowerCase();
+                if (url.protocol === 'https:' && (host === 'acuityscheduling.com' || host.endsWith('.acuityscheduling.com') || host === 'as.me' || host.endsWith('.as.me'))) {
+                    bookingUrl = url.href;
                 }
-                // Also record it as a Netlify form submission so it appears in the Netlify dashboard / email notifications
-                const params = new URLSearchParams({
-                    'form-name': 'booking', date: booking.date, time: booking.time, dog_name: booking.dogName,
-                    dog_breed: booking.dogBreed, service: booking.service, weight: booking.weight, notes: booking.notes,
-                    owner_name: booking.ownerName, owner_phone: booking.ownerPhone, owner_email: booking.ownerEmail,
-                    estimate_appointment: est.appointment || '', estimate_dog_size: est.size || '', estimate_coat_type: est.coat || '',
-                    estimate_addons: est.addons || '', estimated_price: est.price ? '$' + est.price : '', estimated_duration: est.duration || ''
-                });
-                fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() }).catch(() => {});
-                closeBookingModal();
-                document.getElementById('bookingForm').reset();
-                showToast('Appointment request received! We will contact you shortly.');
             } catch (err) {
-                showToast('Booking is unavailable right now. Please call us instead.');
-            } finally {
-                if (submitBtn) submitBtn.disabled = false;
+                if (rawUrl) console.warn('Invalid Acuity public scheduling URL in site settings.');
+            }
+
+            if (!bookingUrl) {
+                iframe.removeAttribute('src');
+                iframe.classList.add('hidden');
+                link.classList.add('hidden');
+                notice.textContent = rawUrl
+                    ? 'The booking page URL in site settings is not a valid Acuity public URL. Please update it in the site settings.'
+                    : 'Online booking is being set up. Please call us using the phone number above to schedule.';
+                notice.classList.remove('hidden');
+                return;
+            }
+
+            notice.classList.add('hidden');
+            iframe.src = bookingUrl;
+            iframe.classList.remove('hidden');
+            link.href = bookingUrl;
+            link.classList.remove('hidden');
+
+            if (!document.querySelector('script[data-acuity-embed]')) {
+                const script = document.createElement('script');
+                script.src = 'https://embed.acuityscheduling.com/js/embed.js';
+                script.async = true;
+                script.dataset.acuityEmbed = 'true';
+                document.body.appendChild(script);
             }
         }
 
@@ -1070,69 +905,8 @@
             setTimeout(() => toast.classList.add('hidden'), 4500);
         }
 
-        // ---------- Schedule (content/schedule.json + live availability from /api/bookings) ----------
-        const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        let slotRequestId = 0;
-
-        function fmtDate(d) {
-            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        }
-
-        function applySchedule(sch) {
-            const dateInput = document.getElementById('input-date');
-            if (!dateInput || !sch) return;
-            const base = new Date();
-            const min = new Date(base); min.setDate(min.getDate() + Number(sch.min_notice_days ?? 1));
-            const max = new Date(base); max.setDate(max.getDate() + Number(sch.days_ahead ?? 60));
-            dateInput.min = fmtDate(min);
-            dateInput.max = fmtDate(max);
-            refreshSlots();
-        }
-
-        async function refreshSlots() {
-            const sch = cmsData.schedule;
-            const dateInput = document.getElementById('input-date');
-            const select = document.getElementById('input-time');
-            const msg = document.getElementById('slot-message');
-            if (!sch || !select) return;
-            const setOptions = (opts, text) => {
-                select.innerHTML = opts.map(o => `<option value="${esc(o.value)}"${o.disabled ? ' disabled' : ''}>${esc(o.label)}</option>`).join('');
-                msg.textContent = text || '';
-            };
-            const date = dateInput.value;
-            if (!date) return setOptions([{ value: '', label: 'Pick a date first' }]);
-            const dayName = DAY_NAMES[new Date(date + 'T00:00:00').getDay()];
-            if (!(sch.open_days || []).includes(dayName) || (sch.days_off || []).includes(date)) {
-                return setOptions([{ value: '', label: 'Closed that day' }], 'We are closed on that day. Please pick another date.');
-            }
-            const slots = sch.time_slots || [];
-            const myRequest = ++slotRequestId;
-            setOptions([{ value: '', label: 'Checking availability…' }]);
-            const normTime = v => {
-                const m = /^\s*(\d{1,2}):?(\d{2})?\s*([ap])\.?m?\.?\s*$/i.exec(String(v ?? ''));
-                return m ? `${m[1].padStart(2, '0')}:${m[2] || '00'} ${m[3].toUpperCase()}M` : String(v ?? '').trim().toUpperCase();
-            };
-            const closedTimes = new Set();
-            (sch.blocked_slots || []).forEach(b => {
-                if (b && b.date === date) [...(b.times || []), b.time].forEach(t => { if (t) closedTimes.add(normTime(t)); });
-            });
-            let taken = slots.filter(t => closedTimes.has(normTime(t)));
-            try {
-                const res = await fetch(`/api/bookings?date=${encodeURIComponent(date)}`, { cache: 'no-store' });
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.closed) return myRequest === slotRequestId && setOptions([{ value: '', label: 'Unavailable' }], data.reason);
-                    taken = [...new Set([...taken, ...(data.taken || [])])];
-                }
-            } catch (err) { /* offline or no booking service: server still validates on submit */ }
-            if (myRequest !== slotRequestId) return;
-            const free = slots.filter(t => !taken.includes(t));
-            if (!free.length) return setOptions([{ value: '', label: 'Fully booked' }], 'That day is fully booked. Please pick another date.');
-            setOptions([{ value: '', label: 'Select a time' }, ...slots.map(t => ({ value: t, label: taken.includes(t) ? `${t} (booked)` : t, disabled: taken.includes(t) }))]);
-        }
-
         // ---------- CMS content (content/*.json, edited through Decap CMS) ----------
-        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, schedule: null, hero: null, footer: null };
+        const cmsData = { settings: null, services: [], estimator: null, gallery: [], reviews: [], about: null, hero: null, footer: null };
         const cmsSnapshots = {};
         const AVATAR_COLORS = ['bg-sage-500', 'bg-warmbrown-600', 'bg-amber-500'];
         const ICON_TINTS = ['bg-sage-100 text-sage-600', 'bg-cream-200 text-warmbrown-700', 'bg-amber-100 text-amber-600'];
@@ -1362,6 +1136,7 @@
             if (safeColor(s.heading_color)) document.documentElement.style.setProperty('--heading-color', safeColor(s.heading_color));
             else document.documentElement.style.removeProperty('--heading-color');
             renderHeader(s.header || {});
+            renderAcuityScheduler(s.acuity_booking_url);
             if (s.site_name) document.title = `${s.site_name} | Gentle & Professional Pet Care`;
 
             if (s.phone) {
@@ -1617,7 +1392,7 @@
         }
 
         async function loadCmsContent() {
-            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'schedule', 'hero', 'footer'];
+            const names = ['settings', 'services', 'estimator', 'gallery', 'reviews', 'about', 'hero', 'footer'];
             const results = await Promise.allSettled(names.map(fetchContent));
             const changed = new Set();
 
@@ -1644,7 +1419,6 @@
             if (changed.has('gallery')) renderGallery(cmsData.gallery);
             if (changed.has('reviews')) renderReviews(cmsData.reviews);
             if (changed.has('about')) renderAbout(cmsData.about);
-            if (changed.has('schedule')) applySchedule(cmsData.schedule);
             if (changed.has('hero')) renderHero(cmsData.hero);
             if (changed.has('footer') && !changed.has('settings')) renderFooter();
         }
@@ -1655,7 +1429,6 @@
                 const cached = safeUrl(localStorage.getItem('cachedLogoImage'));
                 if (cached) renderHeader({ logo_image: cached });
             } catch (e) {}
-            document.getElementById('input-date').addEventListener('change', refreshSlots);
             loadCmsContent();
             setInterval(loadCmsContent, 10000);
         });
