@@ -207,6 +207,7 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Base Starting Price ($)", name: "base_price", widget: "number", value_type: "int" }
               - { label: "Pricing Note", name: "price_note", widget: "string", default: "/ starting rate" }
+              - { label: "Acuity Appointment Type ID", name: "acuity_id", widget: "string", required: false, hint: "Opens this service directly in booking. Find the ID in the Acuity link (appointmentType=...)." }
               - { label: "Icon FontAwesome Class", name: "icon_class", widget: "string", default: "fa-solid fa-shower" }
               - label: "Included Features List"
                 name: "features"
@@ -276,6 +277,7 @@ collections:
                   - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
                   - { label: "Base Price ($) - Full Groom price for this size (match Acuity)", name: "price", widget: "number", value_type: "int", required: false }
                   - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 2 hrs 40 mins
+                  - { label: "Acuity Appointment Type ID", name: "acuity_id", widget: "string", required: false }
                   - { label: "Icon (FontAwesome class, optional)", name: "icon", widget: "string", required: false, hint: "e.g. fa-dog or fa-shield-dog" }
 
               # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
@@ -310,6 +312,7 @@ collections:
                   - { label: "Flat Price ($, when not size-based)", name: "price", widget: "number", value_type: "int", required: false, default: 0 }
                   - { label: "Flat Duration (when not size-based, e.g. 2 hrs 20 mins)", name: "duration", widget: "string", required: false }
                   - { label: "Add Coat Type Surcharge", name: "coat_surcharge", widget: "boolean", default: true }
+                  - { label: "Acuity Appointment Type ID (not size-based only)", name: "acuity_id", widget: "string", required: false }
 
   # ==========================================
   # 4. BEFORE & AFTER GALLERY
