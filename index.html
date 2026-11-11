@@ -715,7 +715,9 @@
             const appt = estimatorState.appt;
             let id = appt && appt.acuity_id;
             if (!appt || appt.size_based) {
-                const size = (cmsData.estimator && cmsData.estimator.sizes || [])[estimatorState.sizeIndex];
+                const comp = cmsData.estimator && (cmsData.estimator.components || cmsData.estimator);
+                const sizes = (comp && comp.sizes) || [];
+                const size = sizes[estimatorState.sizeIndex];
                 id = size && size.acuity_id;
             }
             openBookingModal(id);
