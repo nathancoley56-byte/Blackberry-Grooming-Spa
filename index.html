@@ -655,6 +655,7 @@
         function setEstimatorSize(size, price, duration) {
             estimatorState.basePrice = price;
             estimatorState.duration = duration;
+            estimatorState.sizeIndex = size;
             const sizeBtn = document.getElementById(`btn-size-${size}`);
             estimatorState.sizeName = sizeBtn ? (sizeBtn.querySelector('.font-bold') || sizeBtn).innerText.trim() : '';
 
@@ -711,7 +712,13 @@
 
         // Transfer Estimator Choice to Modal
         function bookWithEstimate() {
-            openBookingModal();
+            const appt = estimatorState.appt;
+            let id = appt && appt.acuity_id;
+            if (!appt || appt.size_based) {
+                const size = (cmsData.estimator && cmsData.estimator.sizes || [])[estimatorState.sizeIndex];
+                id = size && size.acuity_id;
+            }
+            openBookingModal(id);
         }
 
         // Before/After Image Toggle
@@ -727,7 +734,17 @@
         }
 
         // Acuity booking modal
-        function openBookingModal() {
+        let acuityBaseUrl = '';
+
+        function openBookingModal(appointmentTypeId) {
+            const iframe = document.getElementById('acuity-scheduler');
+            const link = document.getElementById('acuity-open-link');
+            if (acuityBaseUrl) {
+                const url = new URL(acuityBaseUrl);
+                if (/^\d+$/.test(String(appointmentTypeId ?? ''))) url.searchParams.set('appointmentType', String(appointmentTypeId));
+                if (iframe.getAttribute('src') !== url.href) iframe.src = url.href;
+                link.href = url.href;
+            }
             const modal = document.getElementById('bookingModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -758,6 +775,7 @@
             }
 
             if (!bookingUrl) {
+                acuityBaseUrl = '';
                 iframe.removeAttribute('src');
                 iframe.classList.add('hidden');
                 link.classList.add('hidden');
@@ -769,7 +787,8 @@
             }
 
             notice.classList.add('hidden');
-            iframe.src = bookingUrl;
+            acuityBaseUrl = bookingUrl;
+            if (iframe.getAttribute('src') === null) iframe.src = bookingUrl;
             iframe.classList.remove('hidden');
             link.href = bookingUrl;
             link.classList.remove('hidden');
@@ -1056,7 +1075,7 @@
                         </div>
                         <ul class="space-y-2.5 text-xs text-stone-600 border-t border-cream-200 pt-4">${features}</ul>
                     </div>
-                    <button onclick="openBookingModal()" class="mt-8 w-full py-3 rounded-xl ${featured ? 'bg-sage-500 hover:bg-sage-600 text-white shadow-sm' : 'bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700'} font-semibold text-xs transition-all">
+                    <button onclick="openBookingModal('${esc(item.acuity_id || '')}')" class w-full py-3 rounded-xl ${featured ? 'bg-sage-500 hover:bg-sage-600 text-white shadow-sm' : 'bg-cream-100 hover:bg-sage-500 hover:text-white text-stone-700'} font-semibold text-xs transition-all">
                         Book Appointment
                     </button>
                 </div>`;
