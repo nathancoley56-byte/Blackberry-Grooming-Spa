@@ -41,6 +41,7 @@
       },
       {
         "name": "The Little Luxuries Package",
+        "acuity_id": "100376449",
         "size_based": false,
         "price": 55,
         "duration": "2 hrs 20 mins",
@@ -48,6 +49,7 @@
       },
       {
         "name": "Nails, Teeth, Eyes & Ears",
+        "acuity_id": "100376320",
         "size_based": false,
         "price": 25,
         "duration": "30 mins",
@@ -57,24 +59,28 @@
     "sizes": [
       {
         "name": "Small",
+        "acuity_id": "100376088",
         "label": "1 - 25 lbs",
         "price": 95,
         "duration": "2 hrs"
       },
       {
         "name": "Medium",
+        "acuity_id": "100376129",
         "label": "25 - 50 lbs",
         "price": 110,
         "duration": "2 hrs 40 mins"
       },
       {
         "name": "Large",
+        "acuity_id": "100376155",
         "label": "50 - 75 lbs",
         "price": 125,
         "duration": "3 hrs"
       },
       {
         "name": "X-Large",
+        "acuity_id": "100376181",
         "label": "75 - 90 lbs",
         "price": 135,
         "duration": "3 hrs 30 mins"
