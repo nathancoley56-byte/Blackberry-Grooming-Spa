@@ -853,7 +853,7 @@
             try {
                 const url = new URL(rawUrl);
                 const host = url.hostname.toLowerCase();
-                if (url.protocol === 'https:' && (host === 'acuityscheduling.com' || host.endsWith('.acuityscheduling.com') || host === 'as.me' || host.endsWith('.as.me'))) {
+                if (url.protocol === 'https:' && (host === 'acuityscheduling.com' || host.endsWith('.acuityscheduling.com') || host === 'app.acuityscheduling.com' || host === 'as.me' || host.endsWith('.as.me'))) {
                     bookingUrl = url.href;
                 }
             } catch (err) {
