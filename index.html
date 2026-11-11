@@ -342,10 +342,7 @@
                 <p class="text-stone-600 text-sm max-w-xl mx-auto">Every session includes gentle hand drying, pad trim, sanitary cut, and a cute complimentary bandana!</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-
-            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
@@ -1037,7 +1034,7 @@
 
         function renderServices(items) {
             if (!items.length) return;
-            const grid = document.querySelector('#services .grid.lg\\:grid-cols-4');
+            const grid = document.querySelector('#services .grid');
             grid.innerHTML = items.map(item => {
                 const featured = Boolean(item.badge);
                 const features = (item.features || []).map(f => {
