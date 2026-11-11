@@ -33,46 +33,51 @@
   "components": {
     "appointments": [
       {
-        "name": "Essential Bath & Brush",
-        "duration_adjust": 0
+        "name": "Full Groom",
+        "size_based": true,
+        "price": 0,
+        "duration": "",
+        "coat_surcharge": true
       },
       {
-        "name": "Pampered Pup Full Groom",
-        "duration_adjust": 60
+        "name": "The Little Luxuries Package",
+        "size_based": false,
+        "price": 55,
+        "duration": "2 hrs 20 mins",
+        "coat_surcharge": true
       },
       {
-        "name": "Puppy's First Groom",
-        "duration_adjust": 0
-      },
-      {
-        "name": "Nail & Paw Care Spa",
-        "duration_adjust": -30
+        "name": "Nails, Teeth, Eyes & Ears",
+        "size_based": false,
+        "price": 25,
+        "duration": "30 mins",
+        "coat_surcharge": false
       }
     ],
     "sizes": [
       {
         "name": "Small",
-        "label": "Under 20 lbs",
-        "price": 45,
-        "duration": "1.0 hr"
+        "label": "1 - 25 lbs",
+        "price": 95,
+        "duration": "2 hrs"
       },
       {
         "name": "Medium",
-        "label": "21 - 45 lbs",
-        "price": 60,
-        "duration": "1.5 hrs"
+        "label": "25 - 50 lbs",
+        "price": 110,
+        "duration": "2 hrs 40 mins"
       },
       {
         "name": "Large",
-        "label": "46 - 80 lbs",
-        "price": 80,
-        "duration": "2.0 hrs"
+        "label": "50 - 75 lbs",
+        "price": 125,
+        "duration": "3 hrs"
       },
       {
         "name": "X-Large",
-        "label": "80+ lbs",
-        "price": 105,
-        "duration": "2.5 hrs"
+        "label": "75 - 90 lbs",
+        "price": 135,
+        "duration": "3 hrs 30 mins"
       }
     ],
     "coats": [
