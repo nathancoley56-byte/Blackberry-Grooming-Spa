@@ -813,18 +813,6 @@
         }
 
         // Transfer Estimator Choice to Modal
-        function currentEstimate() {
-            const addons = Array.from(document.querySelectorAll('.estimator-addon:checked')).map(b => b.parentElement.innerText.trim());
-            return {
-                appointment: estimatorState.apptName,
-                size: estimatorState.sizeName,
-                coat: estimatorState.coatName,
-                addons: addons.join(', '),
-                price: document.getElementById('estimated-price').innerText,
-                duration: document.getElementById('estimated-time').innerText
-            };
-        }
-
         function bookWithEstimate() {
             openBookingModal();
         }
@@ -1251,8 +1239,6 @@
                         <span class="text-[10px] text-stone-500">${esc(s.label)}</span>
                     </button>`).join('');
 
-                const select = document.getElementById('input-weight');
-                select.innerHTML = sizes.map(s => `<option value="${esc(s.name)} (${esc(s.label)})">${esc(s.name)} (${esc(s.label)})</option>`).join('');
             }
 
             if (coats.length) {
