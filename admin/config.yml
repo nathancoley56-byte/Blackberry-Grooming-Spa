@@ -87,35 +87,6 @@ collections:
               - { label: "Bold Text", name: "text", widget: "string", default: "Sanitized Private Suites" }
 
   # ==========================================
-  # BOOKING SCHEDULE
-  # ==========================================
-  - name: "schedule"
-    label: "Booking Schedule"
-    delete: false
-    editor:
-      preview: false
-    files:
-      - file: "content/schedule.json"
-        label: "Open Days, Times & Days Off"
-        name: "schedule"
-        fields:
-          - { label: "Time Zone (e.g. America/Denver)", name: "timezone", widget: "string", default: "America/Denver" }
-          - { label: "Days We Take Appointments", name: "open_days", widget: "select", multiple: true, options: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], default: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] }
-          - { label: "Appointment Times (select all that apply)", name: "time_slots", widget: "select", multiple: true, options: ["06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM"], default: ["09:00 AM", "11:00 AM", "01:30 PM", "03:30 PM"] }
-          - { label: "Appointments Allowed Per Time Slot", name: "max_per_slot", widget: "number", value_type: "int", min: 1, default: 1 }
-          - { label: "Minimum Days Notice (1 = no same-day booking)", name: "min_notice_days", widget: "number", value_type: "int", min: 0, default: 1 }
-          - { label: "How Many Days Ahead Customers Can Book", name: "days_ahead", widget: "number", value_type: "int", min: 1, default: 60 }
-          - { label: "Days Off / Holidays (whole day closed)", name: "days_off", widget: "list", required: false, field: { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" } }
-          - label: "Close Specific Times"
-            name: "blocked_slots"
-            widget: "list"
-            required: false
-            summary: "{{fields.date}}: {{fields.times}}"
-            fields:
-              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
-              - { label: "Times To Close (select all that apply)", name: "times", widget: "select", multiple: true, options: ["06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM", "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM", "08:30 PM"] }
-
-  # ==========================================
   # 1. GLOBAL SITE SETTINGS & HERO
   # ==========================================
   - name: "settings"
@@ -131,6 +102,7 @@ collections:
           - { label: "Business Name", name: "site_name", widget: "string", default: "Blackberry Luxury Grooming" }
           - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
           - { label: "Heading Color (big headings on every section)", name: "heading_color", widget: "color", allowInput: true, required: false, default: "#4B5320", hint: "Second brand color. Each section can still override it with its own title color." }
+          - { label: "Acuity Public Booking URL", name: "acuity_booking_url", widget: "string", required: false, hint: "Paste the public Acuity scheduling page URL (for example, https://yourbusiness.as.me/). Do not enter your account password." }
           - label: "Top Heading Banner (Logo & Menu)"
             name: "header"
             widget: "object"
