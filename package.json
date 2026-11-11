@@ -1,0 +1,7 @@
+{
+  "name": "maddies-grooming",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.js"
+  }
+}
