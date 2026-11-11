@@ -18,7 +18,7 @@
     "included_label": "Included:",
     "coat_label": "2. Coat Type / Breed Specialty",
     "addon_label": "3. Optional Add-On Services",
-    "button_color": "#3ca023",
+    "button_color": "#ffff",
     "size_label": "1. Select Dog Size",
     "card_color_bottom": "#285320",
     "title": "Interactive Grooming Cost Estimator",
@@ -37,7 +37,8 @@
         "size_based": true,
         "price": 0,
         "duration": "",
-        "coat_surcharge": true
+        "coat_surcharge": true,
+        "duration_adjust": 0
       },
       {
         "name": "The Little Luxuries Package",
@@ -45,7 +46,8 @@
         "size_based": false,
         "price": 55,
         "duration": "2 hrs 20 mins",
-        "coat_surcharge": true
+        "coat_surcharge": true,
+        "duration_adjust": 0
       },
       {
         "name": "Nails, Teeth, Eyes & Ears",
@@ -53,7 +55,8 @@
         "size_based": false,
         "price": 25,
         "duration": "30 mins",
-        "coat_surcharge": false
+        "coat_surcharge": false,
+        "duration_adjust": 0
       }
     ],
     "sizes": [
