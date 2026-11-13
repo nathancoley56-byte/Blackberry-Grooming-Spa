@@ -27,6 +27,21 @@
       "pup_name": "chicky",
       "image_before": "/assets/images/uploads/img_3165.jpg",
       "image_after": "/assets/images/uploads/img_3166.jpg"
+    },
+    {
+      "pup_name": "Ariel",
+      "image_before": "/assets/images/uploads/img_3167.jpg",
+      "image_after": "/assets/images/uploads/img_3168.jpg"
+    },
+    {
+      "pup_name": "Bailey",
+      "image_before": "/assets/images/uploads/img_3159.jpg",
+      "image_after": "/assets/images/uploads/img_3158.jpg"
+    },
+    {
+      "pup_name": "Cosmo",
+      "image_before": "/assets/images/uploads/img_3160.jpg",
+      "image_after": "/assets/images/uploads/img_3161.jpg"
     }
   ]
 }
