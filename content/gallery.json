@@ -22,6 +22,11 @@
       "pup_name": "Bella",
       "image_before": "/assets/images/uploads/img_3201.jpg",
       "image_after": "/assets/images/uploads/img_3202.jpg"
+    },
+    {
+      "pup_name": "chicky",
+      "image_before": "/assets/images/uploads/img_3165.jpg",
+      "image_after": "/assets/images/uploads/img_3166.jpg"
     }
   ]
 }
