@@ -42,6 +42,26 @@
       "pup_name": "Cosmo",
       "image_before": "/assets/images/uploads/img_3160.jpg",
       "image_after": "/assets/images/uploads/img_3161.jpg"
+    },
+    {
+      "pup_name": "Sunny",
+      "image_before": "/assets/images/uploads/img_3163-2.jpg",
+      "image_after": "/assets/images/uploads/img_3164-2.jpg"
+    },
+    {
+      "pup_name": "Tux",
+      "image_before": "/assets/images/uploads/img_3169-2.jpg",
+      "image_after": "/assets/images/uploads/img_3170-2.jpg"
+    },
+    {
+      "pup_name": "snow",
+      "image_before": "/assets/images/uploads/img_3171-2.jpg",
+      "image_after": "/assets/images/uploads/img_3172-2.jpg"
+    },
+    {
+      "pup_name": "Abby",
+      "image_before": "/assets/images/uploads/img_3173-2.jpg",
+      "image_after": "/assets/images/uploads/img_3174-2.jpg"
     }
   ]
 }
