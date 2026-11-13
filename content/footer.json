@@ -17,8 +17,8 @@
   "accent_color": "#50d22d",
   "hours": [
     {
-      "label": "Monday - Friday:",
-      "hours": "9:00 AM - 6:00 PM",
+      "label": "Monday - Thursday:",
+      "hours": "1:00pm - 6:00 PM",
       "highlight": false
     },
     {
