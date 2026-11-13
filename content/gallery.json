@@ -20,8 +20,8 @@
     },
     {
       "pup_name": "Bella",
-      "image_before": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&q=80&w=600",
-      "image_after": "/assets/images/uploads/img_3231.jpg"
+      "image_before": "/assets/images/uploads/img_3201.jpg",
+      "image_after": "/assets/images/uploads/img_3202.jpg"
     }
   ]
 }
