@@ -64,7 +64,7 @@
         "name": "Small",
         "acuity_id": "100376088",
         "label": "1 - 25 lbs",
-        "price": 95,
+        "price": "",
         "duration": "2 hrs"
       },
       {
@@ -122,11 +122,11 @@
       },
       {
         "title": "Teeth Brushing & Breath Gel",
-        "price": 12
+        "price": -31
       },
       {
         "title": "Blueberry Facial Soak",
-        "price": 15
+        "price": -26
       }
     ]
   }
