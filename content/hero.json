@@ -41,7 +41,7 @@
   "stats": [
     {
       "value": "100%",
-      "label": "Organic Shampoos",
+      "label": "one on one grooming",
       "icon": "",
       "value_color": "#4B5320",
       "icon_color": ""
@@ -54,8 +54,8 @@
       "icon_color": ""
     },
     {
-      "value": "5.0",
-      "label": "20+ Happy Pups",
+      "value": "Cage Free Grooming",
+      "label": "cage free grooming makes a more positive experience",
       "icon": "fa-solid fa-star",
       "value_color": "#4B5320",
       "icon_color": "#d6f414"
