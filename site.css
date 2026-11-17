@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --heading-color: #4B5320;
+    --sage-50: 244 247 244;
+    --sage-100: 227 235 227;
+    --sage-500: 126 159 126;
+    --sage-600: 100 133 100;
+    --sage-700: 76 104 76;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.site-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.site-container-fluid {
+    max-width: none;
+}
+
+h1.site-heading,
+h2.site-heading {
+    color: var(--heading-color);
+}
+
+.site-desktop-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(0.75rem, 1.8vw, 2rem);
+    white-space: nowrap;
+}
+
+.site-header-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.site-mobile-menu-button,
+.site-mobile-menu {
+    display: none;
+}
+
+.site-mobile-menu.hidden {
+    display: none !important;
+}
+
+.site-mobile-menu:not(.hidden) {
+    display: block !important;
+}
+
+#hero-image-frame {
+    aspect-ratio: 4 / 3;
+    background: #f9f5ec;
+}
+
+#hero-image-frame img {
+    object-fit: contain;
+    background: #f9f5ec;
+}
+
+#hero-stats {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: clamp(0.65rem, 3vw, 1.5rem);
+    padding: 1.25rem 0.25rem 0;
+}
+
+#hero-stats > div {
+    min-width: 0;
+    padding: 0.8rem 0.6rem;
+    border-radius: 0.9rem;
+    background: rgb(255 255 255 / 62%);
+    text-align: center;
+}
+
+#hero-stats .hero-stat-value {
+    overflow-wrap: anywhere;
+    line-height: 1.2;
+}
+
+#hero-stats .hero-stat-icon {
+    display: inline-block;
+    margin-left: 0.2rem;
+    vertical-align: 0.12em;
+}
+
+#about-images img {
+    height: clamp(20rem, 38vw, 30rem);
+    object-fit: cover;
+    background: #f9f5ec;
+}
+
+#about-images img + img {
+    margin-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+#gallery .grid > div img {
+    object-fit: contain;
+    background: #f2ebd9;
+}
+
+#services .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+    .site-desktop-nav,
+    .site-header-actions {
+        display: none;
+    }
+
+    .site-mobile-menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    #services .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #hero-section {
+        padding-top: 2.5rem;
+        padding-bottom: 3rem;
+    }
+
+    #hero-section .grid {
+        gap: 2.5rem;
+    }
+
+    .hero-visual {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        width: min(100%, 28rem);
+        margin-inline: auto;
+    }
+
+    #hero-image-frame {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-height: none;
+    }
+
+    #hero-card-1,
+    #hero-card-2 {
+        position: static;
+        display: flex !important;
+        min-width: 0;
+        padding: 0.7rem;
+        gap: 0.55rem;
+        border-radius: 1rem;
+    }
+
+    .hero-card-icon {
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 2rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-card-label {
+        font-size: 0.65rem;
+    }
+
+    .hero-card-text {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+
+    #hero-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.65rem;
+    }
+
+    #hero-stats > div:last-child {
+        grid-column: 1 / -1;
+    }
+
+    #hero-stats .hero-stat-value {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    #hero-stats > div > :last-child {
+        font-size: 0.65rem;
+        line-height: 1.35;
+    }
+
+    #about-images {
+        gap: 0.75rem;
+    }
+
+    #about-images img {
+        height: clamp(14rem, 64vw, 18rem);
+    }
+
+    #about-images img + img {
+        margin-top: 1.5rem;
+    }
+
+    #estimator,
+    #services,
+    #gallery,
+    #about,
+    #reviews {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+}

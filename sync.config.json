@@ -1,0 +1,6 @@
+{
+  "owner": "nathancoley56-byte",
+  "repo": "Blackberry-Grooming-Spa",
+  "branch": "main",
+  "paths": ["content", "assets/images/uploads", "index.html", "admin", "netlify", "netlify.toml", "package.json"]
+}

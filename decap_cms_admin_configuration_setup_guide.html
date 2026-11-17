@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decap CMS Setup & Schema | Blackberry Luxury Grooming Admin</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#F9F5EC',
+                            200: '#F2EBD9',
+                            300: '#E4D7BA',
+                        },
+                        sage: {
+                            500: '#7E9F7E',
+                            600: '#648564',
+                            700: '#4C684C',
+                        },
+                        warmbrown: {
+                            700: '#7F5539',
+                            800: '#5C3D2E',
+                        },
+                        amber: {
+                            500: '#F4A261',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        pre, code { font-family: 'Fira Code', monospace; }
+        .tab-active {
+            border-bottom-color: #7E9F7E;
+            color: #5C3D2E;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-stone-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-warmbrown-800 text-white border-b border-warmbrown-700 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sage-500 flex items-center justify-center text-white text-lg">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Blackberry Luxury Grooming • Decap CMS Manager</h1>
+                    <p class="text-xs text-cream-200/80">Content Management Configuration & Backend Deployment Guide</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 text-xs">
+                <span class="px-3 py-1 rounded-full bg-sage-500/30 text-sage-100 border border-sage-500/40">
+                    <i class="fa-solid fa-code-branch mr-1"></i> Version 2.0 (Decap Ready)
+                </span>
+                <button onclick="copyYamlConfig()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold transition-all shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-copy"></i> Copy admin/config.yml
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+        
+        <!-- Navigation Tabs -->
+        <div class="border-b border-cream-200 flex gap-6 text-sm font-medium text-stone-500 overflow-x-auto">
+            <button onclick="switchTab('yaml')" id="tab-btn-yaml" class="pb-3 border-b-2 tab-active transition-all flex items-center gap-2">
+                <i class="fa-solid fa-file-code"></i> 1. Decap `config.yml` Viewer
+            </button>
+            <button onclick="switchTab('setup')" id="tab-btn-setup" class="pb-3 border-b-2 border-transparent transition-all hover:text-warmbrown-800 flex items-center gap-2">
+                <i class="fa-solid fa-rocket"></i> 2. Step-by-Step Integration Guide
+            </button>
+            <button onclick="switchTab('fetch')" id="tab-btn-fetch" class="pb-3 border-b-2 border-transparent transition-all hover:text-warmbrown-800 flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code"></i> 3. Frontend JS Data Loader
+            </button>
+        </div>
+
+        <!-- TAB 1: CONFIG.YML VIEWER & SEARCH -->
+        <section id="panel-yaml" class="space-y-4">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-cream-200 shadow-sm">
+                <div>
+                    <h2 class="font-bold text-stone-800">Admin Configuration File (`public/admin/config.yml`)</h2>
+                    <p class="text-xs text-stone-500">This schema defines all editable website fields, collections, and media storage paths.</p>
+                </div>
+                <!-- Search Box -->
+                <div class="relative w-full md:w-72">
+                    <input type="text" id="yamlSearch" oninput="filterYamlContent()" placeholder="Filter fields (e.g. doodle, gallery)..." 
+                           class="w-full pl-9 pr-4 py-2 rounded-xl border border-cream-300 text-xs focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-stone-400 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Code Block Viewer -->
+            <div class="relative bg-stone-900 rounded-2xl overflow-hidden shadow-xl border border-stone-800">
+                <div class="bg-stone-950 px-4 py-2.5 flex items-center justify-between border-b border-stone-800 text-xs text-stone-400">
+                    <span class="flex items-center gap-2 font-mono"><i class="fa-solid fa-file text-amber-500"></i> admin/config.yml</span>
+                    <button onclick="copyYamlConfig()" class="hover:text-white transition-colors flex items-center gap-1">
+                        <i class="fa-regular fa-clipboard"></i> Copy YAML
+                    </button>
+                </div>
+                <pre class="p-6 text-xs text-stone-200 overflow-x-auto leading-relaxed max-h-[600px] scrollbar-thin"><code id="yamlCodeBlock"># Decap CMS (Formerly Netlify CMS) Configuration
+# File Location: /admin/config.yml
+
+backend:
+  name: git-gateway
+  branch: main # Change to your target branch (e.g., main or master)
+
+local_backend:
+  url: http://localhost:8082/api/v1
+
+# Media & Storage Settings
+media_folder: "assets/images/uploads" # Folder where uploaded images are saved
+public_folder: "/assets/images/uploads" # Public URL path for images
+
+# CMS Collections Configuration
+collections:
+  
+  # ==========================================
+  # 1. GLOBAL SITE SETTINGS & HERO
+  # ==========================================
+  - name: "settings"
+    label: "Global Site Settings"
+    delete: false
+    files:
+      - file: "content/settings.json"
+        label: "Business Details & Hero Banner"
+        name: "general"
+        fields:
+          - { label: "Business Name", name: "site_name", widget: "string", default: "Blackberry Luxury Grooming" }
+          - { label: "Acuity Public Booking URL", name: "acuity_booking_url", widget: "string", required: false, hint: "Paste the public Acuity scheduling page URL. Do not enter your account password." }
+          - label: "Footer Social Media Links"
+            name: "social_links"
+            widget: "list"
+            required: false
+            summary: "{{fields.platform}}: {{fields.url}}"
+            fields:
+              - { label: "Platform", name: "platform", widget: "select", options: ["instagram", "facebook", "tiktok", "youtube", "x", "pinterest", "linkedin", "yelp", "google"] }
+              - { label: "Link (full URL, e.g. https://instagram.com/yourpage)", name: "url", widget: "string" }
+          - { label: "Brand Color (buttons, logo, accents)", name: "brand_color", widget: "color", allowInput: true, required: false, default: "#7E9F7E" }
+          - label: "Top Heading Banner (Logo & Menu)"
+            name: "header"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Logo Image (leave empty to use the icon)", name: "logo_image", widget: "image", required: false }
+              - { label: "Logo Icon (FontAwesome class, used when no image)", name: "logo_icon", widget: "string", required: false, default: "fa-solid fa-paw" }
+              - { label: "Logo Name", name: "logo_text", widget: "string", default: "Blackberry" }
+              - { label: "Logo Tagline", name: "logo_tagline", widget: "string", required: false, default: "Luxury Grooming" }
+              - { label: "Booking Button Text", name: "header_button_text", widget: "string", default: "Book Appointment" }
+              - label: "Menu Links"
+                name: "nav_links"
+                widget: "list"
+                summary: "{{fields.label}} → {{fields.link}}"
+                fields:
+                  - { label: "Link Text", name: "label", widget: "string" }
+                  - { label: "Section (e.g. #services, #gallery)", name: "link", widget: "string" }
+          - { label: "Phone Number", name: "phone", widget: "string", default: "(555) 019-2834" }
+          - { label: "Email Address", name: "email", widget: "string", default: "hello@pawsandsuds.com" }
+          - { label: "Address", name: "address", widget: "string", default: "1244 Barkwood Lane, Suite B, Austin TX" }
+          - label: "Business Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Weekdays", name: "weekdays", widget: "string", default: "8:00 AM - 6:00 PM" }
+              - { label: "Saturday", name: "saturday", widget: "string", default: "9:00 AM - 5:00 PM" }
+              - { label: "Sunday", name: "sunday", widget: "string", default: "Closed for Rest" }
+
+  # ==========================================
+  # 2. GROOMING PACKAGES & SERVICES
+  # ==========================================
+  - name: "services"
+    label: "Grooming Services"
+    delete: false
+    files:
+      - file: "content/services.json"
+        label: "Grooming Packages"
+        name: "services_list"
+        fields:
+          - label: "Packages"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Package Title", name: "title", widget: "string" }
+              - { label: "Featured Tag (Optional)", name: "badge", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Base Starting Price ($)", name: "base_price", widget: "number", value_type: "int" }
+              - { label: "Pricing Note", name: "price_note", widget: "string", default: "/ starting rate" }
+              - { label: "Icon FontAwesome Class", name: "icon_class", widget: "string", default: "fa-solid fa-shower" }
+              - label: "Included Features List"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature_text", widget: "string" }
+
+  # ==========================================
+  # 3. ESTIMATOR SURCHARGES & ADD-ONS
+  # ==========================================
+  - name: "estimator"
+    label: "Estimator Surcharges & Rates"
+    delete: false
+    files:
+      - file: "content/estimator.json"
+        label: "Pricing Calculator Rules"
+        name: "calculator_rules"
+        fields:
+          # Dog Size Pricing Rules
+          - label: "Dog Size Base Rates"
+            name: "sizes"
+            widget: "list"
+            fields:
+              - { label: "Size Name", name: "name", widget: "string" } # Small, Medium, Large, X-Large
+              - { label: "Weight Range Label", name: "label", widget: "string" } # e.g., Under 20 lbs
+              - { label: "Base Price ($)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Estimated Duration", name: "duration", widget: "string" } # e.g., 1.5 hrs
+
+          # Coat Type Surcharges (Including Poodle/Doodle +$20 rule)
+          - label: "Coat Type Surcharges"
+            name: "coats"
+            widget: "list"
+            fields:
+              - { label: "Coat ID", name: "id", widget: "string" } # e.g. doodle, short, medium, long
+              - { label: "Coat Label", name: "name", widget: "string" } # e.g. Poodle / Doodle
+              - { label: "Surcharge Amount ($)", name: "extra_cost", widget: "number", value_type: "int", default: 20 }
+              - { label: "Highlight Badge", name: "badge", widget: "string", required: false, default: "+ $20" }
+
+          # Optional Add-on Services
+          - label: "Optional Add-on Treats"
+            name: "addons"
+            widget: "list"
+            fields:
+              - { label: "Addon Name", name: "title", widget: "string" } # e.g. De-shedding Treatment
+              - { label: "Price ($)", name: "price", widget: "number", value_type: "int" }
+
+  # ==========================================
+  # 4. BEFORE & AFTER GALLERY
+  # ==========================================
+  - name: "gallery"
+    label: "Pups Before & After Gallery"
+    delete: false
+    files:
+      - file: "content/gallery.json"
+        label: "Gallery Pups"
+        name: "gallery_list"
+        fields:
+          - label: "Pups"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.pup_name}}"
+            fields:
+              - { label: "Pup Name", name: "pup_name", widget: "string" }
+              - { label: "Breed & Treatment Tag", name: "details", widget: "string", default: "Goldendoodle • Full Groom" }
+              - { label: "Before Image", name: "image_before", widget: "image" }
+              - { label: "After Image", name: "image_after", widget: "image" }
+
+  # ==========================================
+  # 5. REVIEWS & TESTIMONIALS
+  # ==========================================
+  - name: "reviews"
+    label: "Customer Reviews"
+    delete: false
+    files:
+      - file: "content/reviews.json"
+        label: "Reviews"
+        name: "reviews_list"
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.owner_name}}"
+            fields:
+              - { label: "Owner Name", name: "owner_name", widget: "string" }
+              - { label: "Pet Name & Breed", name: "pet_info", widget: "string" }
+              - { label: "Rating Stars (1 to 5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "Review Quote", name: "review_text", widget: "text" }
+
+  # ==========================================
+  # 6. ABOUT US & PHILOSOPHY
+  # ==========================================
+  - name: "about"
+    label: "About Us & Philosophy"
+    delete: false
+    files:
+      - file: "content/about.json"
+        label: "About Page Content"
+        name: "about_content"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Main Story / Bio", name: "bio", widget: "markdown" }
+          - label: "Core Principles"
+            name: "principles"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Icon Class", name: "icon", widget: "string" }
+</code></pre>
+            </div>
+        </section>
+
+        <!-- TAB 2: STEP-BY-STEP SETUP GUIDE -->
+        <section id="panel-setup" class="space-y-6 hidden">
+            <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-warmbrown-800">Deployment & Git Gateway Setup Guide</h2>
+                <p class="text-xs text-stone-600 leading-relaxed">
+                    Follow these 3 simple steps to integrate Decap CMS directly into your static website without requiring a complex backend database.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-3">
+                    <div class="w-8 h-8 rounded-full bg-sage-500 text-white font-bold flex items-center justify-center text-sm">1</div>
+                    <h3 class="font-bold text-stone-800 text-sm">Create `/admin/index.html`</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        Create an `admin` folder in your website root containing `index.html` to load Decap CMS via CDN. `admin/preview.js` embeds the actual `index.html` site in the CMS preview and sends the current draft content to it, so layout and styling come from the customer-facing page. The preview registers `site.css` with Decap, and the embedded site loads its own full stylesheet and scripts.
+                    </p>
+                    <div class="bg-stone-900 text-stone-200 p-3 rounded-xl text-[11px] font-mono overflow-x-auto">
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br>
+                        &lt;head&gt;&lt;title&gt;Content Manager&lt;/title&gt;&lt;/head&gt;<br>
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"&gt;&lt;/script&gt;<br>
+                        &nbsp;&nbsp;&lt;script src="/admin/preview.js"&gt;&lt;/script&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-3">
+                    <div class="w-8 h-8 rounded-full bg-warmbrown-700 text-white font-bold flex items-center justify-center text-sm">2</div>
+                    <h3 class="font-bold text-stone-800 text-sm">Add `config.yml`</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        Copy the YAML block from Tab 1 into `admin/config.yml`. Make sure `media_folder` matches your image directory.
+                    </p>
+                    <div class="p-3 bg-cream-100 rounded-xl text-xs text-stone-700 font-mono">
+                        your-website/<br>
+                        ├── index.html<br>
+                        ├── admin/<br>
+                        │   ├── index.html<br>
+                        │   └── config.yml<br>
+                        └── content/
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-3">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-stone-900 font-bold flex items-center justify-center text-sm">3</div>
+                    <h3 class="font-bold text-stone-800 text-sm">Enable Authentication</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        For local editing, run <code>$env:PORT='8082'; npx decap-server</code> in PowerShell and keep <code>local_backend</code> enabled. Before deploying, remove <code>local_backend</code>. For Netlify hosting, enable <b>Git Gateway</b> under Site Settings > Identity, or configure Decap GitHub OAuth.
+                    </p>
+                    <a href="https://decapcms.org/docs/git-gateway-backend/" target="_blank" class="inline-block text-xs font-bold text-sage-600 hover:underline">
+                        Read Decap Auth Specs <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: FRONTEND DATA LOADER CODE -->
+        <section id="panel-fetch" class="space-y-4 hidden">
+            <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-sm space-y-2">
+                <h2 class="text-xl font-bold text-warmbrown-800">Dynamic Frontend Content Integration</h2>
+                <p class="text-xs text-stone-600">
+                    Use this standard JavaScript snippet in your main `index.html` to fetch content updated by Decap CMS:
+                </p>
+            </div>
+
+            <div class="bg-stone-900 rounded-2xl overflow-hidden shadow-xl border border-stone-800">
+                <div class="bg-stone-950 px-4 py-2.5 text-xs text-stone-400 font-mono flex items-center justify-between">
+                    <span>index.html (Fetch Estimator Surcharges & Poodle/Doodle Rule)</span>
+                </div>
+                <pre class="p-6 text-xs text-amber-300 overflow-x-auto leading-relaxed"><code>// Fetch Estimator Configuration generated by Decap CMS
+async function loadCMSData() {
+    try {
+        const response = await fetch('/content/estimator.json');
+        if (response.ok) {
+            const estimatorData = await response.json();
+            
+            // Example: Access Poodle/Doodle Surcharge ($20 default)
+            const doodleCoat = estimatorData.coats.find(c => c.id === 'doodle');
+            console.log("Poodle/Doodle Surcharge:", doodleCoat.extra_cost); // Returns 20
+        }
+    } catch (err) {
+        console.warn("Using fallback local rates:", err);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', loadCMSData);</code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-warmbrown-800 text-cream-100 py-6 border-t border-warmbrown-700 text-center text-xs">
+        <p>&copy; 2026 Blackberry Luxury Grooming • Decap CMS Integration Toolkit</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-stone-900 text-white px-5 py-3 rounded-2xl shadow-xl border border-stone-700 text-xs flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-sage-500"></i>
+        <span id="toastMsg">Config copied to clipboard!</span>
+    </div>
+
+    <!-- JS Logic for Tabs, Search, and Copying -->
+    <script>
+        const originalYaml = document.getElementById('yamlCodeBlock').innerText;
+
+        function switchTab(tab) {
+            document.querySelectorAll('[id^="panel-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('[id^="tab-btn-"]').forEach(btn => {
+                btn.classList.remove('tab-active', 'border-sage-500', 'text-warmbrown-800', 'font-bold');
+                btn.classList.add('border-transparent', 'text-stone-500');
+            });
+
+            document.getElementById(`panel-${tab}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('border-transparent', 'text-stone-500');
+        }
+
+        function filterYamlContent() {
+            const query = document.getElementById('yamlSearch').value.toLowerCase();
+            const codeBlock = document.getElementById('yamlCodeBlock');
+            
+            if (!query) {
+                codeBlock.innerText = originalYaml;
+                return;
+            }
+
+            const lines = originalYaml.split('\n');
+            const filtered = lines.filter(line => line.toLowerCase().includes(query));
+            codeBlock.innerText = filtered.length ? filtered.join('\n') : `# No matching configuration fields for "${query}"`;
+        }
+
+        function copyYamlConfig() {
+            navigator.clipboard.writeText(originalYaml).then(() => {
+                showToast("Decap config.yml copied to clipboard!");
+            }).catch(() => {
+                // Fallback copy execution
+                const textArea = document.createElement("textarea");
+                textArea.value = originalYaml;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast("Decap config.yml copied to clipboard!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
