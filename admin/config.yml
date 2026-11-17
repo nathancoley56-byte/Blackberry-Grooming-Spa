@@ -21,8 +21,6 @@ collections:
   - name: "hero"
     label: "Hero Section (Top of Page)"
     delete: false
-    editor:
-      preview: false
     files:
       - file: "content/hero.json"
         label: "Hero Section"
@@ -92,8 +90,6 @@ collections:
   - name: "settings"
     label: "Global Site Settings"
     delete: false
-    editor:
-      preview: false
     files:
       - file: "content/settings.json"
         label: "Business Details & Hero Banner"
@@ -128,8 +124,6 @@ collections:
   - name: "footer"
     label: "Footer"
     delete: false
-    editor:
-      preview: false
     files:
       - file: "content/footer.json"
         label: "Footer"
